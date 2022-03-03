@@ -7,23 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10C5B3A327CDEEDD00B60A4A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3A227CDEEDD00B60A4A /* User.swift */; };
+		10C5B3A527CDF09500B60A4A /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3A427CDF09500B60A4A /* AppError.swift */; };
+		10C5B3A727CDF13100B60A4A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3A627CDF13000B60A4A /* Constants.swift */; };
+		10C5B3AC27CDFADB00B60A4A /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3AB27CDFADB00B60A4A /* TabBarVC.swift */; };
+		10C5B3AF27CDFB3D00B60A4A /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3AE27CDFB3D00B60A4A /* LoginVC.swift */; };
+		10C5B3B127CDFB5D00B60A4A /* SingUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3B027CDFB5D00B60A4A /* SingUpVC.swift */; };
+		10C5B3B327CE048200B60A4A /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3B227CE048200B60A4A /* UIView+Ext.swift */; };
+		10C5B3B627CE2FDB00B60A4A /* UsernameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3B527CE2FDB00B60A4A /* UsernameTextField.swift */; };
+		10C5B3B927CE300000B60A4A /* EButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3B827CE300000B60A4A /* EButton.swift */; };
+		10C5B3BB27CE32B500B60A4A /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3BA27CE32B500B60A4A /* PasswordTextField.swift */; };
+		10C5B3BE27CE39C600B60A4A /* ETLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3BD27CE39C600B60A4A /* ETLabel.swift */; };
+		10C5B3C127CFF09300B60A4A /* ForgetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3C027CFF09300B60A4A /* ForgetPasswordVC.swift */; };
 		10EEDF8727CD05AD00BC03D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EEDF8627CD05AD00BC03D3 /* AppDelegate.swift */; };
 		10EEDF8927CD05AD00BC03D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EEDF8827CD05AD00BC03D3 /* SceneDelegate.swift */; };
-		10EEDF8B27CD05AD00BC03D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EEDF8A27CD05AD00BC03D3 /* ViewController.swift */; };
-		10EEDF8E27CD05AD00BC03D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10EEDF8C27CD05AD00BC03D3 /* Main.storyboard */; };
+		10EEDF8B27CD05AD00BC03D3 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EEDF8A27CD05AD00BC03D3 /* HomeVC.swift */; };
 		10EEDF9027CD05AD00BC03D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10EEDF8F27CD05AD00BC03D3 /* Assets.xcassets */; };
 		10EEDF9327CD05AD00BC03D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10EEDF9127CD05AD00BC03D3 /* LaunchScreen.storyboard */; };
+		10EEDFA527CD0B4B00BC03D3 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EEDFA427CD0B4B00BC03D3 /* AuthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10C5B3A227CDEEDD00B60A4A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		10C5B3A427CDF09500B60A4A /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		10C5B3A627CDF13000B60A4A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		10C5B3AB27CDFADB00B60A4A /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		10C5B3AE27CDFB3D00B60A4A /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		10C5B3B027CDFB5D00B60A4A /* SingUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUpVC.swift; sourceTree = "<group>"; };
+		10C5B3B227CE048200B60A4A /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		10C5B3B527CE2FDB00B60A4A /* UsernameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameTextField.swift; sourceTree = "<group>"; };
+		10C5B3B827CE300000B60A4A /* EButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EButton.swift; sourceTree = "<group>"; };
+		10C5B3BA27CE32B500B60A4A /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
+		10C5B3BD27CE39C600B60A4A /* ETLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETLabel.swift; sourceTree = "<group>"; };
+		10C5B3C027CFF09300B60A4A /* ForgetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordVC.swift; sourceTree = "<group>"; };
 		10EEDF8327CD05AD00BC03D3 /* Expensiv Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expensiv Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10EEDF8627CD05AD00BC03D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10EEDF8827CD05AD00BC03D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		10EEDF8A27CD05AD00BC03D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		10EEDF8D27CD05AD00BC03D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		10EEDF8A27CD05AD00BC03D3 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		10EEDF8F27CD05AD00BC03D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10EEDF9227CD05AD00BC03D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10EEDF9427CD05AD00BC03D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10EEDFA427CD0B4B00BC03D3 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +61,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10C5B3A827CDF9AD00B60A4A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				10C5B3BF27CFF07400B60A4A /* Forget Password */,
+				10C5B3AD27CDFB0600B60A4A /* Login SingUp */,
+				10EEDF8A27CD05AD00BC03D3 /* HomeVC.swift */,
+				10C5B3AB27CDFADB00B60A4A /* TabBarVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		10C5B3AD27CDFB0600B60A4A /* Login SingUp */ = {
+			isa = PBXGroup;
+			children = (
+				10C5B3AE27CDFB3D00B60A4A /* LoginVC.swift */,
+				10C5B3B027CDFB5D00B60A4A /* SingUpVC.swift */,
+			);
+			path = "Login SingUp";
+			sourceTree = "<group>";
+		};
+		10C5B3B427CE2F8400B60A4A /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				10C5B3B527CE2FDB00B60A4A /* UsernameTextField.swift */,
+				10C5B3BA27CE32B500B60A4A /* PasswordTextField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		10C5B3B727CE2FE000B60A4A /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				10C5B3B827CE300000B60A4A /* EButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		10C5B3BC27CE397700B60A4A /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				10C5B3BD27CE39C600B60A4A /* ETLabel.swift */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
+		10C5B3BF27CFF07400B60A4A /* Forget Password */ = {
+			isa = PBXGroup;
+			children = (
+				10C5B3C027CFF09300B60A4A /* ForgetPasswordVC.swift */,
+			);
+			path = "Forget Password";
+			sourceTree = "<group>";
+		};
 		10EEDF7A27CD05AD00BC03D3 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +133,78 @@
 		10EEDF8527CD05AD00BC03D3 /* Expensiv Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				10EEDF8627CD05AD00BC03D3 /* AppDelegate.swift */,
-				10EEDF8827CD05AD00BC03D3 /* SceneDelegate.swift */,
-				10EEDF8A27CD05AD00BC03D3 /* ViewController.swift */,
-				10EEDF8C27CD05AD00BC03D3 /* Main.storyboard */,
+				10EEDFA327CD0B2600BC03D3 /* Utilits */,
+				10EEDFA227CD0B0F00BC03D3 /* Extentions */,
+				10EEDFA127CD0A9E00BC03D3 /* Network Manager */,
+				10EEDFA027CD09E700BC03D3 /* Models */,
+				10EEDF9F27CD09D200BC03D3 /* ViewModels */,
+				10EEDF9A27CD094A00BC03D3 /* Resources */,
+				10EEDF9D27CD099E00BC03D3 /* Custom Views */,
+				10C5B3A827CDF9AD00B60A4A /* Controllers */,
 				10EEDF8F27CD05AD00BC03D3 /* Assets.xcassets */,
-				10EEDF9127CD05AD00BC03D3 /* LaunchScreen.storyboard */,
 				10EEDF9427CD05AD00BC03D3 /* Info.plist */,
 			);
 			path = "Expensiv Tracker";
+			sourceTree = "<group>";
+		};
+		10EEDF9A27CD094A00BC03D3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				10EEDF8627CD05AD00BC03D3 /* AppDelegate.swift */,
+				10EEDF8827CD05AD00BC03D3 /* SceneDelegate.swift */,
+				10EEDF9127CD05AD00BC03D3 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		10EEDF9D27CD099E00BC03D3 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				10C5B3BC27CE397700B60A4A /* Label */,
+				10C5B3B727CE2FE000B60A4A /* Button */,
+				10C5B3B427CE2F8400B60A4A /* TextField */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		10EEDF9F27CD09D200BC03D3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		10EEDFA027CD09E700BC03D3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				10C5B3A227CDEEDD00B60A4A /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		10EEDFA127CD0A9E00BC03D3 /* Network Manager */ = {
+			isa = PBXGroup;
+			children = (
+				10EEDFA427CD0B4B00BC03D3 /* AuthManager.swift */,
+			);
+			path = "Network Manager";
+			sourceTree = "<group>";
+		};
+		10EEDFA227CD0B0F00BC03D3 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				10C5B3B227CE048200B60A4A /* UIView+Ext.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		10EEDFA327CD0B2600BC03D3 /* Utilits */ = {
+			isa = PBXGroup;
+			children = (
+				10C5B3A427CDF09500B60A4A /* AppError.swift */,
+				10C5B3A627CDF13000B60A4A /* Constants.swift */,
+			);
+			path = Utilits;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +267,6 @@
 			files = (
 				10EEDF9327CD05AD00BC03D3 /* LaunchScreen.storyboard in Resources */,
 				10EEDF9027CD05AD00BC03D3 /* Assets.xcassets in Resources */,
-				10EEDF8E27CD05AD00BC03D3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +277,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10EEDF8B27CD05AD00BC03D3 /* ViewController.swift in Sources */,
+				10C5B3BE27CE39C600B60A4A /* ETLabel.swift in Sources */,
+				10EEDF8B27CD05AD00BC03D3 /* HomeVC.swift in Sources */,
+				10C5B3B327CE048200B60A4A /* UIView+Ext.swift in Sources */,
+				10C5B3BB27CE32B500B60A4A /* PasswordTextField.swift in Sources */,
+				10C5B3C127CFF09300B60A4A /* ForgetPasswordVC.swift in Sources */,
+				10EEDFA527CD0B4B00BC03D3 /* AuthManager.swift in Sources */,
+				10C5B3B127CDFB5D00B60A4A /* SingUpVC.swift in Sources */,
+				10C5B3A527CDF09500B60A4A /* AppError.swift in Sources */,
+				10C5B3B627CE2FDB00B60A4A /* UsernameTextField.swift in Sources */,
 				10EEDF8727CD05AD00BC03D3 /* AppDelegate.swift in Sources */,
+				10C5B3A727CDF13100B60A4A /* Constants.swift in Sources */,
+				10C5B3AF27CDFB3D00B60A4A /* LoginVC.swift in Sources */,
+				10C5B3A327CDEEDD00B60A4A /* User.swift in Sources */,
+				10C5B3AC27CDFADB00B60A4A /* TabBarVC.swift in Sources */,
 				10EEDF8927CD05AD00BC03D3 /* SceneDelegate.swift in Sources */,
+				10C5B3B927CE300000B60A4A /* EButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		10EEDF8C27CD05AD00BC03D3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				10EEDF8D27CD05AD00BC03D3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		10EEDF9127CD05AD00BC03D3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -294,7 +438,7 @@
 				INFOPLIST_FILE = "Expensiv Tracker/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -306,7 +450,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -322,7 +466,7 @@
 				INFOPLIST_FILE = "Expensiv Tracker/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -334,7 +478,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
