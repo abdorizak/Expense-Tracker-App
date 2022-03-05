@@ -11,9 +11,15 @@ class SingUpVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()  
-        view.backgroundColor = .systemBackground
-        title = "LoginVC"
-        
+        configVC()
     }
-
+    
+    private func configVC() {
+        view.backgroundColor = .systemBackground
+        title = "Sing Up"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Login", style: .done, target: self, action: #selector(dismissVC))
+    }
 }
+
+
+
