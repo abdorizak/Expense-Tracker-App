@@ -18,10 +18,11 @@ class EButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(backgroundColor: UIColor, title: String) {
+    convenience init(backgroundColor: UIColor, title: String, TextStyle: UIFont.TextStyle) {
         self.init(frame: .zero)
         self.backgroundColor = backgroundColor
         self.setTitle(title, for: .normal)
+        self.titleLabel?.font = UIFont.preferredFont(forTextStyle: TextStyle)
     }
     
     convenience init(titleColor: UIColor, title: String) {
@@ -32,7 +33,6 @@ class EButton: UIButton {
     
     private func configbtn() {
         layer.cornerRadius = 10
-        titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
         translatesAutoresizingMaskIntoConstraints = false
     }
 }
