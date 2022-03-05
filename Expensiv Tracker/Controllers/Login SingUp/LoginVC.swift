@@ -14,26 +14,35 @@ class LoginVC: UIViewController {
     
     let loginImageView      = UIImageView()
     
-    let titleLabel          = ETLabel(textAlignment: .left, fontSize: 40)
+    let loginglbl          = ETLabel(textAlignment: .left, fontSize: 40)
+    let registeryLabel      = ETLabel(textAlignment: .left, fontSize: 22)
     let usernameTextFeild   = UsernameTextField()
     let passwordTextFeild   = PasswordTextField()
-    let forgetPassword      = EButton(titleColor: .blue, title: "Forget Password")
+    let forgetPassword      = EButton(titleColor: .link,
+                                      title: "Forget Password")
+    let loginBtn            = EButton(backgroundColor: .link,
+                                      title: "Login",
+                                      TextStyle: .headline)
+    let singUpbtn           = EButton(titleColor: .link, title: "SingUp Now")
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         confgiruVC()
         ConfigureScrollView()
         conigureLoginImage()
-        configureLoginLabel()
+        configureLoginAndRegisteryLabel()
         configureTextFeilds()
         configforgetBtn()
+        configLoginAndSingUpBtn()
         createDismissKeyboardTapGesture()
     }
     
     private func confgiruVC() {
         view.backgroundColor = .systemBackground
-        contentView.addSubViews(loginImageView, titleLabel, usernameTextFeild, passwordTextFeild, forgetPassword)
+        contentView.addSubViews(loginImageView, loginglbl, usernameTextFeild, passwordTextFeild, forgetPassword, loginBtn, registeryLabel, singUpbtn)
         forgetPassword.addTarget(self, action: #selector(pushForgetVC), for: .touchUpInside)
+        singUpbtn.addTarget(self, action: #selector(pushSingUpVC), for: .touchUpInside)
     }
     
     private func createDismissKeyboardTapGesture() {
@@ -54,34 +63,43 @@ class LoginVC: UIViewController {
     }
     
     private func conigureLoginImage() {
+        loginImageView.contentMode  = .scaleAspectFit
         loginImageView.translatesAutoresizingMaskIntoConstraints = false
         loginImageView.image = Images.login_Image
         
+        
         NSLayoutConstraint.activate([
-            loginImageView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 10),
+            loginImageView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 20),
             loginImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 20),
             loginImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             loginImageView.heightAnchor.constraint(equalToConstant: 350),
         ])
     }
     
-    private func configureLoginLabel() {
-        titleLabel.text = "Login"
-        titleLabel.font = .systemFont(ofSize: 40, weight: .bold)
+    private func configureLoginAndRegisteryLabel() {
+        loginglbl.text = "Login"
+        loginglbl.font = .systemFont(ofSize: 40, weight: .bold)
+        
+        registeryLabel.text = "New Here"
+        registeryLabel.font = .systemFont(ofSize: 22, weight: .regular)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: loginImageView.bottomAnchor, constant: 10),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 20),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            titleLabel.heightAnchor.constraint(equalToConstant: 50)
+            loginglbl.topAnchor.constraint(equalTo: loginImageView.bottomAnchor, constant: 10),
+            loginglbl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            loginglbl.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            loginglbl.heightAnchor.constraint(equalToConstant: 50),
             
+            
+            registeryLabel.topAnchor.constraint(equalTo: loginBtn.bottomAnchor, constant: 40),
+            registeryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 130),
+            registeryLabel.heightAnchor.constraint(equalToConstant: 22)
         ])
     }
     
     private func configureTextFeilds() {
         
         NSLayoutConstraint.activate([
-            usernameTextFeild.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            usernameTextFeild.topAnchor.constraint(equalTo: loginglbl.bottomAnchor, constant: 10),
             usernameTextFeild.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             usernameTextFeild.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             usernameTextFeild.heightAnchor.constraint(equalToConstant: 45),
@@ -94,6 +112,7 @@ class LoginVC: UIViewController {
     }
     
     private func configforgetBtn() {
+        
         NSLayoutConstraint.activate([
             forgetPassword.topAnchor.constraint(equalTo: passwordTextFeild.bottomAnchor, constant: 25),
             forgetPassword.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
@@ -101,9 +120,31 @@ class LoginVC: UIViewController {
         ])
     }
     
+    private func configLoginAndSingUpBtn() {
+        NSLayoutConstraint.activate([
+            loginBtn.topAnchor.constraint(equalTo: forgetPassword.bottomAnchor, constant: 20),
+            loginBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            loginBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            loginBtn.heightAnchor.constraint(equalToConstant: 50),
+            
+            singUpbtn.topAnchor.constraint(equalTo: registeryLabel.bottomAnchor, constant: -22),
+            singUpbtn.leadingAnchor.constraint(equalTo: registeryLabel.trailingAnchor, constant: 6),
+            singUpbtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -100),
+            singUpbtn.heightAnchor.constraint(equalTo: registeryLabel.heightAnchor)
+            
+        ])
+    }
+    
     @objc private func pushForgetVC() {
         let ForgetVC = UINavigationController(rootViewController: ForgetPasswordVC())
         present(ForgetVC, animated: true)
+    }
+    
+    @objc private func pushSingUpVC() {
+        let singUPVC = UINavigationController(rootViewController: SingUpVC())
+        singUPVC.modalPresentationStyle = .fullScreen
+        singUPVC.modalTransitionStyle   = .flipHorizontal
+        present(singUPVC, animated: true, completion: nil)
     }
 
 }
