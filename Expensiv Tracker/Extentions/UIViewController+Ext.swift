@@ -5,4 +5,10 @@
 //  Created by Abdirizak Hassan on 3/4/22.
 //
 
-import Foundation
+import UIKit
+
+extension UIViewController {
+    @objc func dismissVC() {
+        dismiss(animated: true, completion: nil)
+    }
+}
