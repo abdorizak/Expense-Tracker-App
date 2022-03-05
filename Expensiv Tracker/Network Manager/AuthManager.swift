@@ -28,7 +28,7 @@ final class AuthManager {
     }
     
     func login(username: String, password: String, completion: @escaping (Result<LoginResponse, ExError>) -> Void) {
-        guard let url = URL(string: Constants.login_URL) else {
+        guard let url = URL(string: URL_S.login_URL) else {
             completion(.failure(.invalidURL))
             return
         }
