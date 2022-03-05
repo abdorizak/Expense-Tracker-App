@@ -28,19 +28,18 @@ class PasswordTextField: UITextField {
 //        layer.borderWidth       = 1
 //        layer.borderColor       = UIColor.systemGray4.cgColor
         
-        
         textColor               = .label
         tintColor               = .label
         
         textAlignment           = .left
         font                    = UIFont.systemFont(ofSize: 17)
-        minimumFontSize         = 16
+        minimumFontSize         = 17
         
         backgroundColor         = .secondarySystemBackground
         autocorrectionType      = .no
         returnKeyType           = .go
         clearButtonMode         = .whileEditing
-        placeholder             = "Enter Password"
+        placeholder             = " Enter Password"
         
     }
 
