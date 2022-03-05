@@ -29,7 +29,6 @@ class UsernameTextField: UITextField {
 //        layer.borderColor  = UIColor.systemGray4.cgColor
         
         
-        
         textColor           = .label
         tintColor           = .label
         
@@ -41,7 +40,7 @@ class UsernameTextField: UITextField {
         autocorrectionType  = .no
         returnKeyType       = .next
         clearButtonMode     = .whileEditing
-        placeholder         = "Enter Username"
+        placeholder         = " Enter Username"
     }
 
 }
