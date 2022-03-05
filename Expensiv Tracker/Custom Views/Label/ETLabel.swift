@@ -23,12 +23,12 @@ class ETLabel: UILabel {
         self.init(frame: .zero)
         self.textAlignment = textAlignment
         self.font           = UIFont(name: "Helvetica Neue", size: fontSize)
+        
     }
     
     private func configlbl(){
         textColor                   = .label
         adjustsFontSizeToFitWidth   = true
-        
         translatesAutoresizingMaskIntoConstraints = false
     }
 
