@@ -7,13 +7,14 @@
 
 import UIKit
 
-struct Constants {
+struct URL_S {
     static let login_URL = "http://localhost:4400/api/auth/login"
 }
 
 
 enum Images {
-    static let login_Image           = UIImage(named: "Login")
+    static let login_Image           = UIImage(named: "Login_logo")
+    static let forgetpassword_Image  = UIImage(named: "Forgetpass")
 }
 
 
