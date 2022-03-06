@@ -16,7 +16,7 @@ class TabBarVC: UITabBarController {
     
     private func configureTabBar() {
         view.backgroundColor = .systemBackground
-        viewControllers = [configHomeVC(), addExpensesVC(), ]
+        viewControllers = [configHomeVC(), addExpensesVC(), transectionVC()]
     }
     
     private func configHomeVC() -> UINavigationController {
@@ -34,7 +34,7 @@ class TabBarVC: UITabBarController {
     
     private func transectionVC() -> UINavigationController {
         let tranVC = TransectionsVC()
-        tranVC.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "wave.fill"), tag: 2)
+        tranVC.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "waveform"), tag: 2)
         return UINavigationController(rootViewController: tranVC)
         
     }

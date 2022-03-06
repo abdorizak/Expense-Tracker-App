@@ -26,6 +26,8 @@ class LoginVC: UIViewController {
     let singUpbtn           = EButton(titleColor: .link, title: "SingUp Now")
     
 
+    var forgetBtnLeadingConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         confgiruVC()
@@ -43,6 +45,7 @@ class LoginVC: UIViewController {
         contentView.addSubViews(loginImageView, loginglbl, usernameTextFeild, passwordTextFeild, forgetPassword, loginBtn, registeryLabel, singUpbtn)
         forgetPassword.addTarget(self, action: #selector(pushForgetVC), for: .touchUpInside)
         singUpbtn.addTarget(self, action: #selector(pushSingUpVC), for: .touchUpInside)
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     private func createDismissKeyboardTapGesture() {
@@ -113,10 +116,13 @@ class LoginVC: UIViewController {
     
     private func configforgetBtn() {
         
+        let leadingConstraintConstant = CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 250 : 220)
+        
         NSLayoutConstraint.activate([
             forgetPassword.topAnchor.constraint(equalTo: passwordTextFeild.bottomAnchor, constant: 25),
             forgetPassword.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            forgetPassword.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 250),
+            forgetPassword.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: leadingConstraintConstant),
+            
         ])
     }
     
@@ -143,7 +149,7 @@ class LoginVC: UIViewController {
     @objc private func pushSingUpVC() {
         let singUPVC = UINavigationController(rootViewController: SingUpVC())
         singUPVC.modalPresentationStyle = .fullScreen
-        singUPVC.modalTransitionStyle   = .flipHorizontal
+        singUPVC.modalTransitionStyle   = .coverVertical
         present(singUPVC, animated: true, completion: nil)
     }
 

@@ -12,7 +12,7 @@ class TransectionsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        title = "Tractions"
+        navigationItem.title = "Tractions"
         navigationItem.largeTitleDisplayMode  = .always
         navigationController?.navigationBar.prefersLargeTitles = true
     }

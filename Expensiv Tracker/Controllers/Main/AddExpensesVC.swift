@@ -12,7 +12,9 @@ class AddExpensesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        
+        navigationItem.title = "Expensive Or Income"
+        navigationItem.largeTitleDisplayMode  = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
 
