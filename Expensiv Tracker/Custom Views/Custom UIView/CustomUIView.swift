@@ -29,10 +29,6 @@ class EView: UIView {
         gradient.colors = [UIColor.tintColor.cgColor,
                            UIColor.systemRed.cgColor,
                            UIColor.systemPink.cgColor, UIColor.systemOrange.cgColor]
-//        gradient.colors = [UIColor.red.cgColor,
-//                                UIColor.yellow.cgColor,
-//                                UIColor.green.cgColor,
-//                                UIColor.blue.cgColor]
              
         gradient.transform = CATransform3DMakeRotation(CGFloat.pi / 2,0,0,1)
         
