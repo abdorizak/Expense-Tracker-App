@@ -333,7 +333,7 @@
 				10C5B3A727CDF13100B60A4A /* Constants.swift in Sources */,
 				10C5B3CA27D0E20000B60A4A /* TransectionsVC.swift in Sources */,
 				10C5B3AF27CDFB3D00B60A4A /* LoginVC.swift in Sources */,
-				10C5B3D127D4CEE100B60A4A /* EView.swift in Sources */,
+				10C5B3D127D4CEE100B60A4A /* CustomUIView.swift in Sources */,
 				10C5B3A327CDEEDD00B60A4A /* User.swift in Sources */,
 				10C5B3CE27D3C30600B60A4A /* CustomTextFields.swift in Sources */,
 				10C5B3C527D0E0B600B60A4A /* AddExpensesVC.swift in Sources */,
