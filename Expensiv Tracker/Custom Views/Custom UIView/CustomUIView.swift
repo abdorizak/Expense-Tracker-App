@@ -23,8 +23,18 @@ class EView: UIView {
     
     private func configView() {
         
+        translatesAutoresizingMaskIntoConstraints = false
+        
         gradient.frame = bounds
-        gradient.colors = [UIColor.systemPink.cgColor, UIColor.tintColor.cgColor, UIColor.systemOrange.cgColor, UIColor.tintColor.cgColor]
+        gradient.colors = [UIColor.tintColor.cgColor,
+                           UIColor.systemRed.cgColor,
+                           UIColor.systemPink.cgColor, UIColor.systemOrange.cgColor]
+//        gradient.colors = [UIColor.red.cgColor,
+//                                UIColor.yellow.cgColor,
+//                                UIColor.green.cgColor,
+//                                UIColor.blue.cgColor]
+             
+        gradient.transform = CATransform3DMakeRotation(CGFloat.pi / 2,0,0,1)
         
         gradient.cornerRadius  = 20
         gradient.shadowOffset  = .zero
@@ -33,12 +43,12 @@ class EView: UIView {
         gradient.shadowColor   = UIColor.black.cgColor
         layer.addSublayer(gradient)
         
-        translatesAutoresizingMaskIntoConstraints = false
-        layer.shadowColor   = UIColor.black.cgColor
-        layer.shadowOffset  = .zero
-        layer.cornerRadius  = 10
-        layer.shadowOpacity = 0.2
-        layer.shadowRadius  = 5
+        
+//        layer.shadowColor   = UIColor.black.cgColor
+//        layer.shadowOffset  = .zero
+//        layer.cornerRadius  = 10
+//        layer.shadowOpacity = 0.2
+//        layer.shadowRadius  = 5
     }
     
     override func layoutSubviews() {
