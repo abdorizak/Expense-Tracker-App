@@ -118,6 +118,7 @@ class LoginVC: UIViewController {
         
         let leadingConstraintConstant = CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 250 : 220)
         
+        
         NSLayoutConstraint.activate([
             forgetPassword.topAnchor.constraint(equalTo: passwordTextFeild.bottomAnchor, constant: 25),
             forgetPassword.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
