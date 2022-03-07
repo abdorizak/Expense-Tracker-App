@@ -23,11 +23,17 @@ class CardView: UIView {
     private func configCardView() {
         translatesAutoresizingMaskIntoConstraints = false
         
-        gradient.colors = []
+        gradient.colors = [
+            UIColor.systemOrange.cgColor,
+            UIColor.systemPurple.cgColor,
+            UIColor.systemTeal.cgColor,
+//            UIColor.systemRed.cgColor,
+        ]
+        layer.addSublayer(gradient)
         gradient.shadowColor = UIColor.black.cgColor
         gradient.shadowRadius = 5
         gradient.shadowOffset = .zero
-        gradient.shadowOpacity = 0.5
+        gradient.shadowOpacity = 0.2
         gradient.cornerRadius  = 10
         
     }
