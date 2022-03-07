@@ -29,6 +29,8 @@ class CardView: UIView {
             UIColor.systemTeal.cgColor,
 //            UIColor.systemRed.cgColor,
         ]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 1, y: 1 )
         layer.addSublayer(gradient)
         gradient.shadowColor = UIColor.black.cgColor
         gradient.shadowRadius = 5
