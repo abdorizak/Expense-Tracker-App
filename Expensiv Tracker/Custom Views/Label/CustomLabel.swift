@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ETLabel: UILabel {
+class CustomLabel: UILabel {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -16,6 +16,12 @@ class ETLabel: UILabel {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat , textWeight: UIFont.Weight) {
+        self.init(frame: .zero)
+        self.textAlignment = textAlignment
+        self.font   = UIFont.systemFont(ofSize: fontSize, weight: textWeight)
     }
     
     
