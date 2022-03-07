@@ -17,12 +17,12 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         view.addSubViews(headerView, balanceInfo)
-        layoutUI()
+        ConfigureHeaderView()
     }
 
 
     
-    private func layoutUI() {
+    private func ConfigureHeaderView() {
         headerView.backgroundColor = .tertiarySystemFill
         headerView.translatesAutoresizingMaskIntoConstraints = false
         headerView.layer.cornerRadius = 5
@@ -32,16 +32,24 @@ class HomeVC: UIViewController {
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            headerView.heightAnchor.constraint(equalToConstant: 80),
-            
+            headerView.heightAnchor.constraint(equalToConstant: 80)
+        ])
+        
+    }
+    
+    
+    private func configureShowBlanceView() {
+        
+        NSLayoutConstraint.activate([
             balanceInfo.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
             balanceInfo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             balanceInfo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             balanceInfo.heightAnchor.constraint(equalToConstant: 220)
-            
         ])
-        
     }
+    
+    
+    
     
     
 
