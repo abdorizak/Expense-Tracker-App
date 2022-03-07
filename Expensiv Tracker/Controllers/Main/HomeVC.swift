@@ -9,13 +9,15 @@ import UIKit
 
 class HomeVC: UIViewController {
     
-    let headerView      = UIView()
+    private let headerView          = UIView()
+    private let balanceInfo         = CardView()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        view.addSubview(headerView )
+        view.addSubViews(headerView, balanceInfo)
+        layoutUI()
     }
 
 
@@ -27,10 +29,16 @@ class HomeVC: UIViewController {
         
         
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            headerView.heightAnchor.constraint(equalToConstant: 180)
+            headerView.heightAnchor.constraint(equalToConstant: 80),
+            
+            balanceInfo.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
+            balanceInfo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            balanceInfo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            balanceInfo.heightAnchor.constraint(equalToConstant: 220)
+            
         ])
         
     }
