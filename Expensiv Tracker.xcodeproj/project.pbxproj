@@ -17,7 +17,7 @@
 		10C5B3B627CE2FDB00B60A4A /* UsernameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3B527CE2FDB00B60A4A /* UsernameTextField.swift */; };
 		10C5B3B927CE300000B60A4A /* EButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3B827CE300000B60A4A /* EButton.swift */; };
 		10C5B3BB27CE32B500B60A4A /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3BA27CE32B500B60A4A /* PasswordTextField.swift */; };
-		10C5B3BE27CE39C600B60A4A /* ETLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3BD27CE39C600B60A4A /* ETLabel.swift */; };
+		10C5B3BE27CE39C600B60A4A /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3BD27CE39C600B60A4A /* CustomLabel.swift */; };
 		10C5B3C127CFF09300B60A4A /* ForgetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3C027CFF09300B60A4A /* ForgetPasswordVC.swift */; };
 		10C5B3C327D0A9CE00B60A4A /* ForgetPasswordTextFeild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3C227D0A9CE00B60A4A /* ForgetPasswordTextFeild.swift */; };
 		10C5B3C527D0E0B600B60A4A /* AddExpensesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3C427D0E0B600B60A4A /* AddExpensesVC.swift */; };
@@ -44,7 +44,7 @@
 		10C5B3B527CE2FDB00B60A4A /* UsernameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameTextField.swift; sourceTree = "<group>"; };
 		10C5B3B827CE300000B60A4A /* EButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EButton.swift; sourceTree = "<group>"; };
 		10C5B3BA27CE32B500B60A4A /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
-		10C5B3BD27CE39C600B60A4A /* ETLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETLabel.swift; sourceTree = "<group>"; };
+		10C5B3BD27CE39C600B60A4A /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		10C5B3C027CFF09300B60A4A /* ForgetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordVC.swift; sourceTree = "<group>"; };
 		10C5B3C227D0A9CE00B60A4A /* ForgetPasswordTextFeild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordTextFeild.swift; sourceTree = "<group>"; };
 		10C5B3C427D0E0B600B60A4A /* AddExpensesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpensesVC.swift; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 		10C5B3BC27CE397700B60A4A /* Label */ = {
 			isa = PBXGroup;
 			children = (
-				10C5B3BD27CE39C600B60A4A /* ETLabel.swift */,
+				10C5B3BD27CE39C600B60A4A /* CustomLabel.swift */,
 			);
 			path = Label;
 			sourceTree = "<group>";
@@ -319,7 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10C5B3BE27CE39C600B60A4A /* ETLabel.swift in Sources */,
+				10C5B3BE27CE39C600B60A4A /* CustomLabel.swift in Sources */,
 				10EEDF8B27CD05AD00BC03D3 /* HomeVC.swift in Sources */,
 				10C5B3CC27D209AF00B60A4A /* UIViewController+Ext.swift in Sources */,
 				10C5B3B327CE048200B60A4A /* UIView+Ext.swift in Sources */,
