@@ -14,8 +14,8 @@ class LoginVC: UIViewController {
     
     let loginImageView      = UIImageView()
     
-    let loginglbl          = ETLabel(textAlignment: .left, fontSize: 40)
-    let registeryLabel      = ETLabel(textAlignment: .left, fontSize: 22)
+    let loginglbl          = CustomLabel(textAlignment: .left, fontSize: 40)
+    let registeryLabel      = CustomLabel(textAlignment: .left, fontSize: 22)
     let usernameTextFeild   = UsernameTextField()
     let passwordTextFeild   = PasswordTextField()
     let forgetPassword      = EButton(titleColor: .link,
