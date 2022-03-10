@@ -22,6 +22,7 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        navigationController?.setNavigationBarHidden(true, animated: true)
         tableView.delegate   = self
         tableView.dataSource = self
         view.addSubViews(headerView, balanceInfo, transectionsLabel, tableView)
@@ -40,10 +41,10 @@ class HomeVC: UIViewController {
         
         
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            headerView.heightAnchor.constraint(equalToConstant: 80)
+            headerView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 0),
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            headerView.heightAnchor.constraint(equalToConstant: 100)
         ])
         
     }
