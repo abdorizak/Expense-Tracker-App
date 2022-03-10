@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1008990B27D8C2E600A94B4F /* HeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1008990A27D8C2E600A94B4F /* HeaderVC.swift */; };
+		1008990E27D9E95500A94B4F /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1008990D27D9E95500A94B4F /* AvatarImageView.swift */; };
 		10C5B3A327CDEEDD00B60A4A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3A227CDEEDD00B60A4A /* User.swift */; };
 		10C5B3A527CDF09500B60A4A /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3A427CDF09500B60A4A /* AppError.swift */; };
 		10C5B3A727CDF13100B60A4A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3A627CDF13000B60A4A /* Constants.swift */; };
@@ -34,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1008990A27D8C2E600A94B4F /* HeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderVC.swift; sourceTree = "<group>"; };
+		1008990D27D9E95500A94B4F /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		10C5B3A227CDEEDD00B60A4A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		10C5B3A427CDF09500B60A4A /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		10C5B3A627CDF13000B60A4A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -73,6 +77,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1008990927D8C2AF00A94B4F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1008990A27D8C2E600A94B4F /* HeaderVC.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		1008990C27D8F91900A94B4F /* ImageView */ = {
+			isa = PBXGroup;
+			children = (
+				1008990D27D9E95500A94B4F /* AvatarImageView.swift */,
+			);
+			path = ImageView;
+			sourceTree = "<group>";
+		};
 		10C5B3A827CDF9AD00B60A4A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +219,8 @@
 		10EEDF9D27CD099E00BC03D3 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				1008990C27D8F91900A94B4F /* ImageView */,
+				1008990927D8C2AF00A94B4F /* View Controllers */,
 				10C5B3D227D520B500B60A4A /* UIView */,
 				10C5B3C727D0E0E000B60A4A /* TabBar Controller */,
 				10C5B3BC27CE397700B60A4A /* Label */,
@@ -325,6 +347,7 @@
 				10C5B3B327CE048200B60A4A /* UIView+Ext.swift in Sources */,
 				10C5B3BB27CE32B500B60A4A /* PasswordTextField.swift in Sources */,
 				10C5B3C127CFF09300B60A4A /* ForgetPasswordVC.swift in Sources */,
+				1008990B27D8C2E600A94B4F /* HeaderVC.swift in Sources */,
 				10EEDFA527CD0B4B00BC03D3 /* AuthManager.swift in Sources */,
 				10C5B3B127CDFB5D00B60A4A /* SingUpVC.swift in Sources */,
 				10C5B3A527CDF09500B60A4A /* AppError.swift in Sources */,
@@ -339,6 +362,7 @@
 				10C5B3C327D0A9CE00B60A4A /* ForgetPasswordTextFeild.swift in Sources */,
 				10C5B3AC27CDFADB00B60A4A /* TabBarVC.swift in Sources */,
 				10EEDF8927CD05AD00BC03D3 /* SceneDelegate.swift in Sources */,
+				1008990E27D9E95500A94B4F /* AvatarImageView.swift in Sources */,
 				10C5B3D427D520E400B60A4A /* CardView.swift in Sources */,
 				10C5B3B927CE300000B60A4A /* EButton.swift in Sources */,
 			);
