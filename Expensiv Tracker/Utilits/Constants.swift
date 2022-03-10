@@ -13,6 +13,7 @@ struct URL_S {
 
 
 enum Images {
+    static let placeHolderImage      = UIImage(named: "default")
     static let login_Image           = UIImage(named: "Login_logo")
     static let singup_Image          = UIImage(named: "singUp")
     static let forgetpassword_Image  = UIImage(named: "Forgetpass")
