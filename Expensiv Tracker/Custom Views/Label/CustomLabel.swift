@@ -18,6 +18,14 @@ class CustomLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
+
+    convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat , textWeight: UIFont.Weight) {
+        self.init(frame: .zero)
+        self.textAlignment      = textAlignment
+        self.font               = UIFont.systemFont(ofSize: fontSize, weight: textWeight)
+    }
+    
+    
     convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat , textWeight: UIFont.Weight, text: String?) {
         self.init(frame: .zero)
         self.textAlignment      = textAlignment
@@ -30,12 +38,13 @@ class CustomLabel: UILabel {
         self.init(frame: .zero)
         self.textAlignment = textAlignment
         self.font           = UIFont(name: "Helvetica Neue", size: fontSize)
-        
     }
     
     private func configlbl(){
         textColor                   = .label
         adjustsFontSizeToFitWidth   = true
+        minimumScaleFactor = 0.9
+        lineBreakMode               = .byTruncatingTail
         translatesAutoresizingMaskIntoConstraints = false
     }
 
