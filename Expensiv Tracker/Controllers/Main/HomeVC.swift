@@ -42,6 +42,9 @@ class HomeVC: UIViewController {
         tableView.delegate   = self
         tableView.dataSource = self
         view.addSubViews(headerView, balanceInfo, transectionsLabel, tableView)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapSetting))
+        setting.addGestureRecognizer(tap)
+        setting.isUserInteractionEnabled = true
         ConfigureHeaderView()
         ConfigureHeaderElements()
         configureShowBlanceView()
@@ -54,11 +57,6 @@ class HomeVC: UIViewController {
         headerView.layer.cornerRadius = 5
         headerView.layer.shouldRasterize = true
         headerView.layer.rasterizationScale = UIScreen.main.scale
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapSetting))
-        setting.addGestureRecognizer(tap)
-        setting.isUserInteractionEnabled = true
-        
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
