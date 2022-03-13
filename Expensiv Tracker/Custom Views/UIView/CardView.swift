@@ -37,6 +37,8 @@ class CardView: UIView {
         gradient.shadowOffset = .zero
         gradient.shadowOpacity = 0.2
         gradient.cornerRadius  = 10
+        gradient.shouldRasterize = true
+        gradient.rasterizationScale = UIScreen.main.scale
         
     }
     
