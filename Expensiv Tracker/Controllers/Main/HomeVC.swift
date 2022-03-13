@@ -23,6 +23,8 @@ class HomeVC: UIViewController {
         return image
     }()
     
+    private let totalBalanceLabel       = CustomLabel(textAlignment: .center, fontSize: 20, textWeight: .semibold, text: "Total Balance")
+    private let balanceNumber           = CustomLabel(textAlignment: .center, fontSize: 65, textWeight: .bold, text: "$2500.00")
     private let headerView              = UIView()
     private let tableView: UITableView  = {
         let table = UITableView()
@@ -103,14 +105,28 @@ class HomeVC: UIViewController {
 
     
     private func configureShowBlanceView() {
+        balanceInfo.addSubViews(totalBalanceLabel, balanceNumber)
         balanceInfo.layer.shouldRasterize = true
         balanceInfo.layer.rasterizationScale = UIScreen.main.scale
 
+        totalBalanceLabel.textColor = .white
+        balanceNumber.textColor     = .white
+        
         NSLayoutConstraint.activate([
             balanceInfo.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
             balanceInfo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             balanceInfo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            balanceInfo.heightAnchor.constraint(equalToConstant: 250)
+            balanceInfo.heightAnchor.constraint(equalToConstant: 250),
+            
+            totalBalanceLabel.topAnchor.constraint(equalTo: balanceInfo.topAnchor, constant: 30),
+            totalBalanceLabel.trailingAnchor.constraint(equalTo: balanceInfo.trailingAnchor),
+            totalBalanceLabel.leadingAnchor.constraint(equalTo: balanceInfo.leadingAnchor),
+            totalBalanceLabel.heightAnchor.constraint(equalToConstant: 24),
+            
+            balanceNumber.topAnchor.constraint(equalTo: totalBalanceLabel.bottomAnchor, constant: 10),
+            balanceNumber.trailingAnchor.constraint(equalTo: balanceInfo.trailingAnchor),
+            balanceNumber.leadingAnchor.constraint(equalTo: balanceInfo.leadingAnchor),
+            balanceNumber.heightAnchor.constraint(equalToConstant: 75)
         ])
     }
     
