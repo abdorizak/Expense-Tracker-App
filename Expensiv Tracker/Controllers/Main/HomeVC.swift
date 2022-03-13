@@ -14,7 +14,11 @@ class HomeVC: UIViewController {
     private let fullnameLabel           = CustomLabel(textAlignment: .left, fontSize: 18, textWeight: .regular)
     private let balanceInfo             = CardView(frame: .zero)
     private let transectionsLabel       = CustomLabel(textAlignment: .left, fontSize: 24, textWeight: .medium, text: "Transections")
-    private let setting: UIImageView = {
+
+    private let totalBalanceLabel       = CustomLabel(textAlignment: .center, fontSize: 20, textWeight: .semibold, text: "Total Balance")
+    private let balanceNumber           = CustomLabel(textAlignment: .center, fontSize: 65, textWeight: .bold, text: "$2500.00")
+    
+    private let profile: UIImageView = {
         let image = UIImageView(frame: .zero)
         image.contentMode = .scaleAspectFit
         image.image = UIImage(systemName: "text.alignright")
@@ -23,8 +27,24 @@ class HomeVC: UIViewController {
         return image
     }()
     
-    private let totalBalanceLabel       = CustomLabel(textAlignment: .center, fontSize: 20, textWeight: .semibold, text: "Total Balance")
-    private let balanceNumber           = CustomLabel(textAlignment: .center, fontSize: 65, textWeight: .bold, text: "$2500.00")
+    private let incomeArrowIcon: UIImageView = {
+        let img = UIImageView(frame: .zero)
+        img.contentMode = .scaleAspectFill
+        img.image = UIImage(systemName: "arrow.down")
+        img.tintColor = .green
+        img.translatesAutoresizingMaskIntoConstraints = false
+        return img
+    }()
+    
+    private let expensesArrowIcon: UIImageView = {
+        let img = UIImageView(frame: .zero)
+        img.contentMode = .scaleAspectFill
+        img.image = UIImage(systemName: "arrow.up")
+        img.tintColor = .red
+        img.translatesAutoresizingMaskIntoConstraints = false
+        return img
+    }()
+    
     private let headerView              = UIView()
     private let tableView: UITableView  = {
         let table = UITableView()
@@ -45,8 +65,8 @@ class HomeVC: UIViewController {
         tableView.dataSource = self
         view.addSubViews(headerView, balanceInfo, transectionsLabel, tableView)
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapSetting))
-        setting.addGestureRecognizer(tap)
-        setting.isUserInteractionEnabled = true
+        profile.addGestureRecognizer(tap)
+        profile.isUserInteractionEnabled = true
         ConfigureHeaderView()
         ConfigureHeaderElements()
         configureShowBlanceView()
@@ -61,7 +81,7 @@ class HomeVC: UIViewController {
         headerView.layer.rasterizationScale = UIScreen.main.scale
         
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             headerView.heightAnchor.constraint(equalToConstant: 70)
@@ -73,11 +93,11 @@ class HomeVC: UIViewController {
     }
     
     private func ConfigureHeaderElements() {
-        headerView.addSubViews(userImage, welcomeLabel, fullnameLabel, setting)
+        headerView.addSubViews(userImage, welcomeLabel, fullnameLabel, profile)
         userImage.layer.cornerRadius = 10
         fullnameLabel.text = "Abdorizak Abdalla"
         
-        setting.layer.cornerRadius = 10
+        profile.layer.cornerRadius = 10
         
         NSLayoutConstraint.activate([
             userImage.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 10),
@@ -95,17 +115,17 @@ class HomeVC: UIViewController {
             fullnameLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -20),
             fullnameLabel.heightAnchor.constraint(equalToConstant: 26),
             
-            setting.centerYAnchor.constraint(equalTo: userImage.centerYAnchor),
-            setting.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -10),
-            setting.widthAnchor.constraint(equalToConstant: 40),
-            setting.heightAnchor.constraint(equalToConstant: 40)
+            profile.centerYAnchor.constraint(equalTo: userImage.centerYAnchor),
+            profile.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -10),
+            profile.widthAnchor.constraint(equalToConstant: 40),
+            profile.heightAnchor.constraint(equalToConstant: 40)
         ])
         
     }
 
     
     private func configureShowBlanceView() {
-        balanceInfo.addSubViews(totalBalanceLabel, balanceNumber)
+        balanceInfo.addSubViews(totalBalanceLabel, balanceNumber, incomeArrowIcon, expensesArrowIcon)
         balanceInfo.layer.shouldRasterize = true
         balanceInfo.layer.rasterizationScale = UIScreen.main.scale
 
@@ -113,10 +133,10 @@ class HomeVC: UIViewController {
         balanceNumber.textColor     = .white
         
         NSLayoutConstraint.activate([
-            balanceInfo.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
+            balanceInfo.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
             balanceInfo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             balanceInfo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            balanceInfo.heightAnchor.constraint(equalToConstant: 250),
+            balanceInfo.heightAnchor.constraint(equalToConstant: 230),
             
             totalBalanceLabel.topAnchor.constraint(equalTo: balanceInfo.topAnchor, constant: 30),
             totalBalanceLabel.trailingAnchor.constraint(equalTo: balanceInfo.trailingAnchor),
@@ -126,14 +146,26 @@ class HomeVC: UIViewController {
             balanceNumber.topAnchor.constraint(equalTo: totalBalanceLabel.bottomAnchor, constant: 10),
             balanceNumber.trailingAnchor.constraint(equalTo: balanceInfo.trailingAnchor),
             balanceNumber.leadingAnchor.constraint(equalTo: balanceInfo.leadingAnchor),
-            balanceNumber.heightAnchor.constraint(equalToConstant: 75)
+            balanceNumber.heightAnchor.constraint(equalToConstant: 75),
+            
+            incomeArrowIcon.topAnchor.constraint(equalTo: balanceNumber.bottomAnchor, constant: 40),
+            incomeArrowIcon.leadingAnchor.constraint(equalTo: balanceInfo.leadingAnchor, constant: 20),
+            incomeArrowIcon.widthAnchor.constraint(equalToConstant: 30),
+            incomeArrowIcon.heightAnchor.constraint(equalToConstant: 30),
+            
+            
+            
+            expensesArrowIcon.centerYAnchor.constraint(equalTo: incomeArrowIcon.centerYAnchor),
+            expensesArrowIcon.trailingAnchor.constraint(equalTo: balanceInfo.trailingAnchor, constant: -120),
+            expensesArrowIcon.widthAnchor.constraint(equalToConstant: 30),
+            expensesArrowIcon.heightAnchor.constraint(equalToConstant: 30),
         ])
     }
     
     
     private func configTransectionLabel() {
         NSLayoutConstraint.activate([
-            transectionsLabel.topAnchor.constraint(equalTo: balanceInfo.bottomAnchor, constant: 20),
+            transectionsLabel.topAnchor.constraint(equalTo: balanceInfo.bottomAnchor, constant: 30),
             transectionsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             transectionsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             transectionsLabel.heightAnchor.constraint(equalToConstant: 26)
