@@ -20,13 +20,8 @@ class AvatarImageView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configImage() {
+    func configImage() {
         translatesAutoresizingMaskIntoConstraints = false
-        layer.cornerRadius = 10
-        layer.shadowOffset = .zero
-        layer.shadowColor  = UIColor.black.cgColor
-        layer.shadowRadius = 5
-        layer.shadowOpacity = 0.2
         clipsToBounds = true
         image = placeHolderImage
     }
