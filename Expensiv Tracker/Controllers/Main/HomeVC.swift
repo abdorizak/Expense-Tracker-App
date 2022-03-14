@@ -9,15 +9,13 @@ import UIKit
 
 class HomeVC: UIViewController {
     
+    // MARK: HeaderView
+    private let headerView              = UIView()
+    
+    // MARK: - HeaderView Item's
     private let userImage       = AvatarImageView(frame: .zero)
     private let welcomeLabel    = CustomLabel(textAlignment: .left, fontSize: 20, textWeight: .ultraLight, text: "Hi Welcome")
     private let fullnameLabel           = CustomLabel(textAlignment: .left, fontSize: 18, textWeight: .regular)
-    private let balanceInfo             = CardView(frame: .zero)
-    private let transectionsLabel       = CustomLabel(textAlignment: .left, fontSize: 24, textWeight: .medium, text: "Transections")
-
-    private let totalBalanceLabel       = CustomLabel(textAlignment: .center, fontSize: 20, textWeight: .semibold, text: "Total Balance")
-    private let balanceNumber           = CustomLabel(textAlignment: .center, fontSize: 65, textWeight: .bold, text: "$2500.00")
-    
     private let profile: UIImageView = {
         let image = UIImageView(frame: .zero)
         image.contentMode = .scaleAspectFit
@@ -26,6 +24,17 @@ class HomeVC: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
+    
+    // MARK: - Card View
+    private let balanceInfo             = CardView(frame: .zero)
+    
+    // MARK: - Transection Label & Table View Label
+    private let transectionsLabel       = CustomLabel(textAlignment: .left, fontSize: 24, textWeight: .medium, text: "Transections")
+
+    // MARK: - Card View Labels
+    private let totalBalanceLabel       = CustomLabel(textAlignment: .center, fontSize: 20, textWeight: .semibold, text: "Total Balance")
+    
+    private let balanceNumber           = CustomLabel(textAlignment: .center, fontSize: 65, textWeight: .bold, text: "$2500.00")
     
     private let incomeArrowIcon: UIImageView = {
         let img = UIImageView(frame: .zero)
@@ -45,7 +54,16 @@ class HomeVC: UIViewController {
         return img
     }()
     
-    private let headerView              = UIView()
+    private let incomelbl   = CustomLabel(textAlignment: .left, fontSize: 18, textWeight: .regular, text: "Income")
+    
+    private let expenseslbl   = CustomLabel(textAlignment: .left, fontSize: 18, textWeight: .light, text: "Expenses")
+    
+    private let lastIncome  = CustomLabel(textAlignment: .left, fontSize: 20)
+    private let lastExpense = CustomLabel(textAlignment: .left, fontSize: 20)
+    
+    
+    
+    
     private let tableView: UITableView  = {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
