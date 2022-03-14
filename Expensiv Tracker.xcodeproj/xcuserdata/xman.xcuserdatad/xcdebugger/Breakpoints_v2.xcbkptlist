@@ -14,8 +14,8 @@
             filePath = "Expensiv Tracker/Controllers/Main/HomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "ConfigureHeaderElements()"
             landmarkType = "7">
          </BreakpointContent>
