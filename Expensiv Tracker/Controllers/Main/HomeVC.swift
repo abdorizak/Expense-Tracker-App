@@ -204,6 +204,7 @@ class HomeVC: UIViewController {
             lastExpense.trailingAnchor.constraint(equalTo: balanceInfo.trailingAnchor, constant: -20),
             lastExpense.heightAnchor.constraint(equalToConstant: 28),
             
+            
         ])
     }
     
