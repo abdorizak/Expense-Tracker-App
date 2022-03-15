@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddExpensesVC: UIViewController {
+class AddIncomeAndExpensesVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +17,9 @@ class AddExpensesVC: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
+    private func configureAddVC() {
+        
+    }
 
 
 }
