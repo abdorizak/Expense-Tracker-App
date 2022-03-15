@@ -26,7 +26,7 @@ class TabBarVC: UITabBarController {
     }
     
     private func addExpensesVC() -> UINavigationController  {
-        let addexpensesVC = AddExpensesVC()
+        let addexpensesVC = AddIncomeAndExpensesVC()
         addexpensesVC.modalPresentationStyle = .overCurrentContext
         addexpensesVC.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "plus.circle.fill"), tag: 1)
         return UINavigationController(rootViewController: addexpensesVC)
