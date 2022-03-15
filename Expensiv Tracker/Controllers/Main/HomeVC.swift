@@ -31,11 +31,12 @@ class HomeVC: UIViewController {
     // MARK: - Transection Label & Table View Label
     private let transectionsLabel       = CustomLabel(textAlignment: .left, fontSize: 24, textWeight: .medium, text: "Transections")
 
-    // MARK: - Card View Labels
+    // MARK: - Card View Balance
     private let totalBalanceLabel       = CustomLabel(textAlignment: .center, fontSize: 20, textWeight: .semibold, text: "Total Balance")
     
     private let balanceNumber           = CustomLabel(textAlignment: .center, fontSize: 65, textWeight: .bold, text: "$2500.00")
     
+    // MARK: - Card View Income and expenses image and labels
     private let incomeArrowIcon: UIImageView = {
         let img = UIImageView(frame: .zero)
         img.contentMode = .scaleAspectFill
@@ -55,9 +56,9 @@ class HomeVC: UIViewController {
     }()
     
     private let incomelbl   = CustomLabel(textAlignment: .left, fontSize: 13, textWeight: .light, text: "Income")
-    private let expenseslbl   = CustomLabel(textAlignment: .left, fontSize: 18, textWeight: .light, text: "Expenses")
+    private let expenseslbl   = CustomLabel(textAlignment: .left, fontSize: 13, textWeight: .light, text: "Expenses")
     private let lastIncome  = CustomLabel(textAlignment: .left, fontSize: 26)
-    private let lastExpense = CustomLabel(textAlignment: .left, fontSize: 20)
+    private let lastExpense = CustomLabel(textAlignment: .left, fontSize: 26)
     
     
     
@@ -141,10 +142,16 @@ class HomeVC: UIViewController {
 
     
     private func configureShowBlanceView() {
-        balanceInfo.addSubViews(totalBalanceLabel, balanceNumber, incomeArrowIcon, expensesArrowIcon, incomelbl, lastIncome)
-        lastIncome.text = "8500.00"
-        lastIncome.tintColor = .white
-        incomelbl.tintColor = .white
+        balanceInfo.addSubViews(totalBalanceLabel, balanceNumber, incomeArrowIcon, expensesArrowIcon, incomelbl, lastIncome, expenseslbl, lastExpense)
+        
+        lastIncome.text         = "8500.00"
+        lastIncome.textColor    = .white
+        incomelbl.textColor     = .white
+        
+        lastExpense.text        = "2300.00"
+        expenseslbl.textColor   = .white
+        lastExpense.textColor   = .white
+        
         balanceInfo.layer.shouldRasterize = true
         balanceInfo.layer.rasterizationScale = UIScreen.main.scale
 
@@ -172,12 +179,6 @@ class HomeVC: UIViewController {
             incomeArrowIcon.widthAnchor.constraint(equalToConstant: 35),
             incomeArrowIcon.heightAnchor.constraint(equalToConstant: 35),
             
-            
-            expensesArrowIcon.centerYAnchor.constraint(equalTo: incomeArrowIcon.centerYAnchor),
-            expensesArrowIcon.trailingAnchor.constraint(equalTo: balanceInfo.trailingAnchor, constant: -120),
-            expensesArrowIcon.widthAnchor.constraint(equalToConstant: 35),
-            expensesArrowIcon.heightAnchor.constraint(equalToConstant: 35),
-            
             incomelbl.topAnchor.constraint(equalTo: incomeArrowIcon.topAnchor, constant: -10),
             incomelbl.leadingAnchor.constraint(equalTo: incomeArrowIcon.trailingAnchor, constant: 8),
             incomelbl.trailingAnchor.constraint(equalTo: expensesArrowIcon.trailingAnchor, constant: -30),
@@ -187,6 +188,22 @@ class HomeVC: UIViewController {
             lastIncome.leadingAnchor.constraint(equalTo: incomeArrowIcon.trailingAnchor, constant: 8),
             lastIncome.trailingAnchor.constraint(equalTo: expensesArrowIcon.trailingAnchor, constant: -20),
             lastIncome.heightAnchor.constraint(equalToConstant: 28),
+            
+            expensesArrowIcon.centerYAnchor.constraint(equalTo: incomeArrowIcon.centerYAnchor),
+            expensesArrowIcon.trailingAnchor.constraint(equalTo: balanceInfo.trailingAnchor, constant: -120),
+            expensesArrowIcon.widthAnchor.constraint(equalToConstant: 35),
+            expensesArrowIcon.heightAnchor.constraint(equalToConstant: 35),
+            
+            expenseslbl.topAnchor.constraint(equalTo: incomeArrowIcon.topAnchor, constant: -10),
+            expenseslbl.leadingAnchor.constraint(equalTo: expensesArrowIcon.trailingAnchor, constant: 8),
+            expenseslbl.trailingAnchor.constraint(equalTo: balanceInfo.trailingAnchor, constant: -30),
+            expenseslbl.heightAnchor.constraint(equalToConstant: 13),
+            
+            lastExpense.bottomAnchor.constraint(equalTo: expensesArrowIcon.bottomAnchor),
+            lastExpense.leadingAnchor.constraint(equalTo: expensesArrowIcon.trailingAnchor, constant: 8),
+            lastExpense.trailingAnchor.constraint(equalTo: balanceInfo.trailingAnchor, constant: -20),
+            lastExpense.heightAnchor.constraint(equalToConstant: 28),
+            
         ])
     }
     
