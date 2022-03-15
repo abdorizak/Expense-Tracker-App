@@ -22,7 +22,7 @@
 		10C5B3BE27CE39C600B60A4A /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3BD27CE39C600B60A4A /* CustomLabel.swift */; };
 		10C5B3C127CFF09300B60A4A /* ForgetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3C027CFF09300B60A4A /* ForgetPasswordVC.swift */; };
 		10C5B3C327D0A9CE00B60A4A /* ForgetPasswordTextFeild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3C227D0A9CE00B60A4A /* ForgetPasswordTextFeild.swift */; };
-		10C5B3C527D0E0B600B60A4A /* AddExpensesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3C427D0E0B600B60A4A /* AddExpensesVC.swift */; };
+		10C5B3C527D0E0B600B60A4A /* AddIncomeAndExpensesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3C427D0E0B600B60A4A /* AddIncomeAndExpensesVC.swift */; };
 		10C5B3CA27D0E20000B60A4A /* TransectionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3C927D0E20000B60A4A /* TransectionsVC.swift */; };
 		10C5B3CC27D209AF00B60A4A /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3CB27D209AF00B60A4A /* UIViewController+Ext.swift */; };
 		10C5B3CE27D3C30600B60A4A /* CustomTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3CD27D3C30600B60A4A /* CustomTextFields.swift */; };
@@ -51,7 +51,7 @@
 		10C5B3BD27CE39C600B60A4A /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		10C5B3C027CFF09300B60A4A /* ForgetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordVC.swift; sourceTree = "<group>"; };
 		10C5B3C227D0A9CE00B60A4A /* ForgetPasswordTextFeild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordTextFeild.swift; sourceTree = "<group>"; };
-		10C5B3C427D0E0B600B60A4A /* AddExpensesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpensesVC.swift; sourceTree = "<group>"; };
+		10C5B3C427D0E0B600B60A4A /* AddIncomeAndExpensesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeAndExpensesVC.swift; sourceTree = "<group>"; };
 		10C5B3C927D0E20000B60A4A /* TransectionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransectionsVC.swift; sourceTree = "<group>"; };
 		10C5B3CB27D209AF00B60A4A /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		10C5B3CD27D3C30600B60A4A /* CustomTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFields.swift; sourceTree = "<group>"; };
@@ -159,7 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				10EEDF8A27CD05AD00BC03D3 /* HomeVC.swift */,
-				10C5B3C427D0E0B600B60A4A /* AddExpensesVC.swift */,
+				10C5B3C427D0E0B600B60A4A /* AddIncomeAndExpensesVC.swift */,
 				10C5B3C927D0E20000B60A4A /* TransectionsVC.swift */,
 			);
 			path = Main;
@@ -358,7 +358,7 @@
 				10C5B3AF27CDFB3D00B60A4A /* LoginVC.swift in Sources */,
 				10C5B3A327CDEEDD00B60A4A /* User.swift in Sources */,
 				10C5B3CE27D3C30600B60A4A /* CustomTextFields.swift in Sources */,
-				10C5B3C527D0E0B600B60A4A /* AddExpensesVC.swift in Sources */,
+				10C5B3C527D0E0B600B60A4A /* AddIncomeAndExpensesVC.swift in Sources */,
 				10C5B3C327D0A9CE00B60A4A /* ForgetPasswordTextFeild.swift in Sources */,
 				10C5B3AC27CDFADB00B60A4A /* TabBarVC.swift in Sources */,
 				10EEDF8927CD05AD00BC03D3 /* SceneDelegate.swift in Sources */,
