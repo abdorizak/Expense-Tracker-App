@@ -41,11 +41,11 @@ class CustomLabel: UILabel {
     }
     
     private func configlbl(){
+        translatesAutoresizingMaskIntoConstraints = false
         textColor                   = .label
         adjustsFontSizeToFitWidth   = true
-        minimumScaleFactor = 0.9
+        minimumScaleFactor          = 0.9
         lineBreakMode               = .byTruncatingTail
-        translatesAutoresizingMaskIntoConstraints = false
     }
 
 }
