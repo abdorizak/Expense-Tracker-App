@@ -13,46 +13,87 @@ class AddIncomeAndExpensesVC: UIViewController {
     private let EIlabel = CustomLabel(textAlignment: .center, fontSize: 22, textWeight: .medium, text: "Add Income or Expenses")
     
     // MARK: UIView
-    private let txtfeildView: UIView = {
-        let view = UIView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor        = .tertiarySystemFill
-        view.layer.shadowColor      = UIColor.black.cgColor
-        view.layer.shadowOffset     = .zero
-        view.layer.cornerRadius     = 30
-        view.layer.shadowOpacity    = 0.1
-        view.layer.shadowRadius     = 5
-        return view
+    private let ItemViewOne = CustomView(frame: .zero)
+    private let itemViewTwo = CustomView(frame: .zero)
+    
+    // MARK: TextField
+    private let expensesAndIncomeTextField: UITextField = {
+        let textField = UITextField(frame: .zero)
+        textField.borderStyle = .none
+        textField.clearsOnBeginEditing = true
+        textField.textAlignment = .center
+        textField.text = "$0"
+        textField.keyboardType = .numberPad
+        textField.font = UIFont.systemFont(ofSize: 40)
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
     }()
     
-    // MARK: TextFeild
-    private let expensesAndIncomeTextField: UITextField = {
-        let textFeild = UITextField(frame: .zero)
-        textFeild.borderStyle = .none
-        textFeild.clearsOnBeginEditing = true
-        textFeild.textAlignment = .center
-        textFeild.text = "$0"
-        textFeild.keyboardType = .numberPad
-        textFeild.font = UIFont.systemFont(ofSize: 40)
-        textFeild.translatesAutoresizingMaskIntoConstraints = false
-        return textFeild
+    private let categoryTextField: UITextField = {
+        let category = UITextField(frame: .zero)
+        category.borderStyle = .none
+        category.clearsOnBeginEditing = true
+        category.textAlignment = .center
+        category.placeholder = "Category"
+        category.keyboardType = .numberPad
+        category.font = UIFont.systemFont(ofSize: 40)
+        category.translatesAutoresizingMaskIntoConstraints = false
+        return category
     }()
+    
+    private let titleTextField: UITextField = {
+        let title = UITextField(frame: .zero)
+        title.borderStyle = .none
+        title.clearsOnBeginEditing = true
+        title.textAlignment = .center
+        title.placeholder = "Title"
+        title.keyboardType = .numberPad
+        title.font = UIFont.systemFont(ofSize: 40)
+        title.translatesAutoresizingMaskIntoConstraints = false
+        return title
+    }()
+    
+    private let descriptionTextField: UITextField = {
+        let description = UITextField(frame: .zero)
+        description.borderStyle = .none
+        description.clearsOnBeginEditing = true
+        description.textAlignment = .center
+        description.placeholder = "Description"
+        description.keyboardType = .numberPad
+        description.font = UIFont.systemFont(ofSize: 40)
+        description.translatesAutoresizingMaskIntoConstraints = false
+        return description
+    }()
+    
+    private let dateTextField: UITextField = {
+        let date = UITextField(frame: .zero)
+        date.borderStyle = .none
+        date.clearsOnBeginEditing = true
+        date.textAlignment = .center
+        date.placeholder = "Category"
+        date.keyboardType = .numberPad
+        date.font = UIFont.systemFont(ofSize: 40)
+        date.translatesAutoresizingMaskIntoConstraints = false
+        return date
+    }()
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureAddVC()
-        expensesAndIncomeTextfeilds()
+        expensesAndIncomeTextfields()
     }
     
     private func configureAddVC() {
         view.backgroundColor = .systemBackground
-        view.addSubViews(EIlabel, txtfeildView)
+        view.addSubViews(EIlabel, ItemViewOne)
     }
     
     
-    private func expensesAndIncomeTextfeilds() {
+    private func expensesAndIncomeTextfields() {
         EIlabel.textColor = .tertiaryLabel
-        txtfeildView.addSubview(expensesAndIncomeTextField)
+        ItemViewOne.addSubview(expensesAndIncomeTextField)
         
         NSLayoutConstraint.activate([
             EIlabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
@@ -61,17 +102,23 @@ class AddIncomeAndExpensesVC: UIViewController {
             EIlabel.heightAnchor.constraint(equalToConstant: 24),
             
             
-            txtfeildView.topAnchor.constraint(equalTo: EIlabel.bottomAnchor, constant: 30),
-            txtfeildView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            txtfeildView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            txtfeildView.heightAnchor.constraint(equalToConstant: 80),
+            ItemViewOne.topAnchor.constraint(equalTo: EIlabel.bottomAnchor, constant: 30),
+            ItemViewOne.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            ItemViewOne.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            ItemViewOne.heightAnchor.constraint(equalToConstant: 80),
             
-            expensesAndIncomeTextField.topAnchor.constraint(equalTo: txtfeildView.topAnchor),
-            expensesAndIncomeTextField.trailingAnchor.constraint(equalTo: txtfeildView.trailingAnchor),
-            expensesAndIncomeTextField.leadingAnchor.constraint(equalTo: txtfeildView.leadingAnchor),
+            expensesAndIncomeTextField.topAnchor.constraint(equalTo: ItemViewOne.topAnchor),
+            expensesAndIncomeTextField.trailingAnchor.constraint(equalTo: ItemViewOne.trailingAnchor),
+            expensesAndIncomeTextField.leadingAnchor.constraint(equalTo: ItemViewOne.leadingAnchor),
             expensesAndIncomeTextField.heightAnchor.constraint(equalToConstant: 80)
         ])
     }
 
+    
+    private func configFrom() {
+        // MARK: CategoryTextFeild, TitleTExtField, DescriptionTextFeild, DateTextFeild, SaveButton
+        
+    }
+        
 
 }
