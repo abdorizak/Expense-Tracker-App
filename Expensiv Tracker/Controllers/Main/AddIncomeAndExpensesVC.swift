@@ -13,8 +13,10 @@ class AddIncomeAndExpensesVC: UIViewController {
     private let EIlabel = CustomLabel(textAlignment: .center, fontSize: 22, textWeight: .medium, text: "Add Income or Expenses")
     
     // MARK: UIView
-    private let ItemViewOne = CustomView(frame: .zero)
-    private let itemViewTwo = CustomView(frame: .zero)
+    private let ItemView1 = CustomView(frame: .zero)
+    private let itemView2 = CustomView(frame: .zero)
+    private let itemView3 = CustomView(frame: .zero)
+    private let itemView4 = CustomView(frame: .zero)
     
     // MARK: TextField
     private let expensesAndIncomeTextField: UITextField = {
@@ -87,13 +89,13 @@ class AddIncomeAndExpensesVC: UIViewController {
     
     private func configureAddVC() {
         view.backgroundColor = .systemBackground
-        view.addSubViews(EIlabel, ItemViewOne)
+        view.addSubViews(EIlabel, ItemView1, itemView2, itemView3, itemView4)
     }
     
     
     private func expensesAndIncomeTextfields() {
         EIlabel.textColor = .tertiaryLabel
-        ItemViewOne.addSubview(expensesAndIncomeTextField)
+        ItemView1.addSubview(expensesAndIncomeTextField)
         
         NSLayoutConstraint.activate([
             EIlabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
@@ -102,14 +104,14 @@ class AddIncomeAndExpensesVC: UIViewController {
             EIlabel.heightAnchor.constraint(equalToConstant: 24),
             
             
-            ItemViewOne.topAnchor.constraint(equalTo: EIlabel.bottomAnchor, constant: 30),
-            ItemViewOne.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            ItemViewOne.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            ItemViewOne.heightAnchor.constraint(equalToConstant: 80),
+            ItemView1.topAnchor.constraint(equalTo: EIlabel.bottomAnchor, constant: 30),
+            ItemView1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            ItemView1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            ItemView1.heightAnchor.constraint(equalToConstant: 80),
             
-            expensesAndIncomeTextField.topAnchor.constraint(equalTo: ItemViewOne.topAnchor),
-            expensesAndIncomeTextField.trailingAnchor.constraint(equalTo: ItemViewOne.trailingAnchor),
-            expensesAndIncomeTextField.leadingAnchor.constraint(equalTo: ItemViewOne.leadingAnchor),
+            expensesAndIncomeTextField.topAnchor.constraint(equalTo: ItemView1.topAnchor),
+            expensesAndIncomeTextField.trailingAnchor.constraint(equalTo: ItemView1.trailingAnchor),
+            expensesAndIncomeTextField.leadingAnchor.constraint(equalTo: ItemView1.leadingAnchor),
             expensesAndIncomeTextField.heightAnchor.constraint(equalToConstant: 80)
         ])
     }
@@ -117,6 +119,8 @@ class AddIncomeAndExpensesVC: UIViewController {
     
     private func configFrom() {
         // MARK: CategoryTextFeild, TitleTExtField, DescriptionTextFeild, DateTextFeild, SaveButton
+        
+        
         
     }
         
