@@ -10,6 +10,7 @@
 		1008990B27D8C2E600A94B4F /* HeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1008990A27D8C2E600A94B4F /* HeaderVC.swift */; };
 		1008990E27D9E95500A94B4F /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1008990D27D9E95500A94B4F /* AvatarImageView.swift */; };
 		101EA9D327E1253600E9534C /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101EA9D227E1253600E9534C /* CustomView.swift */; };
+		101EA9D527E250DA00E9534C /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101EA9D427E250DA00E9534C /* GradientButton.swift */; };
 		10C5B3A327CDEEDD00B60A4A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3A227CDEEDD00B60A4A /* User.swift */; };
 		10C5B3A527CDF09500B60A4A /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3A427CDF09500B60A4A /* AppError.swift */; };
 		10C5B3A727CDF13100B60A4A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3A627CDF13000B60A4A /* Constants.swift */; };
@@ -40,6 +41,7 @@
 		1008990A27D8C2E600A94B4F /* HeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderVC.swift; sourceTree = "<group>"; };
 		1008990D27D9E95500A94B4F /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		101EA9D227E1253600E9534C /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		101EA9D427E250DA00E9534C /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		10C5B3A227CDEEDD00B60A4A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		10C5B3A427CDF09500B60A4A /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		10C5B3A627CDF13000B60A4A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				10C5B3B827CE300000B60A4A /* EButton.swift */,
+				101EA9D427E250DA00E9534C /* GradientButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				10C5B3BB27CE32B500B60A4A /* PasswordTextField.swift in Sources */,
 				10C5B3C127CFF09300B60A4A /* ForgetPasswordVC.swift in Sources */,
 				1008990B27D8C2E600A94B4F /* HeaderVC.swift in Sources */,
+				101EA9D527E250DA00E9534C /* GradientButton.swift in Sources */,
 				10EEDFA527CD0B4B00BC03D3 /* AuthManager.swift in Sources */,
 				10C5B3B127CDFB5D00B60A4A /* SingUpVC.swift in Sources */,
 				10C5B3A527CDF09500B60A4A /* AppError.swift in Sources */,
