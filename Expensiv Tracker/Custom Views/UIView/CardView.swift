@@ -32,13 +32,15 @@ class CardView: UIView {
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 1, y: 1 )
         layer.addSublayer(gradient)
-        gradient.shadowColor = UIColor.black.cgColor
-        gradient.shadowRadius = 5
-        gradient.shadowOffset = .zero
-        gradient.shadowOpacity = 0.2
-        gradient.cornerRadius  = 20
+        gradient.cornerRadius = 20
         gradient.shouldRasterize = true
         gradient.rasterizationScale = UIScreen.main.scale
+        
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowRadius = 5
+        layer.shadowOffset = .zero
+        layer.shadowOpacity = 0.2
+        
         
     }
     
