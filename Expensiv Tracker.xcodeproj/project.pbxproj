@@ -11,6 +11,7 @@
 		1008990E27D9E95500A94B4F /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1008990D27D9E95500A94B4F /* AvatarImageView.swift */; };
 		101EA9D327E1253600E9534C /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101EA9D227E1253600E9534C /* CustomView.swift */; };
 		101EA9D527E250DA00E9534C /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101EA9D427E250DA00E9534C /* GradientButton.swift */; };
+		101EA9D827E50D9E00E9534C /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 101EA9D727E50D9E00E9534C /* Charts */; };
 		10C5B3A327CDEEDD00B60A4A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3A227CDEEDD00B60A4A /* User.swift */; };
 		10C5B3A527CDF09500B60A4A /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3A427CDF09500B60A4A /* AppError.swift */; };
 		10C5B3A727CDF13100B60A4A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3A627CDF13000B60A4A /* Constants.swift */; };
@@ -75,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				101EA9D827E50D9E00E9534C /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +295,9 @@
 			dependencies = (
 			);
 			name = "Expensiv Tracker";
+			packageProductDependencies = (
+				101EA9D727E50D9E00E9534C /* Charts */,
+			);
 			productName = "Expensiv Tracker";
 			productReference = 10EEDF8327CD05AD00BC03D3 /* Expensiv Tracker.app */;
 			productType = "com.apple.product-type.application";
@@ -321,6 +326,9 @@
 				Base,
 			);
 			mainGroup = 10EEDF7A27CD05AD00BC03D3;
+			packageReferences = (
+				101EA9D627E50D9E00E9534C /* XCRemoteSwiftPackageReference "Charts" */,
+			);
 			productRefGroup = 10EEDF8427CD05AD00BC03D3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -584,6 +592,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		101EA9D627E50D9E00E9534C /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		101EA9D727E50D9E00E9534C /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 101EA9D627E50D9E00E9534C /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 10EEDF7B27CD05AD00BC03D3 /* Project object */;
 }
