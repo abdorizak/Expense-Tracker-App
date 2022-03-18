@@ -16,6 +16,7 @@ class TransectionsVC: UIViewController {
         let font = UIFont.systemFont(ofSize: 18)
         segment.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         segment.translatesAutoresizingMaskIntoConstraints = false
+        segment.backgroundColor  = .tertiarySystemBackground
         segment.addTarget(self, action: #selector(siutDidChange(_:)), for: .valueChanged)
         segment.layer.cornerRadius = 15
         return segment
