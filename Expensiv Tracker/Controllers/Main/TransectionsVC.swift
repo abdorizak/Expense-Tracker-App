@@ -6,8 +6,40 @@
 //
 
 import UIKit
+import Charts
 
-class TransectionsVC: UIViewController {
+class TransectionsVC: UIViewController, ChartViewDelegate {
+    
+    private let chartView = UIView()
+    
+    lazy var lineChart: LineChartView = {
+        let linechart = LineChartView()
+        linechart.translatesAutoresizingMaskIntoConstraints = false
+        linechart.backgroundColor = .systemBackground
+        linechart.rightAxis.enabled = false
+        
+        linechart.xAxis.labelPosition = .bottom
+        linechart.xAxis.labelFont = .boldSystemFont(ofSize: 12)
+        linechart.xAxis.setLabelCount(6, force: false)
+        linechart.xAxis.labelTextColor = .label
+        linechart.xAxis.axisLineColor = .systemBlue
+        linechart.xAxis.drawGridLinesEnabled = false
+        
+        linechart.drawGridBackgroundEnabled = false
+        linechart.doubleTapToZoomEnabled = false
+
+        
+        let yAxis = linechart.leftAxis
+        yAxis.labelFont = .boldSystemFont(ofSize: 12)
+        yAxis.setLabelCount(6, force: false)
+        yAxis.labelTextColor = .label
+        yAxis.axisLineColor = .label
+        yAxis.labelPosition = .outsideChart
+        yAxis.drawGridLinesEnabled = false
+        
+        
+        return linechart
+    }()
     
     lazy var segment: UISegmentedControl = {
         let items = ["Income", "Expenses"]
@@ -26,15 +58,17 @@ class TransectionsVC: UIViewController {
         super.viewDidLoad()
         configTransectionsVC()
         configSegment()
+        configChartView()
     }
     
     
-    private func configTransectionsVC() {
+    func configTransectionsVC() {
+        lineChart.delegate = self
         view.backgroundColor = .systemBackground
         navigationItem.title = "Transections"
         navigationItem.largeTitleDisplayMode  = .always
         navigationController?.navigationBar.prefersLargeTitles = true
-        view.addSubViews(segment)
+        view.addSubViews(segment, chartView)
     }
     
     @objc func siutDidChange(_ segmentController: UISegmentedControl) {
@@ -49,7 +83,6 @@ class TransectionsVC: UIViewController {
     }
     
     private func configSegment() {
-        
         NSLayoutConstraint.activate([
             segment.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             segment.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
@@ -58,5 +91,70 @@ class TransectionsVC: UIViewController {
         ])
     }
     
+    
+}
+
+extension TransectionsVC {
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        lineChart.animate(xAxisDuration: 2.5, yAxisDuration: 2.5)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        let values: [Double] = [8, 104, 81, 93, 52, 44, 97, 101, 75, 28,
+            76, 25, 20, 13, 52, 44, 57, 23, 45, 12,
+            99, 14, 4, 48, 40, 71, 106, 41, 45, 61]
+        
+        var enteries:[ChartDataEntry] = []
+        
+        for (i, val) in values.enumerated() {
+            enteries.append(ChartDataEntry(x: Double(i), y: val))
+        }
+        
+        let set = LineChartDataSet(entries: enteries, label: "Income")
+        set.mode = .cubicBezier
+        set.lineCapType = .round
+        set.drawCirclesEnabled = false
+        set.lineWidth = 2
+        set.setColor(.label)
+        
+        let g = [
+            UIColor.systemOrange.cgColor,
+            UIColor.systemPurple.cgColor,
+            UIColor.systemTeal.cgColor,
+        ] as CFArray
+        let colorLocations:[CGFloat] = [1.0, 0.1, 1.0]
+        let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: g, locations: colorLocations)
+        set.fill = Fill.fillWithRadialGradient(gradient!)
+        set.drawFilledEnabled = true
+        set.highlightColor = .label
+        
+        let data = LineChartData(dataSet: set)
+        data.setDrawValues(true)
+        
+        lineChart.data = data
+    }
+    
+    private func configChartView() {
+        chartView.translatesAutoresizingMaskIntoConstraints = false
+        chartView.layer.cornerRadius = 15
+        chartView.addSubview(lineChart)
+        
+        NSLayoutConstraint.activate([
+            chartView.topAnchor.constraint(equalTo: segment.bottomAnchor, constant: 20),
+            chartView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            chartView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            chartView.heightAnchor.constraint(equalToConstant: 300),
+            
+            lineChart.topAnchor.constraint(equalTo: chartView.topAnchor),
+            lineChart.trailingAnchor.constraint(equalTo: chartView.trailingAnchor),
+            lineChart.leadingAnchor.constraint(equalTo: chartView.leadingAnchor),
+            lineChart.bottomAnchor.constraint(equalTo: chartView.bottomAnchor)
+            
+        ])
+    }
     
 }
