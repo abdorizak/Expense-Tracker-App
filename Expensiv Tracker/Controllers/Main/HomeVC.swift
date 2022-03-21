@@ -111,7 +111,7 @@ class HomeVC: UIViewController {
     
     private func ConfigureHeaderElements() {
         headerView.addSubViews(userImage, welcomeLabel, fullnameLabel, profile)
-        userImage.layer.cornerRadius = 10
+        userImage.layer.cornerRadius = 25
         fullnameLabel.text = "Abdorizak Abdalla"
         
         profile.layer.cornerRadius = 10
@@ -203,7 +203,7 @@ class HomeVC: UIViewController {
             lastExpense.leadingAnchor.constraint(equalTo: expensesArrowIcon.trailingAnchor, constant: 8),
             lastExpense.trailingAnchor.constraint(equalTo: balanceInfo.trailingAnchor, constant: -20),
             lastExpense.heightAnchor.constraint(equalToConstant: 28),
-            
+
             
         ])
     }
