@@ -74,11 +74,10 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
     @objc func siutDidChange(_ segmentController: UISegmentedControl) {
         switch segmentController.selectedSegmentIndex {
         case 0:
-            print("Tapped")
+            self.setIncome()
         case 1:
-            print("Tapped..")
+            self.setExpenses()
         default: break
-            
         }
     }
     
@@ -103,7 +102,17 @@ extension TransectionsVC {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+        switch segment.selectedSegmentIndex {
+        case 0:
+            setIncome()
+        case 1:
+            setExpenses()
+        default:
+            break
+        }
+    }
+    
+    private func setIncome() {
         let values: [Double] = [8, 104, 81, 93, 52, 44, 97, 101, 75, 28,
             76, 25, 20, 13, 52, 44, 57, 23, 45, 12,
             99, 14, 4, 48, 40, 71, 106, 41, 45, 61]
@@ -137,6 +146,41 @@ extension TransectionsVC {
         
         lineChart.data = data
     }
+    
+    private func setExpenses() {
+        let values: [Double] = [8, 104, 81, 93, 52, 44, 97, 101, 75, 28,
+                                76, 25, 20, 13, 52, 44, 57, 23, 45, 12]
+        
+        var enteries:[ChartDataEntry] = []
+        
+        for (i, val) in values.enumerated() {
+            enteries.append(ChartDataEntry(x: Double(i), y: val))
+        }
+        
+        let set = LineChartDataSet(entries: enteries, label: "Expenses")
+        set.mode = .cubicBezier
+        set.lineCapType = .round
+        set.drawCirclesEnabled = false
+        set.lineWidth = 2
+        set.setColor(.label)
+        
+        let g = [
+            UIColor.systemOrange.cgColor,
+            UIColor.systemPurple.cgColor,
+            UIColor.systemTeal.cgColor,
+        ] as CFArray
+        let colorLocations:[CGFloat] = [1.0, 0.1, 1.0]
+        let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: g, locations: colorLocations)
+        set.fill = Fill.fillWithRadialGradient(gradient!)
+        set.drawFilledEnabled = true
+        set.highlightColor = .label
+        
+        let data = LineChartData(dataSet: set)
+        data.setDrawValues(true)
+        
+        lineChart.data = data
+    }
+    
     
     private func configChartView() {
         chartView.translatesAutoresizingMaskIntoConstraints = false
