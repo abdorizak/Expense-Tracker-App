@@ -9,15 +9,22 @@ import UIKit
 
 class LoginVC: UIViewController {
     
+    // MARK: - ScrollView And UIViews
     let scrollView          = UIScrollView()
     let contentView         = UIView()
+    let loginFormView        = UIView()
     
+    
+    // MARK: - UIImageView
     let loginImageView      = UIImageView()
+    let usernameIcon        = UIImageView()
+    let passwordIcon        = UIImageView()
     
+    // MARK: - LOGIN FORM
     let loginglbl          = CustomLabel(textAlignment: .left, fontSize: 40)
     let registeryLabel      = CustomLabel(textAlignment: .left, fontSize: 22)
-    let usernameTextFeild   = UsernameTextField()
-    let passwordTextFeild   = PasswordTextField()
+    let usernameTextFeild   = UsernameTextField(frame: .zero)
+    let passwordTextFeild   = PasswordTextField(frame: .zero)
     let forgetPassword      = EButton(titleColor: .link,
                                       title: "Forget Password")
     let loginBtn            = EButton(backgroundColor: .link,
@@ -34,7 +41,7 @@ class LoginVC: UIViewController {
         ConfigureScrollView()
         conigureLoginImage()
         configureLoginAndRegisteryLabel()
-        configureTextFeilds()
+        configureLoginFromView()
         configforgetBtn()
         configLoginAndSingUpBtn()
         createDismissKeyboardTapGesture()
@@ -42,7 +49,7 @@ class LoginVC: UIViewController {
     
     private func confgiruVC() {
         view.backgroundColor = .systemBackground
-        contentView.addSubViews(loginImageView, loginglbl, usernameTextFeild, passwordTextFeild, forgetPassword, loginBtn, registeryLabel, singUpbtn)
+        contentView.addSubViews(loginImageView, loginglbl, loginFormView, forgetPassword, loginBtn, registeryLabel, singUpbtn)
         forgetPassword.addTarget(self, action: #selector(pushForgetVC), for: .touchUpInside)
         singUpbtn.addTarget(self, action: #selector(pushSingUpVC), for: .touchUpInside)
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -99,18 +106,43 @@ class LoginVC: UIViewController {
         ])
     }
     
-    private func configureTextFeilds() {
+    private func configureLoginFromView() {
+        
+        loginFormView.translatesAutoresizingMaskIntoConstraints = false
+        loginFormView.layer.cornerRadius = 10
+        loginFormView.backgroundColor = .secondarySystemBackground
+        
+        loginFormView.addSubViews(usernameIcon, usernameTextFeild, passwordIcon, passwordTextFeild)
         
         NSLayoutConstraint.activate([
-            usernameTextFeild.topAnchor.constraint(equalTo: loginglbl.bottomAnchor, constant: 10),
-            usernameTextFeild.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            usernameTextFeild.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            usernameTextFeild.heightAnchor.constraint(equalToConstant: 45),
             
-            passwordTextFeild.topAnchor.constraint(equalTo: usernameTextFeild.bottomAnchor, constant: 10),
-            passwordTextFeild.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            passwordTextFeild.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            passwordTextFeild.heightAnchor.constraint(equalToConstant: 45)
+            loginFormView.topAnchor.constraint(equalTo: loginglbl.bottomAnchor, constant: 10),
+            loginFormView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
+            loginFormView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
+            loginFormView.heightAnchor.constraint(equalToConstant: 130),
+            
+//            usernameView.topAnchor.constraint(equalTo: loginglbl.bottomAnchor, constant: 10),
+//            usernameView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+//            usernameView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+//            usernameView.heightAnchor.constraint(equalToConstant: 50),
+//
+//            passwordView.topAnchor.constraint(equalTo: usernameView.bottomAnchor, constant: 10),
+//            passwordView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+//            passwordView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+//            passwordView.heightAnchor.constraint(equalToConstant: 50),
+//
+//            usernameTextFeild.topAnchor.constraint(equalTo: usernameView.topAnchor),
+//            usernameTextFeild.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -6),
+//            usernameTextFeild.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 6),
+//            usernameTextFeild.bottomAnchor.constraint(equalTo: usernameView.bottomAnchor),
+//            usernameTextFeild.heightAnchor.constraint(equalToConstant: 50),
+//
+//            passwordTextFeild.topAnchor.constraint(equalTo: passwordView.topAnchor),
+//            passwordTextFeild.trailingAnchor.constraint(equalTo: passwordView.trailingAnchor, constant: -6),
+//            passwordTextFeild.leadingAnchor.constraint(equalTo: passwordView.leadingAnchor, constant: 6),
+//            passwordTextFeild.bottomAnchor.constraint(equalTo: passwordView.bottomAnchor),
+//            passwordTextFeild.heightAnchor.constraint(equalToConstant: 50),
+            
         ])
     }
     
@@ -120,7 +152,7 @@ class LoginVC: UIViewController {
         
         
         NSLayoutConstraint.activate([
-            forgetPassword.topAnchor.constraint(equalTo: passwordTextFeild.bottomAnchor, constant: 25),
+            forgetPassword.topAnchor.constraint(equalTo: loginFormView.bottomAnchor, constant: 25),
             forgetPassword.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             forgetPassword.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: leadingConstraintConstant),
             
@@ -128,10 +160,11 @@ class LoginVC: UIViewController {
     }
     
     private func configLoginAndSingUpBtn() {
+        
         NSLayoutConstraint.activate([
             loginBtn.topAnchor.constraint(equalTo: forgetPassword.bottomAnchor, constant: 20),
-            loginBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            loginBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            loginBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -90),
+            loginBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 90),
             loginBtn.heightAnchor.constraint(equalToConstant: 50),
             
             singUpbtn.topAnchor.constraint(equalTo: registeryLabel.bottomAnchor, constant: -22),
