@@ -112,7 +112,12 @@ class LoginVC: UIViewController {
         loginFormView.layer.cornerRadius = 10
         loginFormView.backgroundColor = .secondarySystemBackground
         
-        loginFormView.addSubViews(usernameIcon, usernameTextFeild, passwordIcon, passwordTextFeild)
+        usernameIcon.translatesAutoresizingMaskIntoConstraints = false
+        usernameIcon.image = Images.usernameIcon
+        
+        loginFormView.addSubViews(usernameIcon, usernameTextFeild)
+        
+        usernameTextFeild.addLine(position: .bottom, color: .label, width: 0.4)
         
         NSLayoutConstraint.activate([
             
@@ -120,6 +125,16 @@ class LoginVC: UIViewController {
             loginFormView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
             loginFormView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
             loginFormView.heightAnchor.constraint(equalToConstant: 130),
+            
+            usernameIcon.topAnchor.constraint(equalTo: loginFormView.topAnchor, constant: 10),
+            usernameIcon.leadingAnchor.constraint(equalTo: loginFormView.leadingAnchor, constant: 10),
+            usernameIcon.widthAnchor.constraint(equalToConstant: 40),
+            usernameIcon.heightAnchor.constraint(equalToConstant: 40),
+            
+            usernameTextFeild.bottomAnchor.constraint(equalTo: usernameIcon.bottomAnchor),
+            usernameTextFeild.leadingAnchor.constraint(equalTo: usernameIcon.trailingAnchor, constant: 6),
+            usernameTextFeild.trailingAnchor.constraint(equalTo: loginFormView.trailingAnchor, constant: -20),
+            usernameTextFeild.heightAnchor.constraint(equalToConstant: 50),
             
 //            usernameView.topAnchor.constraint(equalTo: loginglbl.bottomAnchor, constant: 10),
 //            usernameView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
