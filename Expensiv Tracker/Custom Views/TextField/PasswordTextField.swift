@@ -25,6 +25,7 @@ class PasswordTextField: UITextField {
         isSecureTextEntry   = true
         
         layer.cornerRadius      = 5
+        
 //        layer.borderWidth       = 1
 //        layer.borderColor       = UIColor.systemGray4.cgColor
         
