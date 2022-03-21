@@ -24,10 +24,6 @@ class UsernameTextField: UITextField {
         textContentType = .username
         
         layer.cornerRadius = 5
-//        layer.borderWidth  = 0.5
-        
-//        layer.borderColor  = UIColor.systemGray4.cgColor
-        
         
         textColor           = .label
         tintColor           = .label
