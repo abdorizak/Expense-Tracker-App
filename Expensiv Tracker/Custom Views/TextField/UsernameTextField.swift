@@ -32,7 +32,7 @@ class UsernameTextField: UITextField {
         font                = UIFont.systemFont(ofSize: 17)
         minimumFontSize     = 16
         
-        backgroundColor     = .secondarySystemBackground
+        backgroundColor     = .clear
         autocorrectionType  = .no
         returnKeyType       = .next
         clearButtonMode     = .whileEditing
