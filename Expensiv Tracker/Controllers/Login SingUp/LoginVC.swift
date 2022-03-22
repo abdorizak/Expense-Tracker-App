@@ -114,10 +114,17 @@ class LoginVC: UIViewController {
         
         usernameIcon.translatesAutoresizingMaskIntoConstraints = false
         usernameIcon.image = Images.usernameIcon
+        usernameIcon.contentMode = .scaleAspectFill
         
-        loginFormView.addSubViews(usernameIcon, usernameTextFeild)
+        passwordIcon.translatesAutoresizingMaskIntoConstraints = false
+        passwordIcon.image = Images.passwordIcon
+        passwordIcon.contentMode = .scaleAspectFill
         
-        usernameTextFeild.addLine(position: .bottom, color: .label, width: 0.4)
+        loginFormView.addSubViews(usernameIcon, usernameTextFeild, passwordIcon, passwordTextFeild)
+        
+        usernameTextFeild.addLine(position: .bottom, color: .label, width: 0.5)
+        
+        passwordTextFeild.addLine(position: .bottom, color: .label, width: 0.4)
         
         NSLayoutConstraint.activate([
             
@@ -126,15 +133,25 @@ class LoginVC: UIViewController {
             loginFormView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
             loginFormView.heightAnchor.constraint(equalToConstant: 130),
             
-            usernameIcon.topAnchor.constraint(equalTo: loginFormView.topAnchor, constant: 10),
+            usernameIcon.topAnchor.constraint(equalTo: loginFormView.topAnchor, constant: 20),
             usernameIcon.leadingAnchor.constraint(equalTo: loginFormView.leadingAnchor, constant: 10),
-            usernameIcon.widthAnchor.constraint(equalToConstant: 40),
-            usernameIcon.heightAnchor.constraint(equalToConstant: 40),
+            usernameIcon.widthAnchor.constraint(equalToConstant: 35),
+            usernameIcon.heightAnchor.constraint(equalToConstant: 35),
             
             usernameTextFeild.bottomAnchor.constraint(equalTo: usernameIcon.bottomAnchor),
             usernameTextFeild.leadingAnchor.constraint(equalTo: usernameIcon.trailingAnchor, constant: 6),
             usernameTextFeild.trailingAnchor.constraint(equalTo: loginFormView.trailingAnchor, constant: -20),
             usernameTextFeild.heightAnchor.constraint(equalToConstant: 50),
+            
+            passwordIcon.topAnchor.constraint(equalTo: usernameIcon.bottomAnchor, constant: 20),
+            passwordIcon.leadingAnchor.constraint(equalTo: loginFormView.leadingAnchor, constant: 10),
+            passwordIcon.widthAnchor.constraint(equalToConstant: 35),
+            passwordIcon.heightAnchor.constraint(equalToConstant: 35),
+            
+            passwordTextFeild.bottomAnchor.constraint(equalTo: passwordIcon.bottomAnchor),
+            passwordTextFeild.leadingAnchor.constraint(equalTo: passwordIcon.trailingAnchor, constant: 6),
+            passwordTextFeild.trailingAnchor.constraint(equalTo: loginFormView.trailingAnchor, constant: -20),
+            passwordTextFeild.heightAnchor.constraint(equalToConstant: 50),
             
 //            usernameView.topAnchor.constraint(equalTo: loginglbl.bottomAnchor, constant: 10),
 //            usernameView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
