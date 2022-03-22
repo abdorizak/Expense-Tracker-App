@@ -9,9 +9,12 @@ import UIKit
 
 class SingUpVC: UIViewController {
     
+    // MARK: - ScrollView And UIViews
     private let scrollView          = UIScrollView()
     private let ContentView         = UIView()
+    private let signUpView          = UIView()
     
+    // MARK: - UIImageView
     private let signUPImage: UIImageView = {
         let image = UIImageView()
         image.image = Images.singup_Image
@@ -19,6 +22,9 @@ class SingUpVC: UIViewController {
         image.contentMode = .scaleAspectFill
         return image
     }()
+    
+    // MARK: - TextFeilds and Buttons , Label's
+    private let signUplabel         = CustomLabel(textAlignment: .left, fontSize: 38, textWeight: .bold, text: "Sign Up")
     
     private let signUpBtn           = EButton(backgroundColor: .systemBlue, title: "Sign up", TextStyle: .title3)
     
@@ -34,17 +40,17 @@ class SingUpVC: UIViewController {
         configVC()
         configScrollView()
         configSingUPImage()
-        configformTextFeilds()
+        configSignUpFormView()
         configSignUPBtn()
     }
     
     private func configVC() {
         view.backgroundColor = .systemBackground
-        title = "Sing Up"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissVC))
         let tap  = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
-        ContentView.addSubViews(signUPImage, fullnameTextFeild, emailTextFeild, phoneTextFeild, usernameTextFeild, passwordTextFeild, confirmPasswordTextFeild, signUpBtn)
+        ContentView.addSubViews(signUPImage, signUplabel, signUpView)
+//        fullnameTextFeild, emailTextFeild, phoneTextFeild, usernameTextFeild, passwordTextFeild, confirmPasswordTextFeild, signUpBtn
     }
     
     private func configScrollView() {
@@ -64,54 +70,69 @@ class SingUpVC: UIViewController {
             signUPImage.topAnchor.constraint(equalTo: ContentView.safeAreaLayoutGuide.topAnchor, constant: 20),
             signUPImage.trailingAnchor.constraint(equalTo: ContentView.trailingAnchor, constant: -20),
             signUPImage.leadingAnchor.constraint(equalTo: ContentView.leadingAnchor, constant: 20),
-            signUPImage.heightAnchor.constraint(equalToConstant: 350)
+            signUPImage.heightAnchor.constraint(equalToConstant: 250)
         ])
     }
     
-    private func configformTextFeilds() {
+    private func configSignUpFormView() {
+        
+        signUpView.translatesAutoresizingMaskIntoConstraints = false
+        signUpView.backgroundColor = .secondarySystemBackground
         
         NSLayoutConstraint.activate([
-            fullnameTextFeild.topAnchor.constraint(equalTo: signUPImage.bottomAnchor, constant: 20),
-            fullnameTextFeild.trailingAnchor.constraint(equalTo: ContentView.trailingAnchor, constant: -20),
-            fullnameTextFeild.leadingAnchor.constraint(equalTo: ContentView.leadingAnchor, constant: 20),
-            fullnameTextFeild.heightAnchor.constraint(equalToConstant: 45),
             
-            emailTextFeild.topAnchor.constraint(equalTo: fullnameTextFeild.bottomAnchor, constant: 15),
-            emailTextFeild.trailingAnchor.constraint(equalTo: ContentView.trailingAnchor, constant: -20),
-            emailTextFeild.leadingAnchor.constraint(equalTo: ContentView.leadingAnchor, constant: 20),
-            emailTextFeild.heightAnchor.constraint(equalToConstant: 45),
+            signUplabel.topAnchor.constraint(equalTo: signUPImage.bottomAnchor, constant: 20),
+            signUplabel.leadingAnchor.constraint(equalTo: ContentView.leadingAnchor, constant: 20),
+            signUplabel.trailingAnchor.constraint(equalTo: ContentView.trailingAnchor, constant: -20),
+            signUplabel.heightAnchor.constraint(equalToConstant: 40),
             
-            phoneTextFeild.topAnchor.constraint(equalTo: emailTextFeild.bottomAnchor, constant: 15),
-            phoneTextFeild.trailingAnchor.constraint(equalTo: ContentView.trailingAnchor, constant: -20),
-            phoneTextFeild.leadingAnchor.constraint(equalTo: ContentView.leadingAnchor, constant: 20),
-            phoneTextFeild.heightAnchor.constraint(equalToConstant: 45),
+            signUpView.topAnchor.constraint(equalTo: signUplabel.bottomAnchor, constant: 20),
+            signUpView.leadingAnchor.constraint(equalTo: ContentView.leadingAnchor, constant: 10),
+            signUpView.trailingAnchor.constraint(equalTo: ContentView.trailingAnchor, constant: -10),
+            signUpView.heightAnchor.constraint(equalToConstant: 400),
             
-            usernameTextFeild.topAnchor.constraint(equalTo: phoneTextFeild.bottomAnchor, constant: 15),
-            usernameTextFeild.trailingAnchor.constraint(equalTo: ContentView.trailingAnchor, constant: -20),
-            usernameTextFeild.leadingAnchor.constraint(equalTo: ContentView.leadingAnchor, constant: 20),
-            usernameTextFeild.heightAnchor.constraint(equalToConstant: 45),
             
-            passwordTextFeild.topAnchor.constraint(equalTo: usernameTextFeild.bottomAnchor, constant: 15),
-            passwordTextFeild.trailingAnchor.constraint(equalTo: ContentView.trailingAnchor, constant: -20),
-            passwordTextFeild.leadingAnchor.constraint(equalTo: ContentView.leadingAnchor, constant: 20),
-            passwordTextFeild.heightAnchor.constraint(equalToConstant: 45),
-            
-            confirmPasswordTextFeild.topAnchor.constraint(equalTo: passwordTextFeild.bottomAnchor, constant: 15),
-            confirmPasswordTextFeild.trailingAnchor.constraint(equalTo: ContentView.trailingAnchor, constant: -20),
-            confirmPasswordTextFeild.leadingAnchor.constraint(equalTo: ContentView.leadingAnchor, constant: 20),
-            confirmPasswordTextFeild.heightAnchor.constraint(equalToConstant: 45),
+//            fullnameTextFeild.topAnchor.constraint(equalTo: signUPImage.bottomAnchor, constant: 20),
+//            fullnameTextFeild.trailingAnchor.constraint(equalTo: ContentView.trailingAnchor, constant: -20),
+//            fullnameTextFeild.leadingAnchor.constraint(equalTo: ContentView.leadingAnchor, constant: 20),
+//            fullnameTextFeild.heightAnchor.constraint(equalToConstant: 45),
+//
+//            emailTextFeild.topAnchor.constraint(equalTo: fullnameTextFeild.bottomAnchor, constant: 15),
+//            emailTextFeild.trailingAnchor.constraint(equalTo: ContentView.trailingAnchor, constant: -20),
+//            emailTextFeild.leadingAnchor.constraint(equalTo: ContentView.leadingAnchor, constant: 20),
+//            emailTextFeild.heightAnchor.constraint(equalToConstant: 45),
+//
+//            phoneTextFeild.topAnchor.constraint(equalTo: emailTextFeild.bottomAnchor, constant: 15),
+//            phoneTextFeild.trailingAnchor.constraint(equalTo: ContentView.trailingAnchor, constant: -20),
+//            phoneTextFeild.leadingAnchor.constraint(equalTo: ContentView.leadingAnchor, constant: 20),
+//            phoneTextFeild.heightAnchor.constraint(equalToConstant: 45),
+//
+//            usernameTextFeild.topAnchor.constraint(equalTo: phoneTextFeild.bottomAnchor, constant: 15),
+//            usernameTextFeild.trailingAnchor.constraint(equalTo: ContentView.trailingAnchor, constant: -20),
+//            usernameTextFeild.leadingAnchor.constraint(equalTo: ContentView.leadingAnchor, constant: 20),
+//            usernameTextFeild.heightAnchor.constraint(equalToConstant: 45),
+//
+//            passwordTextFeild.topAnchor.constraint(equalTo: usernameTextFeild.bottomAnchor, constant: 15),
+//            passwordTextFeild.trailingAnchor.constraint(equalTo: ContentView.trailingAnchor, constant: -20),
+//            passwordTextFeild.leadingAnchor.constraint(equalTo: ContentView.leadingAnchor, constant: 20),
+//            passwordTextFeild.heightAnchor.constraint(equalToConstant: 45),
+//
+//            confirmPasswordTextFeild.topAnchor.constraint(equalTo: passwordTextFeild.bottomAnchor, constant: 15),
+//            confirmPasswordTextFeild.trailingAnchor.constraint(equalTo: ContentView.trailingAnchor, constant: -20),
+//            confirmPasswordTextFeild.leadingAnchor.constraint(equalTo: ContentView.leadingAnchor, constant: 20),
+//            confirmPasswordTextFeild.heightAnchor.constraint(equalToConstant: 45),
             
         ])
     }
     
     private func configSignUPBtn() {
         
-        NSLayoutConstraint.activate([
-            signUpBtn.topAnchor.constraint(equalTo: confirmPasswordTextFeild.bottomAnchor, constant: 20),
-            signUpBtn.trailingAnchor.constraint(equalTo: ContentView.trailingAnchor, constant: -20),
-            signUpBtn.leadingAnchor.constraint(equalTo: ContentView.leadingAnchor, constant: 20),
-            signUpBtn.heightAnchor.constraint(equalToConstant: 50)
-        ])
+//        NSLayoutConstraint.activate([
+//            signUpBtn.topAnchor.constraint(equalTo: signUpView.bottomAnchor, constant: 20),
+//            signUpBtn.trailingAnchor.constraint(equalTo: ContentView.trailingAnchor, constant: -20),
+//            signUpBtn.leadingAnchor.constraint(equalTo: ContentView.leadingAnchor, constant: 20),
+//            signUpBtn.heightAnchor.constraint(equalToConstant: 50)
+//        ])
     }
 }
 
