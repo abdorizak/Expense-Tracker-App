@@ -30,7 +30,7 @@ class LoginVC: UIViewController {
     let loginBtn            = EButton(backgroundColor: .link,
                                       title: "Login",
                                       TextStyle: .headline)
-    let singUpbtn           = EButton(titleColor: .link, title: "SingUp Now")
+    let singUpbtn           = EButton(titleColor: .link, title: "SignUp Now")
     
 
     var forgetBtnLeadingConstraint: NSLayoutConstraint!
@@ -153,28 +153,6 @@ class LoginVC: UIViewController {
             passwordTextFeild.trailingAnchor.constraint(equalTo: loginFormView.trailingAnchor, constant: -20),
             passwordTextFeild.heightAnchor.constraint(equalToConstant: 50),
             
-//            usernameView.topAnchor.constraint(equalTo: loginglbl.bottomAnchor, constant: 10),
-//            usernameView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-//            usernameView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-//            usernameView.heightAnchor.constraint(equalToConstant: 50),
-//
-//            passwordView.topAnchor.constraint(equalTo: usernameView.bottomAnchor, constant: 10),
-//            passwordView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-//            passwordView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-//            passwordView.heightAnchor.constraint(equalToConstant: 50),
-//
-//            usernameTextFeild.topAnchor.constraint(equalTo: usernameView.topAnchor),
-//            usernameTextFeild.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -6),
-//            usernameTextFeild.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 6),
-//            usernameTextFeild.bottomAnchor.constraint(equalTo: usernameView.bottomAnchor),
-//            usernameTextFeild.heightAnchor.constraint(equalToConstant: 50),
-//
-//            passwordTextFeild.topAnchor.constraint(equalTo: passwordView.topAnchor),
-//            passwordTextFeild.trailingAnchor.constraint(equalTo: passwordView.trailingAnchor, constant: -6),
-//            passwordTextFeild.leadingAnchor.constraint(equalTo: passwordView.leadingAnchor, constant: 6),
-//            passwordTextFeild.bottomAnchor.constraint(equalTo: passwordView.bottomAnchor),
-//            passwordTextFeild.heightAnchor.constraint(equalToConstant: 50),
-            
         ])
     }
     
@@ -214,7 +192,7 @@ class LoginVC: UIViewController {
     
     @objc private func pushSingUpVC() {
         let singUPVC = UINavigationController(rootViewController: SingUpVC())
-        singUPVC.modalPresentationStyle = .fullScreen
+        singUPVC.modalPresentationStyle = .popover
         singUPVC.modalTransitionStyle   = .coverVertical
         present(singUPVC, animated: true, completion: nil)
     }
