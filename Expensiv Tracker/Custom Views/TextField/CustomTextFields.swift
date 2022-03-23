@@ -28,7 +28,7 @@ class CustomTextFields: UITextField {
     
     func configpass() {
         translatesAutoresizingMaskIntoConstraints = false        
-        layer.cornerRadius      = 5
+//        layer.cornerRadius      = 5
         
         textColor               = .label
         tintColor               = .label
@@ -37,7 +37,7 @@ class CustomTextFields: UITextField {
         font                    = UIFont.systemFont(ofSize: 17)
         minimumFontSize         = 17
         
-        backgroundColor         = .secondarySystemBackground
+        backgroundColor         = .clear
         autocorrectionType      = .no
         returnKeyType           = .go
         clearButtonMode         = .whileEditing
