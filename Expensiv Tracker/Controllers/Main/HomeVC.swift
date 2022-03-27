@@ -106,7 +106,10 @@ class HomeVC: UIViewController {
     }
     
     @objc func didTapSetting() {
-        print("Tapped....")
+        let profileVC = ProfileVC()
+        profileVC.modalPresentationStyle    = .popover
+        profileVC.modalTransitionStyle      = .coverVertical
+        present(profileVC, animated: true)
     }
     
     private func ConfigureHeaderElements() {
@@ -134,8 +137,8 @@ class HomeVC: UIViewController {
             
             profile.centerYAnchor.constraint(equalTo: userImage.centerYAnchor),
             profile.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -10),
-            profile.widthAnchor.constraint(equalToConstant: 40),
-            profile.heightAnchor.constraint(equalToConstant: 40)
+            profile.widthAnchor.constraint(equalToConstant: 30),
+            profile.heightAnchor.constraint(equalToConstant: 30)
         ])
         
     }
