@@ -14,7 +14,7 @@ final class AuthManager {
     private init() {}
     
     var isSingedIn: Bool {
-        return false
+        return true
     }
     
     private var accessToken: String? {
