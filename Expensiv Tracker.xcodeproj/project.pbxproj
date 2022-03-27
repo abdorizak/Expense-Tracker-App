@@ -13,6 +13,8 @@
 		101EA9D527E250DA00E9534C /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101EA9D427E250DA00E9534C /* GradientButton.swift */; };
 		101EA9D827E50D9E00E9534C /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 101EA9D727E50D9E00E9534C /* Charts */; };
 		10A8870827E86A6C0001794B /* UITextFeild+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8870727E86A6C0001794B /* UITextFeild+Ext.swift */; };
+		10A8870A27EF5D060001794B /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8870927EF5D060001794B /* DatePicker.swift */; };
+		10A8872C27F0B4AA0001794B /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8872B27F0B4AA0001794B /* ProfileVC.swift */; };
 		10C5B3A327CDEEDD00B60A4A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3A227CDEEDD00B60A4A /* User.swift */; };
 		10C5B3A527CDF09500B60A4A /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3A427CDF09500B60A4A /* AppError.swift */; };
 		10C5B3A727CDF13100B60A4A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3A627CDF13000B60A4A /* Constants.swift */; };
@@ -45,6 +47,8 @@
 		101EA9D227E1253600E9534C /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		101EA9D427E250DA00E9534C /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		10A8870727E86A6C0001794B /* UITextFeild+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextFeild+Ext.swift"; sourceTree = "<group>"; };
+		10A8870927EF5D060001794B /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
+		10A8872B27F0B4AA0001794B /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		10C5B3A227CDEEDD00B60A4A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		10C5B3A427CDF09500B60A4A /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		10C5B3A627CDF13000B60A4A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 				10EEDF8A27CD05AD00BC03D3 /* HomeVC.swift */,
 				10C5B3C427D0E0B600B60A4A /* AddIncomeAndExpensesVC.swift */,
 				10C5B3C927D0E20000B60A4A /* TransectionsVC.swift */,
+				10A8872B27F0B4AA0001794B /* ProfileVC.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -278,6 +283,7 @@
 			children = (
 				10C5B3A427CDF09500B60A4A /* AppError.swift */,
 				10C5B3A627CDF13000B60A4A /* Constants.swift */,
+				10A8870927EF5D060001794B /* DatePicker.swift */,
 			);
 			path = Utilits;
 			sourceTree = "<group>";
@@ -361,6 +367,7 @@
 				10C5B3BE27CE39C600B60A4A /* CustomLabel.swift in Sources */,
 				10EEDF8B27CD05AD00BC03D3 /* HomeVC.swift in Sources */,
 				10C5B3CC27D209AF00B60A4A /* UIViewController+Ext.swift in Sources */,
+				10A8872C27F0B4AA0001794B /* ProfileVC.swift in Sources */,
 				10C5B3B327CE048200B60A4A /* UIView+Ext.swift in Sources */,
 				10C5B3BB27CE32B500B60A4A /* PasswordTextField.swift in Sources */,
 				10C5B3C127CFF09300B60A4A /* ForgetPasswordVC.swift in Sources */,
@@ -373,6 +380,7 @@
 				10EEDF8727CD05AD00BC03D3 /* AppDelegate.swift in Sources */,
 				10C5B3A727CDF13100B60A4A /* Constants.swift in Sources */,
 				10C5B3CA27D0E20000B60A4A /* TransectionsVC.swift in Sources */,
+				10A8870A27EF5D060001794B /* DatePicker.swift in Sources */,
 				10C5B3AF27CDFB3D00B60A4A /* LoginVC.swift in Sources */,
 				10A8870827E86A6C0001794B /* UITextFeild+Ext.swift in Sources */,
 				10C5B3A327CDEEDD00B60A4A /* User.swift in Sources */,
