@@ -19,7 +19,17 @@ class AddIncomeAndExpensesVC: UIViewController {
     private let itemView4 = CustomView(frame: .zero)
     private let itemView5 = CustomView(frame: .zero)
     
-    // MARK: TextField
+    // MARK: DatePicker, TextField, Button
+    private lazy var dateTimePicker: DateTimePicker = {
+       let picker = DateTimePicker()
+        picker.setup()
+        picker.didSelectDates = { [weak self] date in
+            let text = Date.buildTimeRangeString(date: date)
+            self?.dateTextField.text = text
+        }
+        return picker
+    }()
+    
     private let expensesAndIncomeTextField: UITextField = {
         let textField = UITextField(frame: .zero)
         textField.borderStyle = .none
@@ -72,14 +82,13 @@ class AddIncomeAndExpensesVC: UIViewController {
         date.clearsOnBeginEditing = true
         date.textAlignment = .center
         date.placeholder = "Date"
+        date.adjustsFontSizeToFitWidth = true
         date.font = UIFont.systemFont(ofSize: 20)
         date.translatesAutoresizingMaskIntoConstraints = false
         return date
     }()
     
     private let SaveButton = GradientButton(frame: .zero)
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,7 +99,11 @@ class AddIncomeAndExpensesVC: UIViewController {
     
     private func configureAddVC() {
         view.backgroundColor = .systemBackground
+        dateTextField.inputView = dateTimePicker.inputView
         view.addSubViews(EIlabel, itemView1, itemView2, itemView3, itemView4, itemView5, SaveButton)
+        let tap  = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+
     }
     
     
