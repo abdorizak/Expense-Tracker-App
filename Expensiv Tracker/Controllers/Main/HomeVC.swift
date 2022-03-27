@@ -106,10 +106,10 @@ class HomeVC: UIViewController {
     }
     
     @objc func didTapSetting() {
-        let profileVC = ProfileVC()
-        profileVC.modalPresentationStyle    = .popover
-        profileVC.modalTransitionStyle      = .coverVertical
-        present(profileVC, animated: true)
+        let profileVC = UINavigationController(rootViewController: ProfileVC())
+        profileVC.modalPresentationStyle = .popover
+        profileVC.modalTransitionStyle   = .coverVertical
+        present(profileVC, animated: true, completion: nil)
     }
     
     private func ConfigureHeaderElements() {
