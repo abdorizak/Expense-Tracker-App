@@ -7,15 +7,28 @@
 
 import UIKit
 
+// MARK: - Sections
+struct Sections {
+    let options: [SettingOpetions]
+}
+
+struct SettingOpetions {
+    let title: String
+    let handler: (() -> Void)?
+}
+
 class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     let test = ["Item 1", "Item 1", "Item 1", "Item 1", "Item 1"]
+
+    var models: [Sections] = []
     
     // MARK: - TableView
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        
         return tableView
     }()
     
@@ -35,6 +48,17 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     private func configTableView() {
+        models.append(Sections(options: [
+            SettingOpetions(title: "TestOne", handler: nil),
+            SettingOpetions(title: "TestOne", handler: nil),
+            SettingOpetions(title: "TestOne", handler: nil),
+            SettingOpetions(title: "TestOne", handler: nil)
+        ]))
+        
+        models.append(Sections(options: [
+            SettingOpetions(title: "TestOne", handler: nil),
+            SettingOpetions(title: "TestOne", handler: nil)
+        ]))
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -43,42 +67,38 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         ])
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "View"
-    }
     
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            return 90
-        }
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-            guard let header = view as? UITableViewHeaderFooterView else { return }
-            
-//            header.backgroundColor = UIColor.red
-        header.textLabel?.font = .systemFont(ofSize: 18, weight: .regular)
-        header.textLabel?.frame = CGRect(x: header.bounds.origin.x + 20, y: header.bounds.origin.y + 20, width: 100, height: header.bounds.height)
-        header.textLabel?.textColor = .label
-        header.textLabel?.text = "HI"
-        }
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let vw = UIView()
-//        vw.backgroundColor = UIColor.tertiarySystemBackground
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "View"
+//    }
+    
+    
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 90
+//    }
 //
-//        return vw
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let v = UIView(frame: .zero)
+//        v.backgroundColor = .clear
+//        return v
 //    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        1
+        models.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        test.count
+        models[section].options.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = models[indexPath.section].options[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = test[indexPath.row]
-        return cell
+        cell.textLabel?.text = model.title
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 22)
+            return cell
     }
 
 }
+
