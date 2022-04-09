@@ -19,6 +19,13 @@ enum Images {
     static let login_Image           = UIImage(named: "Login_logo")
     static let singup_Image          = UIImage(named: "singUp")
     static let forgetpassword_Image  = UIImage(named: "Forgetpass")
+    
+    static let edityourProfile       = UIImage(systemName: "slider.horizontal.3")
+    static let changePassword        = UIImage(systemName: "key.fill")
+    static let userStatementIcon     = UIImage(systemName: "newspaper.fill")
+    
+    static let fAQs                  = UIImage(systemName: "ellipsis.circle.fill")
+    static let aboutUs               = UIImage(systemName: "hand.point.up.braille.fill")
 }
 
 
