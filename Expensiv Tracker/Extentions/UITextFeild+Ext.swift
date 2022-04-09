@@ -13,6 +13,7 @@ enum LinePosition {
 }
 
 extension UIView {
+    
     func addLine(position: LinePosition, color: UIColor, width: Double) {
         let lineView = UIView()
         lineView.backgroundColor = color
@@ -32,4 +33,5 @@ extension UIView {
             break
         }
     }
+    
 }
