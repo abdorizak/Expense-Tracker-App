@@ -36,6 +36,12 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         configProfileVC()
         configTableView()
+        setupTableHeaderView()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.frame = view.bounds
     }
     
     private func configProfileVC() {
@@ -43,8 +49,15 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        navigationItem.title = "Profile"
-        
+        title = "Profile"
+    }
+    
+    private func setupTableHeaderView() {
+        let header = ProfileHeaderView(frame: .zero)
+        var size = header.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        size.width = UIScreen.main.bounds.width
+        header.frame.size = size
+        tableView.tableHeaderView = header
     }
     
     private func configTableView() {
@@ -57,32 +70,18 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         models.append(Sections(options: [
             SettingOpetions(title: "TestOne", handler: nil),
+            SettingOpetions(title: "TestOne", handler: nil),
+            SettingOpetions(title: "TestOne", handler: nil),
             SettingOpetions(title: "TestOne", handler: nil)
         ]))
+        
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
-    
-    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return "View"
-//    }
-    
-    
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 90
-//    }
-//
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let v = UIView(frame: .zero)
-//        v.backgroundColor = .clear
-//        return v
-//    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         models.count
@@ -97,7 +96,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = model.title
         cell.textLabel?.font = UIFont.systemFont(ofSize: 22)
-            return cell
+        return cell
     }
 
 }
