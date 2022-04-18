@@ -17,19 +17,8 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="imK-Ok-s9x">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
-                </stackView>
-            </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="imK-Ok-s9x" secondAttribute="trailing" id="2fZ-mf-5Qt"/>
-                <constraint firstItem="imK-Ok-s9x" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Krm-s8-kHR"/>
-                <constraint firstItem="imK-Ok-s9x" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="RVF-X0-YpE"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="imK-Ok-s9x" secondAttribute="bottom" id="mXS-hE-ZZe"/>
-            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="137.68115942028987" y="109.82142857142857"/>
         </view>
