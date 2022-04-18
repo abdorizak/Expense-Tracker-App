@@ -47,11 +47,6 @@ class ProfileHeaderView: UIView {
             userImage.layer.cornerRadius = 70
             userImage.clipsToBounds = true
             
-            contentView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-            contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-            contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-            contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-            
             
             NSLayoutConstraint.activate([
                 
@@ -61,15 +56,13 @@ class ProfileHeaderView: UIView {
                 contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
                 
                 userImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
-                userImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 133),
-                userImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -133),
+                userImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
                 userImage.heightAnchor.constraint(equalToConstant: 150),
                 userImage.widthAnchor.constraint(equalToConstant: 150),
                 
                 user_fullName.topAnchor.constraint(equalTo: userImage.bottomAnchor, constant: 20),
-                user_fullName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-                user_fullName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-                user_fullName.widthAnchor.constraint(equalToConstant: 24)
+                user_fullName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+                user_fullName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
                 
             ])
             
