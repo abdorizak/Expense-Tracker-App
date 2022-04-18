@@ -92,10 +92,6 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = models[indexPath.section].options[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-//        cell.textLabel?.text = model.title
-//        cell.textLabel?.font = UIFont.systemFont(ofSize: 20)
-//        cell.imageView?.image = UIImage(systemName: "house")
-//        cell.imageView?.tintColor = .systemBlue
         var content = cell.defaultContentConfiguration()
         content.text = model.title
         content.image = UIImage(systemName: "house")
