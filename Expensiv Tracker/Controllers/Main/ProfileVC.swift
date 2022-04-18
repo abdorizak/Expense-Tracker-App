@@ -28,7 +28,6 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        
         return tableView
     }()
     
@@ -62,10 +61,9 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private func configTableView() {
         models.append(Sections(options: [
-            SettingOpetions(title: "TestOne", handler: nil),
-            SettingOpetions(title: "TestOne", handler: nil),
-            SettingOpetions(title: "TestOne", handler: nil),
-            SettingOpetions(title: "TestOne", handler: nil)
+            SettingOpetions(title: "Edit Profile", handler: nil),
+            SettingOpetions(title: "E-Statement", handler: nil),
+            SettingOpetions(title: "Change Password", handler: nil),
         ]))
         
         models.append(Sections(options: [
@@ -94,8 +92,15 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = models[indexPath.section].options[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = model.title
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 22)
+//        cell.textLabel?.text = model.title
+//        cell.textLabel?.font = UIFont.systemFont(ofSize: 20)
+//        cell.imageView?.image = UIImage(systemName: "house")
+//        cell.imageView?.tintColor = .systemBlue
+        var content = cell.defaultContentConfiguration()
+        content.text = model.title
+        content.image = UIImage(systemName: "house")
+        content.imageProperties.tintColor = .systemBlue
+        cell.contentConfiguration = content
         return cell
     }
 
