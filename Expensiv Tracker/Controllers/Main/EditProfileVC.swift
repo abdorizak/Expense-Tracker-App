@@ -11,6 +11,6 @@ class EditProfileVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackgroundu
+        view.backgroundColor = .systemBackground
     }
 }
