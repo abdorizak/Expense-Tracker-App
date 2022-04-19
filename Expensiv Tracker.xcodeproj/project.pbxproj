@@ -12,6 +12,9 @@
 		101EA9D327E1253600E9534C /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101EA9D227E1253600E9534C /* CustomView.swift */; };
 		101EA9D527E250DA00E9534C /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101EA9D427E250DA00E9534C /* GradientButton.swift */; };
 		101EA9D827E50D9E00E9534C /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 101EA9D727E50D9E00E9534C /* Charts */; };
+		106BC1C9280E92D900ADB75C /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106BC1C8280E92D900ADB75C /* EditProfileVC.swift */; };
+		106BC1CB280E930500ADB75C /* UserStatementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106BC1CA280E930500ADB75C /* UserStatementVC.swift */; };
+		106BC1CD280E932500ADB75C /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106BC1CC280E932500ADB75C /* ChangePasswordVC.swift */; };
 		1082FE0D28058E3300538FFE /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1082FE0C28058E3300538FFE /* ProfileHeaderView.swift */; };
 		1082FE0F28058E5700538FFE /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1082FE0E28058E5700538FFE /* ProfileHeaderView.xib */; };
 		10A8870827E86A6C0001794B /* UITextFeild+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8870727E86A6C0001794B /* UITextFeild+Ext.swift */; };
@@ -49,6 +52,9 @@
 		1008990D27D9E95500A94B4F /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		101EA9D227E1253600E9534C /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		101EA9D427E250DA00E9534C /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
+		106BC1C8280E92D900ADB75C /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
+		106BC1CA280E930500ADB75C /* UserStatementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatementVC.swift; sourceTree = "<group>"; };
+		106BC1CC280E932500ADB75C /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		1082FE0C28058E3300538FFE /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		1082FE0E28058E5700538FFE /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		10A8870727E86A6C0001794B /* UITextFeild+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextFeild+Ext.swift"; sourceTree = "<group>"; };
@@ -189,6 +195,9 @@
 				10C5B3C427D0E0B600B60A4A /* AddIncomeAndExpensesVC.swift */,
 				10C5B3C927D0E20000B60A4A /* TransectionsVC.swift */,
 				10A8872B27F0B4AA0001794B /* ProfileVC.swift */,
+				106BC1C8280E92D900ADB75C /* EditProfileVC.swift */,
+				106BC1CA280E930500ADB75C /* UserStatementVC.swift */,
+				106BC1CC280E932500ADB75C /* ChangePasswordVC.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -403,6 +412,7 @@
 				10A8870A27EF5D060001794B /* DatePicker.swift in Sources */,
 				10C5B3AF27CDFB3D00B60A4A /* LoginVC.swift in Sources */,
 				10A8870827E86A6C0001794B /* UITextFeild+Ext.swift in Sources */,
+				106BC1CD280E932500ADB75C /* ChangePasswordVC.swift in Sources */,
 				10C5B3A327CDEEDD00B60A4A /* User.swift in Sources */,
 				10C5B3CE27D3C30600B60A4A /* CustomTextFields.swift in Sources */,
 				10C5B3C527D0E0B600B60A4A /* AddIncomeAndExpensesVC.swift in Sources */,
@@ -412,7 +422,9 @@
 				10EEDF8927CD05AD00BC03D3 /* SceneDelegate.swift in Sources */,
 				1008990E27D9E95500A94B4F /* AvatarImageView.swift in Sources */,
 				10C5B3D427D520E400B60A4A /* CardView.swift in Sources */,
+				106BC1C9280E92D900ADB75C /* EditProfileVC.swift in Sources */,
 				10C5B3B927CE300000B60A4A /* EButton.swift in Sources */,
+				106BC1CB280E930500ADB75C /* UserStatementVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
