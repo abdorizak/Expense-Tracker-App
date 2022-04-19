@@ -13,8 +13,9 @@ struct Sections {
 }
 
 struct SettingOpetions {
+    let icon: UIImage?
     let title: String
-    let handler: (() -> Void)?
+    let handler: () -> Void?
 }
 
 class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -61,16 +62,22 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private func configTableView() {
         models.append(Sections(options: [
-            SettingOpetions(title: "Edit Profile", handler: nil),
-            SettingOpetions(title: "E-Statement", handler: nil),
-            SettingOpetions(title: "Change Password", handler: nil),
+            SettingOpetions(icon: Images.edityourProfile, title: "Edit Profile", handler: {
+                print("a")
+            }),
+            SettingOpetions(icon: Images.userStatementIcon, title: "E-Statement", handler: {
+                print("a")
+            }),
+            SettingOpetions(icon: Images.changePassword, title: "Change Password", handler: {
+                print("a")
+            }),
         ]))
         
         models.append(Sections(options: [
-            SettingOpetions(title: "TestOne", handler: nil),
-            SettingOpetions(title: "TestOne", handler: nil),
-            SettingOpetions(title: "TestOne", handler: nil),
-            SettingOpetions(title: "TestOne", handler: nil)
+//            SettingOpetions(icon: <#UIImage#>, title: "TestOne", handler: nil),
+//            SettingOpetions(icon: <#UIImage#>, title: "TestOne", handler: nil),
+//            SettingOpetions(icon: <#UIImage#>, title: "TestOne", handler: nil),
+//            SettingOpetions(icon: <#UIImage#>, title: "TestOne", handler: nil)
         ]))
         
         NSLayoutConstraint.activate([
@@ -94,10 +101,17 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         var content = cell.defaultContentConfiguration()
         content.text = model.title
-        content.image = UIImage(systemName: "house")
+        content.image = model.icon
         content.imageProperties.tintColor = .systemBlue
         cell.contentConfiguration = content
+        cell.selectionStyle = .none
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let model = models[indexPath.section].options[indexPath.row]
+        model.handler()
     }
 
 }
