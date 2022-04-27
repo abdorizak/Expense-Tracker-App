@@ -65,7 +65,7 @@ class HomeVC: UIViewController {
     
     private let tableView: UITableView  = {
         let table = UITableView()
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(TransectionTableViewCell.self, forCellReuseIdentifier: TransectionTableViewCell.identifier)
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
@@ -80,6 +80,7 @@ class HomeVC: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
         tableView.delegate   = self
         tableView.dataSource = self
+        
         view.addSubViews(headerView, balanceInfo, transectionsLabel, tableView)
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapSetting))
         profile.addGestureRecognizer(tap)
@@ -235,13 +236,18 @@ class HomeVC: UIViewController {
 
 
 extension HomeVC: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        80
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        0
+        5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: TransectionTableViewCell.identifier, for: indexPath) as! TransectionTableViewCell
+        return cell
     }
     
     
