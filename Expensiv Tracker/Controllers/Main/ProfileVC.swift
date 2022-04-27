@@ -74,10 +74,12 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         ]))
         
         models.append(Sections(options: [
-//            SettingOpetions(icon: <#UIImage#>, title: "TestOne", handler: nil),
-//            SettingOpetions(icon: <#UIImage#>, title: "TestOne", handler: nil),
-//            SettingOpetions(icon: <#UIImage#>, title: "TestOne", handler: nil),
-//            SettingOpetions(icon: <#UIImage#>, title: "TestOne", handler: nil)
+            SettingOpetions(icon: Images.aboutUs, title: "About us", handler: {
+                print("a")
+            }),
+            SettingOpetions(icon: Images.logout, title: "Logout", handler: {
+                print("")
+            })
         ]))
         
         NSLayoutConstraint.activate([
