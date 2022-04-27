@@ -24,8 +24,8 @@ enum Images {
     static let changePassword        = UIImage(systemName: "key.fill")
     static let userStatementIcon     = UIImage(systemName: "newspaper.fill")
     
-    static let fAQs                  = UIImage(systemName: "ellipsis.circle.fill")
     static let aboutUs               = UIImage(systemName: "hand.point.up.braille.fill")
+    static let logout                = UIImage(systemName: "rectangle.portrait.and.arrow.right.fill")
 }
 
 
