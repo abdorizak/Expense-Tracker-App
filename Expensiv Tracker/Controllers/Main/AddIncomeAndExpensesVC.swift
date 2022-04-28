@@ -9,6 +9,10 @@ import UIKit
 
 class AddIncomeAndExpensesVC: UIViewController {
     
+    // MARK: ScrollView
+    let scrollView          = UIScrollView()
+    let contentView         = UIView()
+    
     // MARK: Label
     private let EIlabel = CustomLabel(textAlignment: .center, fontSize: 22, textWeight: .medium, text: "Add Income or Expenses")
     
@@ -92,15 +96,28 @@ class AddIncomeAndExpensesVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        ConfigureScrollView()
         configureAddVC()
         expensesAndIncomeTextfields()
         configFrom()
     }
     
+    private func ConfigureScrollView() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        scrollView.pinToEdges(to: view)
+        contentView.pinToEdges(to: scrollView)
+        
+        NSLayoutConstraint.activate([
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.heightAnchor.constraint(equalToConstant: 800)
+        ])
+    }
+    
     private func configureAddVC() {
         view.backgroundColor = .systemBackground
         dateTextField.inputView = dateTimePicker.inputView
-        view.addSubViews(EIlabel, itemView1, itemView2, itemView3, itemView4, itemView5, SaveButton)
+        contentView.addSubViews(EIlabel, itemView1, itemView2, itemView3, itemView4, itemView5, SaveButton)
         let tap  = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
 
@@ -112,15 +129,15 @@ class AddIncomeAndExpensesVC: UIViewController {
         itemView1.addSubview(expensesAndIncomeTextField)
         
         NSLayoutConstraint.activate([
-            EIlabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
-            EIlabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            EIlabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            EIlabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 40),
+            EIlabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            EIlabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             EIlabel.heightAnchor.constraint(equalToConstant: 24),
             
             
             itemView1.topAnchor.constraint(equalTo: EIlabel.bottomAnchor, constant: 30),
-            itemView1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            itemView1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            itemView1.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50),
+            itemView1.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 50),
             itemView1.heightAnchor.constraint(equalToConstant: 80),
             
             expensesAndIncomeTextField.topAnchor.constraint(equalTo: itemView1.topAnchor),
@@ -151,23 +168,23 @@ class AddIncomeAndExpensesVC: UIViewController {
         
         NSLayoutConstraint.activate([
             itemView2.topAnchor.constraint(equalTo: itemView1.bottomAnchor, constant: 30),
-            itemView2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            itemView2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            itemView2.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
+            itemView2.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
             itemView2.heightAnchor.constraint(equalToConstant: 60),
             
             itemView3.topAnchor.constraint(equalTo: itemView2.bottomAnchor, constant: 30),
-            itemView3.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            itemView3.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            itemView3.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
+            itemView3.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
             itemView3.heightAnchor.constraint(equalToConstant: 60),
             
             itemView4.topAnchor.constraint(equalTo: itemView3.bottomAnchor, constant: 30),
-            itemView4.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            itemView4.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            itemView4.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
+            itemView4.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
             itemView4.heightAnchor.constraint(equalToConstant: 60),
             
             itemView5.topAnchor.constraint(equalTo: itemView4.bottomAnchor, constant: 30),
-            itemView5.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            itemView5.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            itemView5.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
+            itemView5.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
             itemView5.heightAnchor.constraint(equalToConstant: 60),
             
             categoryTextField.topAnchor.constraint(equalTo: itemView2.topAnchor),
