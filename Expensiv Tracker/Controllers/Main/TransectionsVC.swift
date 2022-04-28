@@ -41,6 +41,9 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
         return linechart
     }()
     
+    let scrollView          = UIScrollView()
+    let contentView         = UIView()
+    
     lazy var segment: UISegmentedControl = {
         let items = ["Income", "Expenses"]
         let segment = UISegmentedControl(items: items)
@@ -56,9 +59,22 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        ConfigureScrollView()
         configTransectionsVC()
         configSegment()
         configChartView()
+    }
+    
+    private func ConfigureScrollView() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        scrollView.pinToEdges(to: view)
+        contentView.pinToEdges(to: scrollView)
+        
+        NSLayoutConstraint.activate([
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.heightAnchor.constraint(equalToConstant: 800)
+        ])
     }
     
     
@@ -68,7 +84,7 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
         navigationItem.title = "Transections"
         navigationItem.largeTitleDisplayMode  = .always
         navigationController?.navigationBar.prefersLargeTitles = true
-        view.addSubViews(segment, chartView)
+        contentView.addSubViews(segment, chartView)
     }
     
     @objc func siutDidChange(_ segmentController: UISegmentedControl) {
@@ -83,9 +99,9 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
     
     private func configSegment() {
         NSLayoutConstraint.activate([
-            segment.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            segment.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            segment.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            segment.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 10),
+            segment.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50),
+            segment.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 50),
             segment.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
@@ -189,8 +205,8 @@ extension TransectionsVC {
         
         NSLayoutConstraint.activate([
             chartView.topAnchor.constraint(equalTo: segment.bottomAnchor, constant: 20),
-            chartView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            chartView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            chartView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            chartView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             chartView.heightAnchor.constraint(equalToConstant: 300),
             
             lineChart.topAnchor.constraint(equalTo: chartView.topAnchor),
