@@ -67,6 +67,7 @@ class HomeVC: UIViewController {
         let table = UITableView()
         table.register(TransectionTableViewCell.self, forCellReuseIdentifier: TransectionTableViewCell.identifier)
         table.translatesAutoresizingMaskIntoConstraints = false
+        table.separatorStyle = .none
         return table
     }()
 
@@ -247,6 +248,7 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TransectionTableViewCell.identifier, for: indexPath) as! TransectionTableViewCell
+        cell.selectionStyle = .none
         return cell
     }
     
