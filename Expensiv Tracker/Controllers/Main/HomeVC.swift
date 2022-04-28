@@ -229,7 +229,7 @@ class HomeVC: UIViewController {
             tableView.topAnchor.constraint(equalTo: transectionsLabel.bottomAnchor, constant: 10),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
