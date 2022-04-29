@@ -108,9 +108,11 @@ class AddIncomeAndExpensesVC: UIViewController {
         scrollView.pinToEdges(to: view)
         contentView.pinToEdges(to: scrollView)
         
+        let contentView_height = CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 800 : 650)
+        
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            contentView.heightAnchor.constraint(equalToConstant: 800)
+            contentView.heightAnchor.constraint(equalToConstant: contentView_height)
         ])
     }
     
@@ -165,6 +167,7 @@ class AddIncomeAndExpensesVC: UIViewController {
         // btn
         SaveButton.setTitle("Save", for: .normal)
         
+        let top_anchor = CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 30)
         
         NSLayoutConstraint.activate([
             itemView2.topAnchor.constraint(equalTo: itemView1.bottomAnchor, constant: 30),
@@ -207,9 +210,9 @@ class AddIncomeAndExpensesVC: UIViewController {
             dateTextField.leadingAnchor.constraint(equalTo: itemView5.leadingAnchor),
             dateTextField.heightAnchor.constraint(equalToConstant: 60),
             
-            SaveButton.topAnchor.constraint(equalTo: dateTextField.bottomAnchor, constant: 80),
-            SaveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
-            SaveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
+            SaveButton.topAnchor.constraint(equalTo: dateTextField.bottomAnchor, constant: top_anchor),
+            SaveButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -100),
+            SaveButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 100),
             SaveButton.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
