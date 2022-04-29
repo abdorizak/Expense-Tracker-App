@@ -71,9 +71,11 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
         scrollView.pinToEdges(to: view)
         contentView.pinToEdges(to: scrollView)
         
+        let contentView_height = CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 800 : 650)
+        
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            contentView.heightAnchor.constraint(equalToConstant: 800)
+            contentView.heightAnchor.constraint(equalToConstant: contentView_height)
         ])
     }
     
