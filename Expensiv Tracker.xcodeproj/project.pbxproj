@@ -22,6 +22,7 @@
 		10A8870827E86A6C0001794B /* UITextFeild+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8870727E86A6C0001794B /* UITextFeild+Ext.swift */; };
 		10A8870A27EF5D060001794B /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8870927EF5D060001794B /* DatePicker.swift */; };
 		10A8872C27F0B4AA0001794B /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8872B27F0B4AA0001794B /* ProfileVC.swift */; };
+		10AB7064281BFF6C004BE3D0 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AB7063281BFF6C004BE3D0 /* EditProfileViewController.swift */; };
 		10C5B3A327CDEEDD00B60A4A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3A227CDEEDD00B60A4A /* User.swift */; };
 		10C5B3A527CDF09500B60A4A /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3A427CDF09500B60A4A /* AppError.swift */; };
 		10C5B3A727CDF13100B60A4A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3A627CDF13000B60A4A /* Constants.swift */; };
@@ -63,6 +64,7 @@
 		10A8870727E86A6C0001794B /* UITextFeild+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextFeild+Ext.swift"; sourceTree = "<group>"; };
 		10A8870927EF5D060001794B /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		10A8872B27F0B4AA0001794B /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		10AB7063281BFF6C004BE3D0 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		10C5B3A227CDEEDD00B60A4A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		10C5B3A427CDF09500B60A4A /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		10C5B3A627CDF13000B60A4A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -119,6 +121,14 @@
 			path = ImageView;
 			sourceTree = "<group>";
 		};
+		10523F13281BFE7E00ACC1BB /* ProfileViews */ = {
+			isa = PBXGroup;
+			children = (
+				10AB7063281BFF6C004BE3D0 /* EditProfileViewController.swift */,
+			);
+			path = ProfileViews;
+			sourceTree = "<group>";
+		};
 		10A8872D27F2072B0001794B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +140,7 @@
 		10C5B3A827CDF9AD00B60A4A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				10523F13281BFE7E00ACC1BB /* ProfileViews */,
 				10C5B3AD27CDFB0600B60A4A /* Login SingUp */,
 				10C5B3BF27CFF07400B60A4A /* Forget Password */,
 				10C5B3C827D0E13100B60A4A /* Main */,
@@ -402,6 +413,7 @@
 				10C5B3BB27CE32B500B60A4A /* PasswordTextField.swift in Sources */,
 				10C5B3C127CFF09300B60A4A /* ForgetPasswordVC.swift in Sources */,
 				106531492815AC03009FD888 /* Transection.swift in Sources */,
+				10AB7064281BFF6C004BE3D0 /* EditProfileViewController.swift in Sources */,
 				1008990B27D8C2E600A94B4F /* HeaderVC.swift in Sources */,
 				1082FE0D28058E3300538FFE /* ProfileHeaderView.swift in Sources */,
 				101EA9D527E250DA00E9534C /* GradientButton.swift in Sources */,
