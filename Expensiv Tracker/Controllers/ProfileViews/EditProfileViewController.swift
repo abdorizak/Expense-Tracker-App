@@ -13,7 +13,7 @@ class EditProfileViewController: UIViewController {
         super.viewDidLoad()
         
     }
+
     
-
-
+    
 }
