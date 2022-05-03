@@ -7,10 +7,6 @@
 
 import UIKit
 
-
-
-
-
 struct LoginBody: Codable {
     let username: String
     let password: String
