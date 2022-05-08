@@ -10,8 +10,8 @@ import UIKit
 class LoginVC: UIViewController {
     
     // MARK: - ScrollView And UIViews
-    let scrollView          = UIScrollView()
-    let contentView         = UIView()
+    let scrollView           = UIScrollView()
+    let contentView          = UIView()
     let loginFormView        = UIView()
     
     
@@ -21,7 +21,7 @@ class LoginVC: UIViewController {
     let passwordIcon        = UIImageView()
     
     // MARK: - LOGIN FORM
-    let loginglbl          = CustomLabel(textAlignment: .left, fontSize: 40)
+    let loginglbl           = CustomLabel(textAlignment: .left, fontSize: 40)
     let registeryLabel      = CustomLabel(textAlignment: .left, fontSize: 22)
     let usernameTextFeild   = UsernameTextField(frame: .zero)
     let passwordTextFeild   = PasswordTextField(frame: .zero)
@@ -30,7 +30,7 @@ class LoginVC: UIViewController {
     let loginBtn            = EButton(backgroundColor: .link,
                                       title: "Login",
                                       TextStyle: .headline)
-    let singUpbtn           = EButton(titleColor: .link, title: "SignUp Now")
+    let signUpbtn           = EButton(titleColor: .link, title: "SignUp Now")
     
 
     var forgetBtnLeadingConstraint: NSLayoutConstraint!
@@ -49,9 +49,9 @@ class LoginVC: UIViewController {
     
     private func confgiruVC() {
         view.backgroundColor = .systemBackground
-        contentView.addSubViews(loginImageView, loginglbl, loginFormView, forgetPassword, loginBtn, registeryLabel, singUpbtn)
+        contentView.addSubViews(loginImageView, loginglbl, loginFormView, forgetPassword, loginBtn, registeryLabel, signUpbtn)
         forgetPassword.addTarget(self, action: #selector(pushForgetVC), for: .touchUpInside)
-        singUpbtn.addTarget(self, action: #selector(pushSingUpVC), for: .touchUpInside)
+        signUpbtn.addTarget(self, action: #selector(pushSingUpVC), for: .touchUpInside)
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
@@ -173,14 +173,14 @@ class LoginVC: UIViewController {
         
         NSLayoutConstraint.activate([
             loginBtn.topAnchor.constraint(equalTo: forgetPassword.bottomAnchor, constant: 20),
-            loginBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -90),
-            loginBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 90),
+            loginBtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -90),
+            loginBtn.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 90),
             loginBtn.heightAnchor.constraint(equalToConstant: 50),
             
-            singUpbtn.topAnchor.constraint(equalTo: registeryLabel.bottomAnchor, constant: -22),
-            singUpbtn.leadingAnchor.constraint(equalTo: registeryLabel.trailingAnchor, constant: 6),
-            singUpbtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -100),
-            singUpbtn.heightAnchor.constraint(equalTo: registeryLabel.heightAnchor)
+            signUpbtn.topAnchor.constraint(equalTo: registeryLabel.bottomAnchor, constant: -22),
+            signUpbtn.leadingAnchor.constraint(equalTo: registeryLabel.trailingAnchor, constant: 6),
+            signUpbtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -100),
+            signUpbtn.heightAnchor.constraint(equalTo: registeryLabel.heightAnchor)
             
         ])
     }
