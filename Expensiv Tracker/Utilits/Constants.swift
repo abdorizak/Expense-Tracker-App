@@ -26,6 +26,8 @@ enum Images {
     
     static let aboutUs               = UIImage(systemName: "hand.point.up.braille.fill")
     static let logout                = UIImage(systemName: "rectangle.portrait.and.arrow.right.fill")
+    
+    static let spending_Money        = UIImage(named: "spending_money")
 }
 
 
