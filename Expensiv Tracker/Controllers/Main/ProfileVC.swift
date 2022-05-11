@@ -20,8 +20,6 @@ struct SettingOpetions {
 
 class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    let test = ["Item 1", "Item 1", "Item 1", "Item 1", "Item 1"]
-
     var models: [Sections] = []
     
     // MARK: - TableView
