@@ -16,10 +16,24 @@ class CardView: UIView {
         configCardView()
     }
     
+//    convenience init() {
+//        self.init(frame: .zero)
+//        configWithShadows()
+//    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+//    private func configWithShadows() {
+//        translatesAutoresizingMaskIntoConstraints = false
+//        layer.shadowColor = UIColor.black.cgColor
+//        layer.shadowOffset = .zero
+//        layer.cornerRadius = 12
+//        layer.shadowOpacity = 0.1
+//        layer.shadowRadius = 10
+//    }
+//
     private func configCardView() {
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -27,7 +41,6 @@ class CardView: UIView {
             UIColor.systemOrange.cgColor,
             UIColor.systemPurple.cgColor,
             UIColor.systemTeal.cgColor,
-//            UIColor.systemRed.cgColor,
         ]
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 1, y: 1 )
@@ -40,12 +53,13 @@ class CardView: UIView {
         layer.shadowRadius = 5
         layer.shadowOffset = .zero
         layer.shadowOpacity = 0.2
-        
-        
+
     }
-    
+        
     override func layoutSubviews() {
         super.layoutSubviews()
         gradient.frame = bounds
     }
+    
+    
 }
