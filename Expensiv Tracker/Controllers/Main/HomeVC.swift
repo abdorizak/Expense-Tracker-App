@@ -59,10 +59,7 @@ class HomeVC: UIViewController {
     private let expenseslbl   = CustomLabel(textAlignment: .left, fontSize: 13, textWeight: .light, text: "Expenses")
     private let lastIncome  = CustomLabel(textAlignment: .left, fontSize: 26)
     private let lastExpense = CustomLabel(textAlignment: .left, fontSize: 26)
-    
-    
-    
-    
+     
     private let tableView: UITableView  = {
         let table = UITableView()
         table.register(TransectionTableViewCell.self, forCellReuseIdentifier: TransectionTableViewCell.identifier)
@@ -240,7 +237,7 @@ class HomeVC: UIViewController {
 extension HomeVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        90
+        102
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
