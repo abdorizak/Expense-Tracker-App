@@ -14,7 +14,7 @@ class TransectionTableViewCell: UITableViewCell {
     let cardView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        
+        view.backgroundColor = UIColor(hex: "E5E5DE")
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = .zero
         view.layer.cornerRadius = 15
@@ -50,7 +50,7 @@ class TransectionTableViewCell: UITableViewCell {
             cardView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 10),
             
             
-
+            
         ])
     }
     
