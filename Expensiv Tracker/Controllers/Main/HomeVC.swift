@@ -206,7 +206,6 @@ class HomeVC: UIViewController {
             lastExpense.leadingAnchor.constraint(equalTo: expensesArrowIcon.trailingAnchor, constant: 8),
             lastExpense.trailingAnchor.constraint(equalTo: balanceInfo.trailingAnchor, constant: -20),
             lastExpense.heightAnchor.constraint(equalToConstant: 28),
-
             
         ])
     }
@@ -246,7 +245,7 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TransectionTableViewCell.identifier, for: indexPath) as! TransectionTableViewCell
-        cell.selectionStyle = .none
+        cell.selectionStyle = .gray
         return cell
     }
     
