@@ -14,17 +14,25 @@ class TransectionTableViewCell: UITableViewCell {
     let cardView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(hex: "E5E5DE")
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = .zero
+        view.backgroundColor = .label
+//        view.layer.shadowColor = UIColor.black.cgColor
+//        view.layer.shadowOffset = .zero
         view.layer.cornerRadius = 15
-        view.layer.shadowOpacity = 0.1
-        view.layer.shadowRadius = 10
+//        view.layer.shadowOpacity = 0.1
+//        view.layer.shadowRadius = 10
         return view
     }()
-    let iconImage = AvatarImageView(frame: .zero)
+//    let iconImage = AvatarImageView(frame: .zero)
     let titleLabel = CustomLabel(textAlignment: .left, fontSize: 20, textWeight: .heavy, text: "Hayaat Market")
     let descriptionLabel = CustomLabel(textAlignment: .left, fontSize: 18, textWeight: .heavy, text: "Waxaa soo Gatay 3 Shaati")
+    let typeTransectionView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(hex: "5af857")
+        view.layer.cornerRadius = 15
+        return view
+    }()
+    let typeTransection  = CustomLabel(textAlignment: .center, fontSize: 14, textWeight: .semibold, text: "Income")
     let AmountLabel = CustomLabel(textAlignment: .left, fontSize: 18, textWeight: .heavy, text: "$200")
     let dateLabel = CustomLabel(textAlignment: .left, fontSize: 18, textWeight: .heavy, text: "04/04/2022")
     
@@ -38,18 +46,16 @@ class TransectionTableViewCell: UITableViewCell {
     }
     
     func config() {
-        iconImage.image = Images.spending_Money
-        iconImage.layer.cornerRadius = iconImage.frame.width / 2
+//        contentView.backgroundColor = .blue
         contentView.addSubview(cardView)
-        
-        
+//        cardView.addSubViews(titleLabel, descriptionLabel)
         NSLayoutConstraint.activate([
-            cardView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            cardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -14),
-            cardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 14),
-            cardView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 10),
+            cardView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            cardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            cardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            cardView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
-            
+//            titleLabel.topAnchor.constraint(equalTo: cardView.topAnchor, constant: <#T##CGFloat#>)
             
         ])
     }
