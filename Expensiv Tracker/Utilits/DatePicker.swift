@@ -170,7 +170,7 @@ extension Date {
     static func buildTimeRangeString(date: Date) -> String {
       
       let dayFormatter = DateFormatter()
-      dayFormatter.dateFormat = "EEEE, MMM d, yyyy"
+      dayFormatter.dateFormat = "EEEE, MMM-d-yyyy"
 
       let TimeFormatter = DateFormatter()
       TimeFormatter.dateFormat = "h:mm a"
