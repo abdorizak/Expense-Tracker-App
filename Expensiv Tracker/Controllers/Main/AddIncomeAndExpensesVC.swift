@@ -46,7 +46,9 @@ class AddIncomeAndExpensesVC: UIViewController {
         return textField
     }()
     
-    private let categoryTextField: UITextField = {
+    let transectionType: [String] = ["expense", "income"]
+    
+    private let transectionTypeTextField: UITextField = {
         let category = UITextField(frame: .zero)
         category.borderStyle = .none
         category.clearsOnBeginEditing = true
@@ -56,6 +58,13 @@ class AddIncomeAndExpensesVC: UIViewController {
         category.font = UIFont.systemFont(ofSize: 20)
         category.translatesAutoresizingMaskIntoConstraints = false
         return category
+    }()
+    
+    lazy var transectionTypePicker: UIPickerView = {
+        let pickerView = UIPickerView()
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        return pickerView
     }()
     
     private let titleTextField: UITextField = {
@@ -100,6 +109,7 @@ class AddIncomeAndExpensesVC: UIViewController {
         configureAddVC()
         expensesAndIncomeTextfields()
         configFrom()
+        transectionTypeTextField.inputView = transectionTypePicker
     }
     
     private func ConfigureScrollView() {
@@ -159,7 +169,7 @@ class AddIncomeAndExpensesVC: UIViewController {
         itemView5.layer.cornerRadius = 15
         
         // Adding Views in TextFeilds
-        itemView2.addSubview(categoryTextField)
+        itemView2.addSubview(transectionTypeTextField)
         itemView3.addSubview(titleTextField)
         itemView4.addSubview(descriptionTextField)
         itemView5.addSubview(dateTextField)
@@ -190,10 +200,10 @@ class AddIncomeAndExpensesVC: UIViewController {
             itemView5.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
             itemView5.heightAnchor.constraint(equalToConstant: 60),
             
-            categoryTextField.topAnchor.constraint(equalTo: itemView2.topAnchor),
-            categoryTextField.trailingAnchor.constraint(equalTo: itemView2.trailingAnchor),
-            categoryTextField.leadingAnchor.constraint(equalTo: itemView2.leadingAnchor),
-            categoryTextField.heightAnchor.constraint(equalToConstant: 60),
+            transectionTypeTextField.topAnchor.constraint(equalTo: itemView2.topAnchor),
+            transectionTypeTextField.trailingAnchor.constraint(equalTo: itemView2.trailingAnchor),
+            transectionTypeTextField.leadingAnchor.constraint(equalTo: itemView2.leadingAnchor),
+            transectionTypeTextField.heightAnchor.constraint(equalToConstant: 60),
             
             titleTextField.topAnchor.constraint(equalTo: itemView3.topAnchor),
             titleTextField.trailingAnchor.constraint(equalTo: itemView3.trailingAnchor),
@@ -216,6 +226,25 @@ class AddIncomeAndExpensesVC: UIViewController {
             SaveButton.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
-        
+}
 
+
+
+extension AddIncomeAndExpensesVC: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        transectionType.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        transectionType[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        transectionTypeTextField.text = transectionType[row]
+        transectionTypeTextField.resignFirstResponder()
+    }
 }
