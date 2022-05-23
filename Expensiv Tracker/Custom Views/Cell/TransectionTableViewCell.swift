@@ -11,30 +11,34 @@ class TransectionTableViewCell: UITableViewCell {
     
     static let identifier = String(describing: TransectionTableViewCell.self)
     
-    let cardView: UIView = {
-        let view = UIView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .label
+//    let income_expenseView: UIView = {
+//        let view = UIView(frame: .zero)
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.backgroundColor = UIColor(hex: "E5E5DE")
 //        view.layer.shadowColor = UIColor.black.cgColor
 //        view.layer.shadowOffset = .zero
-        view.layer.cornerRadius = 15
+//        view.layer.cornerRadius = 15
 //        view.layer.shadowOpacity = 0.1
 //        view.layer.shadowRadius = 10
-        return view
-    }()
-//    let iconImage = AvatarImageView(frame: .zero)
-    let titleLabel = CustomLabel(textAlignment: .left, fontSize: 20, textWeight: .heavy, text: "Hayaat Market")
-    let descriptionLabel = CustomLabel(textAlignment: .left, fontSize: 18, textWeight: .heavy, text: "Waxaa soo Gatay 3 Shaati")
+//        return view
+//    }()
+    let titleLabel = CustomLabel(textAlignment: .left, fontSize: 22, textWeight: .semibold, text: "Hayaat Market")
+    let descriptionLabel = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Waxaa soo Gatay 3 Shaati Anigoo iska maraayo taleex aa arkay suuqa xayaat")
     let typeTransectionView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(hex: "5af857")
-        view.layer.cornerRadius = 15
+//        41E64A
+        view.backgroundColor = UIColor(hex: "67ff63")
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = .zero
+        view.layer.cornerRadius = 12
+        view.layer.shadowOpacity = 0.1
+        view.layer.shadowRadius = 5
         return view
     }()
-    let typeTransection  = CustomLabel(textAlignment: .center, fontSize: 14, textWeight: .semibold, text: "Income")
-    let AmountLabel = CustomLabel(textAlignment: .left, fontSize: 18, textWeight: .heavy, text: "$200")
-    let dateLabel = CustomLabel(textAlignment: .left, fontSize: 18, textWeight: .heavy, text: "04/04/2022")
+    let typeTransection  = CustomLabel(textAlignment: .center, fontSize: 12, textWeight: .semibold, text: "Expense")
+    let AmountLabel = CustomLabel(textAlignment: .left, fontSize: 28, textWeight: .regular, text: "$2034.43")
+//    let dateLabel = CustomLabel(textAlignment: .left, fontSize: 18, textWeight: .heavy, text: "04/04/2022")
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -46,24 +50,48 @@ class TransectionTableViewCell: UITableViewCell {
     }
     
     func config() {
-//        contentView.backgroundColor = .blue
-        contentView.addSubview(cardView)
-//        cardView.addSubViews(titleLabel, descriptionLabel)
+//        5af857 E5E5DE
+//        contentView.backgroundColor = UIColor(hex: "E5E5DE")
+        typeTransectionView.addSubview(typeTransection)
+        typeTransection.textColor = .black
+        descriptionLabel.adjustsFontForContentSizeCategory   = true
+        descriptionLabel.adjustsFontSizeToFitWidth           = true
+        descriptionLabel.minimumScaleFactor                  = 0.75
+        descriptionLabel.lineBreakMode                        = .byTruncatingTail
+        contentView.addSubViews(titleLabel, typeTransectionView, descriptionLabel, AmountLabel)
         NSLayoutConstraint.activate([
-            cardView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            cardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            cardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            cardView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            titleLabel.heightAnchor.constraint(equalToConstant: 24),
             
-//            titleLabel.topAnchor.constraint(equalTo: cardView.topAnchor, constant: <#T##CGFloat#>)
+            typeTransectionView.centerYAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 8),
+            typeTransectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            typeTransectionView.leadingAnchor.constraint(greaterThanOrEqualToSystemSpacingAfter: titleLabel.trailingAnchor, multiplier: 4),
+            typeTransectionView.heightAnchor.constraint(equalToConstant: 25),
+            typeTransectionView.widthAnchor.constraint(equalToConstant: 60),
+            
+            typeTransection.topAnchor.constraint(equalTo: typeTransectionView.topAnchor),
+            typeTransection.trailingAnchor.constraint(equalTo: typeTransectionView.trailingAnchor),
+            typeTransection.leadingAnchor.constraint(equalTo: typeTransectionView.leadingAnchor),
+            typeTransection.bottomAnchor.constraint(equalTo: typeTransectionView.bottomAnchor),
+            
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 14),
+            descriptionLabel.heightAnchor.constraint(equalToConstant: 16),
+            
+            AmountLabel.topAnchor.constraint(equalTo: typeTransectionView.bottomAnchor, constant: 8),
+            AmountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            AmountLabel.leadingAnchor.constraint(greaterThanOrEqualToSystemSpacingAfter: descriptionLabel.trailingAnchor, multiplier: 4),
+            AmountLabel.heightAnchor.constraint(equalToConstant: 30)
+            
             
         ])
     }
     
     override func layoutSubviews() {
-         super.layoutSubviews()
-         let bottomSpace: CGFloat = 10.0
-         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: bottomSpace, right: 0))
+        super.layoutSubviews()
+        let bottomSpace: CGFloat = 10.0
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: bottomSpace, right: 0))
     }
     
 }
