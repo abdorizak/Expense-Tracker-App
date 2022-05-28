@@ -26,9 +26,19 @@ class CustomTextFields: UITextField {
         
     }
     
+    convenience init (textContentType: UITextContentType, placeholder: String?) {
+        self.init(frame: .zero)
+        self.textContentType = textContentType
+        self.placeholder        = placeholder
+    }
+    
+    convenience init (placeholder: String?) {
+        self.init(frame: .zero)
+        self.placeholder        = placeholder
+    }
+    
     func configpass() {
-        translatesAutoresizingMaskIntoConstraints = false        
-//        layer.cornerRadius      = 5
+        translatesAutoresizingMaskIntoConstraints = false
         
         textColor               = .label
         tintColor               = .label
