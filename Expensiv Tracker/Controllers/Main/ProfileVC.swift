@@ -61,7 +61,9 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private func configTableView() {
         models.append(Sections(options: [
             SettingOpetions(icon: Images.edityourProfile, title: "Edit Profile", handler: {
-                print("a")
+                let editProfileVC = EditProfileVC()
+                editProfileVC.title = "Edit Profile"
+                return self.navigationController?.pushViewController(editProfileVC, animated: true)
             }),
             SettingOpetions(icon: Images.userStatementIcon, title: "E-Statement", handler: {
                 print("a")
