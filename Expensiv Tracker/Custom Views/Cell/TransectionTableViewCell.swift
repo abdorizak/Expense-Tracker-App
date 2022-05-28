@@ -23,7 +23,7 @@ class TransectionTableViewCell: UITableViewCell {
 //        return view
 //    }()
     let titleLabel = CustomLabel(textAlignment: .left, fontSize: 22, textWeight: .semibold, text: "Hayaat Market")
-    let descriptionLabel = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Waxaa soo Gatay 3 Shaati Anigoo iska maraayo taleex aa arkay suuqa xayaat")
+    let descriptionLabel = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Waxaa soo Gatay 3 Shaati Anigoo iska maraayo taleex aa arkay suuqa xayaat. Waxaa soo Gatay 3 Shaati Anigoo iska maraayo taleex aa arkay suuqa xayaat")
     let typeTransectionView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -37,8 +37,7 @@ class TransectionTableViewCell: UITableViewCell {
         return view
     }()
     let typeTransection  = CustomLabel(textAlignment: .center, fontSize: 12, textWeight: .semibold, text: "Expense")
-    let AmountLabel = CustomLabel(textAlignment: .left, fontSize: 28, textWeight: .regular, text: "$2034.43")
-//    let dateLabel = CustomLabel(textAlignment: .left, fontSize: 18, textWeight: .heavy, text: "04/04/2022")
+    let AmountLabel = CustomLabel(textAlignment: .left, fontSize: 32, textWeight: .semibold)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -56,8 +55,10 @@ class TransectionTableViewCell: UITableViewCell {
         typeTransection.textColor = .black
         descriptionLabel.adjustsFontForContentSizeCategory   = true
         descriptionLabel.adjustsFontSizeToFitWidth           = true
+        descriptionLabel.numberOfLines                       = 2
         descriptionLabel.minimumScaleFactor                  = 0.75
-        descriptionLabel.lineBreakMode                        = .byTruncatingTail
+        descriptionLabel.lineBreakMode                       = .byTruncatingMiddle
+        AmountLabel.attributedText = makeFormattedBalance(dollars: "2,034", cents: "43")
         contentView.addSubViews(titleLabel, typeTransectionView, descriptionLabel, AmountLabel)
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
@@ -82,7 +83,7 @@ class TransectionTableViewCell: UITableViewCell {
             AmountLabel.topAnchor.constraint(equalTo: typeTransectionView.bottomAnchor, constant: 8),
             AmountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             AmountLabel.leadingAnchor.constraint(greaterThanOrEqualToSystemSpacingAfter: descriptionLabel.trailingAnchor, multiplier: 4),
-            AmountLabel.heightAnchor.constraint(equalToConstant: 30)
+            AmountLabel.heightAnchor.constraint(equalToConstant: 34)
             
             
         ])
@@ -94,4 +95,21 @@ class TransectionTableViewCell: UITableViewCell {
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: bottomSpace, right: 0))
     }
     
+}
+
+extension TransectionTableViewCell {
+    func makeFormattedBalance(dollars: String, cents: String) -> NSMutableAttributedString {
+        let dollarSignAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .callout), .baselineOffset: 8]
+        let dollarAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .title1)]
+        let centAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .footnote), .baselineOffset: 8]
+        
+        let rootString = NSMutableAttributedString(string: "$", attributes: dollarSignAttributes)
+        let dollarString = NSAttributedString(string: dollars, attributes: dollarAttributes)
+        let centString = NSAttributedString(string: cents, attributes: centAttributes)
+        
+        rootString.append(dollarString)
+        rootString.append(centString)
+        
+        return rootString
+    }
 }
