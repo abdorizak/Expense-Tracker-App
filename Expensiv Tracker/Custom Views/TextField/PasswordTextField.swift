@@ -40,7 +40,7 @@ class PasswordTextField: UITextField {
         autocorrectionType      = .no
         returnKeyType           = .go
         clearButtonMode         = .whileEditing
-        placeholder             = " Enter Password"
+        placeholder             = "Enter Password"
         
     }
 
