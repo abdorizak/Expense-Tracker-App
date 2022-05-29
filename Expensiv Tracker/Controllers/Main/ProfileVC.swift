@@ -71,13 +71,15 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 return self.navigationController?.pushViewController(eStatement, animated: true)
             }),
             SettingOpetions(icon: Images.changePassword, title: "Change Password", handler: {
-                print("a")
+                let eStatement = ChangePasswordVC()
+                eStatement.title = "Change"
+                return self.navigationController?.pushViewController(eStatement, animated: true)
             }),
         ]))
         
         models.append(Sections(options: [
             SettingOpetions(icon: Images.aboutUs, title: "About us", handler: {
-                print("a")
+                print("")
             }),
             SettingOpetions(icon: Images.logout, title: "Logout", handler: {
                 print("")
