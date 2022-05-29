@@ -8,6 +8,8 @@
 import UIKit
 
 class UserStatementVC: UIViewController {
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
