@@ -10,8 +10,8 @@ import UIKit
 class AddIncomeAndExpensesVC: UIViewController {
     
     // MARK: ScrollView
-    let scrollView          = UIScrollView()
-    let contentView         = UIView()
+    private let scrollView          = UIScrollView()
+    private let contentView         = UIView()
     
     // MARK: Label
     private let EIlabel = CustomLabel(textAlignment: .center, fontSize: 22, textWeight: .medium, text: "Add Income or Expenses")
