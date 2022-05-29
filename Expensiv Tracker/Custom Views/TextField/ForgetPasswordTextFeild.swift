@@ -37,7 +37,7 @@ class ForgetPasswordTextFeild: UITextField {
         autocorrectionType  = .no
         returnKeyType       = .go
         clearButtonMode     = .whileEditing
-        placeholder         = " Enter your username"
+        placeholder         = "Enter your username"
     }
 
 }
