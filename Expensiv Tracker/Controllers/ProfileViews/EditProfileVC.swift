@@ -17,27 +17,114 @@ class EditProfileVC: UIViewController {
     let avaterImage       = AvatarImageView(frame: .zero)
     
     // MARK: - Labels
-    let fullnameLable = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Full Name")
-    let emailLabel    = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Email")
-    let phoneLabel    = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Phone")
-    let usernameLabel = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Username")
-    let genderLabel   = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Gender")
+    let fullnameLable       = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Full Name")
+    let emailLabel          = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Email")
+    let phoneLabel          = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Phone")
+    let usernameLabel       = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Username")
+    let MonthlyIncomeLabel  = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Monthly")
+    let genderLabel         = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Gender")
     
     // MARK: - Views
     let fullnameView            = UIView()
     let emailView               = UIView()
     let phoneView               = UIView()
-    let usernameview            = UIView()
+    let usernameView            = UIView()
+    let monthlyIncomeView       = UIView()
     let genderView              = UIView()
     var itemviews: [UIView]     = []
     
+    
     // MARK: - Text
-    let fullnameTextfeild = CustomTextFields(textContentType: .name, placeholder: "Full Name")
-    let emailTextfeild    = CustomTextFields(textContentType: .emailAddress, placeholder: "Email")
-    let phoneTextfeild    = CustomTextFields(placeholder: "Phone")
-    let usernameTextfeild = CustomTextFields(textContentType: .username, placeholder: "Username")
-    let genderType:[String] = ["Male", "Female"]
-    let genderTextfeild     = CustomTextFields(placeholder: "Gender")
+    let fullnameTextfeild: UITextField = {
+        let textfeild = UITextField(frame: .zero)
+        textfeild.borderStyle = .none
+        textfeild.clearsOnBeginEditing = true
+        textfeild.textAlignment = .left
+        textfeild.placeholder = "Full Name"
+        
+        textfeild.minimumFontSize = 17
+        textfeild.translatesAutoresizingMaskIntoConstraints = false
+        return textfeild
+    }()
+    let emailTextfeild: UITextField = {
+        let textfeild = UITextField(frame: .zero)
+        textfeild.textContentType = .emailAddress
+        textfeild.textColor               = .label
+        textfeild.tintColor               = .label
+        textfeild.borderStyle = .none
+        textfeild.clearsOnBeginEditing = true
+        textfeild.textAlignment = .left
+        textfeild.placeholder = "Email"
+        textfeild.autocorrectionType      = .no
+        textfeild.minimumFontSize = 17
+        textfeild.translatesAutoresizingMaskIntoConstraints = false
+        return textfeild
+    }()
+    let phoneTextfeild: UITextField = {
+        let textfeild = UITextField(frame: .zero)
+        textfeild.textColor               = .label
+        textfeild.tintColor               = .label
+        textfeild.borderStyle = .none
+        textfeild.clearsOnBeginEditing = true
+        textfeild.textAlignment = .left
+        textfeild.placeholder = "Phone"
+        textfeild.autocorrectionType      = .no
+        textfeild.minimumFontSize = 17
+        textfeild.translatesAutoresizingMaskIntoConstraints = false
+        return textfeild
+    }()
+    let usernameTextfeild: UITextField = {
+        let textfeild = UITextField(frame: .zero)
+        textfeild.textColor               = .label
+        textfeild.tintColor               = .label
+        textfeild.borderStyle = .none
+        textfeild.clearsOnBeginEditing = true
+        textfeild.textAlignment = .left
+        textfeild.placeholder = "Username"
+        textfeild.autocorrectionType      = .no
+        textfeild.minimumFontSize = 17
+        textfeild.translatesAutoresizingMaskIntoConstraints = false
+        return textfeild
+    }()
+    
+    let MonthlyIncome: [String] = ["$500 - $1500", "$1500 - $3000", "$3000 - $5000", "$5000 - $10k"]
+    
+    let MonthlyIncomeTextfeild: UITextField = {
+        let textfeild = UITextField(frame: .zero)
+        textfeild.textColor               = .label
+        textfeild.tintColor               = .label
+        textfeild.borderStyle = .none
+        textfeild.clearsOnBeginEditing = true
+        textfeild.textAlignment = .left
+        textfeild.placeholder = "Monthly Income"
+        textfeild.autocorrectionType      = .no
+        textfeild.minimumFontSize = 17
+        textfeild.translatesAutoresizingMaskIntoConstraints = false
+        return textfeild
+    }()
+    
+    lazy var monthlyTypePicker: UIPickerView = {
+        let pickerView = UIPickerView()
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        return pickerView
+    }()
+    
+    let genderType: [String] = ["Male", "Female"]
+    
+    let genderTextfeild: UITextField = {
+        let textfeild = UITextField(frame: .zero)
+        textfeild.textColor               = .label
+        textfeild.tintColor               = .label
+        textfeild.borderStyle = .none
+        textfeild.clearsOnBeginEditing = true
+        textfeild.textAlignment = .left
+        textfeild.placeholder = "Gender"
+        textfeild.autocorrectionType      = .no
+        textfeild.minimumFontSize = 17
+        textfeild.translatesAutoresizingMaskIntoConstraints = false
+        return textfeild
+    }()
     
     lazy var genderTypePicker: UIPickerView = {
         let pickerView = UIPickerView()
@@ -45,20 +132,22 @@ class EditProfileVC: UIViewController {
         pickerView.dataSource = self
         return pickerView
     }()
-
+    
+    // MARK: - Buttons
+    let saveBtn  = GradientButton(frame: .zero)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        configEditProfileVC()
-        
-    }
-    
-    func configEditProfileVC() {
         view.backgroundColor = .systemBackground
         ConfigureScrollView()
         configImage()
+        configForm()
         genderTextfeild.inputView = genderTypePicker
-        configLabelsWithViews()
-       
+        MonthlyIncomeTextfeild.inputView = monthlyTypePicker
+        layoutViewsAndLabelsAndTextfeilds()
+        let tap  = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+        configSavebtn()
     }
     
     func ConfigureScrollView() {
@@ -69,7 +158,7 @@ class EditProfileVC: UIViewController {
             
             NSLayoutConstraint.activate([
                 contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-                contentView.heightAnchor.constraint(equalToConstant: 600)
+                contentView.heightAnchor.constraint(equalToConstant: 900)
             ])
         }
     
@@ -90,9 +179,9 @@ class EditProfileVC: UIViewController {
         ])
     }
     
-    func configLabelsWithViews() {
-        contentView.addSubViews(fullnameLable, emailLabel, phoneLabel, usernameLabel, genderLabel)
-        [fullnameView, emailView, phoneView, usernameview, genderView].forEach { view in
+    func configForm(){
+        contentView.addSubViews(fullnameLable, emailLabel, phoneLabel, usernameLabel, MonthlyIncomeLabel, genderLabel)
+        [fullnameView, emailView, phoneView, usernameView, monthlyIncomeView, genderView].forEach { view in
             contentView.addSubview(view)
             view.translatesAutoresizingMaskIntoConstraints = false
             view.backgroundColor = UIColor(hex: "f0f3fd")
@@ -102,12 +191,16 @@ class EditProfileVC: UIViewController {
             view.layer.borderWidth = 1
         }
         
+        
         fullnameView.addSubview(fullnameTextfeild)
         emailView.addSubview(emailTextfeild)
         phoneView.addSubview(phoneTextfeild)
-        usernameview.addSubview(usernameTextfeild)
+        usernameView.addSubview(usernameTextfeild)
+        monthlyIncomeView.addSubview(MonthlyIncomeTextfeild)
         genderView.addSubview(genderTextfeild)
-        
+    }
+    
+    func layoutViewsAndLabelsAndTextfeilds() {
         
         NSLayoutConstraint.activate([
             
@@ -143,12 +236,21 @@ class EditProfileVC: UIViewController {
             usernameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
             usernameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
             
-            usernameview.topAnchor.constraint(equalToSystemSpacingBelow: usernameLabel.bottomAnchor, multiplier: 1),
-            usernameview.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
-            usernameview.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
-            usernameview.heightAnchor.constraint(equalToConstant: 60),
+            usernameView.topAnchor.constraint(equalToSystemSpacingBelow: usernameLabel.bottomAnchor, multiplier: 1),
+            usernameView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
+            usernameView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
+            usernameView.heightAnchor.constraint(equalToConstant: 60),
             
-            genderLabel.topAnchor.constraint(equalToSystemSpacingBelow: usernameview.bottomAnchor, multiplier: 2),
+            MonthlyIncomeLabel.topAnchor.constraint(equalToSystemSpacingBelow: usernameView.bottomAnchor, multiplier: 2),
+            MonthlyIncomeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
+            MonthlyIncomeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
+            
+            monthlyIncomeView.topAnchor.constraint(equalToSystemSpacingBelow: MonthlyIncomeLabel.bottomAnchor, multiplier: 1),
+            monthlyIncomeView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
+            monthlyIncomeView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
+            monthlyIncomeView.heightAnchor.constraint(equalToConstant: 60),
+            
+            genderLabel.topAnchor.constraint(equalToSystemSpacingBelow: monthlyIncomeView.bottomAnchor, multiplier: 2),
             genderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
             genderLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
             
@@ -158,33 +260,49 @@ class EditProfileVC: UIViewController {
             genderView.heightAnchor.constraint(equalToConstant: 60),
             
             // MARK: - Textfeidls
-            fullnameTextfeild.topAnchor.constraint(equalTo: fullnameView.topAnchor),
+            fullnameTextfeild.topAnchor.constraint(equalTo: fullnameView.topAnchor, constant: 10),
             fullnameTextfeild.trailingAnchor.constraint(equalTo: fullnameView.trailingAnchor, constant: -10),
             fullnameTextfeild.leadingAnchor.constraint(equalTo: fullnameView.leadingAnchor, constant: 10),
-            fullnameTextfeild.heightAnchor.constraint(equalToConstant: 50),
+            fullnameTextfeild.heightAnchor.constraint(equalToConstant: 40),
             
-            emailTextfeild.topAnchor.constraint(equalTo: emailView.topAnchor),
+            emailTextfeild.topAnchor.constraint(equalTo: emailView.topAnchor, constant: 10),
             emailTextfeild.trailingAnchor.constraint(equalTo: emailView.trailingAnchor, constant: -10),
             emailTextfeild.leadingAnchor.constraint(equalTo: emailView.leadingAnchor, constant: 10),
-            emailTextfeild.heightAnchor.constraint(equalToConstant: 50),
+            emailTextfeild.heightAnchor.constraint(equalToConstant: 40),
             
-            phoneTextfeild.topAnchor.constraint(equalTo: phoneView.topAnchor),
+            phoneTextfeild.topAnchor.constraint(equalTo: phoneView.topAnchor, constant: 10),
             phoneTextfeild.trailingAnchor.constraint(equalTo: phoneView.trailingAnchor, constant: -10),
             phoneTextfeild.leadingAnchor.constraint(equalTo: phoneView.leadingAnchor, constant: 10),
-            phoneTextfeild.heightAnchor.constraint(equalToConstant: 50),
+            phoneTextfeild.heightAnchor.constraint(equalToConstant: 40),
             
-            usernameTextfeild.topAnchor.constraint(equalTo: usernameview.topAnchor),
-            usernameTextfeild.trailingAnchor.constraint(equalTo: usernameview.trailingAnchor, constant: -10),
-            usernameTextfeild.leadingAnchor.constraint(equalTo: usernameview.leadingAnchor, constant: 10),
-            usernameTextfeild.heightAnchor.constraint(equalToConstant: 50),
+            usernameTextfeild.topAnchor.constraint(equalTo: usernameView.topAnchor, constant: 10),
+            usernameTextfeild.trailingAnchor.constraint(equalTo: usernameView.trailingAnchor, constant: -10),
+            usernameTextfeild.leadingAnchor.constraint(equalTo: usernameView.leadingAnchor, constant: 10),
+            usernameTextfeild.heightAnchor.constraint(equalToConstant: 40),
             
-            genderTextfeild.topAnchor.constraint(equalTo: genderView.topAnchor),
+            MonthlyIncomeTextfeild.topAnchor.constraint(equalTo: monthlyIncomeView.topAnchor, constant: 10),
+            MonthlyIncomeTextfeild.trailingAnchor.constraint(equalTo: monthlyIncomeView.trailingAnchor, constant: -10),
+            MonthlyIncomeTextfeild.leadingAnchor.constraint(equalTo: monthlyIncomeView.leadingAnchor, constant: 10),
+            MonthlyIncomeTextfeild.heightAnchor.constraint(equalToConstant: 40),
+            
+            genderTextfeild.topAnchor.constraint(equalTo: genderView.topAnchor, constant: 10),
             genderTextfeild.trailingAnchor.constraint(equalTo: genderView.trailingAnchor, constant: -10),
             genderTextfeild.leadingAnchor.constraint(equalTo: genderView.leadingAnchor, constant: 10),
-            genderTextfeild.heightAnchor.constraint(equalToConstant: 50),
+            genderTextfeild.heightAnchor.constraint(equalToConstant: 40),
             
         ])
         
+    }
+    
+    func configSavebtn() {
+        saveBtn.setTitle("Save", for: .normal)
+        contentView.addSubview(saveBtn)
+        NSLayoutConstraint.activate([
+            saveBtn.topAnchor.constraint(equalTo: genderView.bottomAnchor, constant: 20),
+            saveBtn.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 80),
+            saveBtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -80),
+            saveBtn.heightAnchor.constraint(equalToConstant: 60)
+        ])
     }
     
     
@@ -192,22 +310,34 @@ class EditProfileVC: UIViewController {
 
 
 extension EditProfileVC: UIPickerViewDelegate, UIPickerViewDataSource {
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        genderType.count
+        if pickerView == genderTypePicker {
+            return genderType.count
+        } else {
+            return MonthlyIncome.count
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        genderType[row]
+        if pickerView == genderTypePicker {
+            return genderType[row]
+        }
+        return MonthlyIncome[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        genderTextfeild.text = genderType[row]
-        genderTextfeild.resignFirstResponder()
+        if pickerView == genderTypePicker {
+            genderTextfeild.text = genderType[row]
+            genderTextfeild.resignFirstResponder()
+        } else {
+            MonthlyIncomeTextfeild.text = MonthlyIncome[row]
+            MonthlyIncomeTextfeild.resignFirstResponder()
+        }
+        
     }
-    
 }
+
