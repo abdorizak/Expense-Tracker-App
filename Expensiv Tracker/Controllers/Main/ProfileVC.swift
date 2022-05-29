@@ -8,11 +8,11 @@
 import UIKit
 
 // MARK: - Sections
-struct Sections {
+private struct Sections {
     let options: [SettingOpetions]
 }
 
-struct SettingOpetions {
+private struct SettingOpetions {
     let icon: UIImage?
     let title: String
     let handler: () -> Void?
@@ -20,7 +20,7 @@ struct SettingOpetions {
 
 class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var models: [Sections] = []
+    private var models: [Sections] = []
     
     // MARK: - TableView
     private let tableView: UITableView = {
