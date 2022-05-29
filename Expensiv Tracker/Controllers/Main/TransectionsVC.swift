@@ -41,8 +41,8 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
         return linechart
     }()
     
-    let scrollView          = UIScrollView()
-    let contentView         = UIView()
+    private let scrollView          = UIScrollView()
+    private let contentView         = UIView()
     
     lazy var segment: UISegmentedControl = {
         let items = ["Income", "Expenses"]
