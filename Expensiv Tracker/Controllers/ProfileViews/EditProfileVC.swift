@@ -10,32 +10,32 @@ import UIKit
 class EditProfileVC: UIViewController {
     
     // MARK: - Scroller View
-    let scrollView          = UIScrollView()
-    let contentView         = UIView()
+    private let scrollView          = UIScrollView()
+    private let contentView         = UIView()
     
     // MARK: - Image
-    let avaterImage       = AvatarImageView(frame: .zero)
+    private let avaterImage       = AvatarImageView(frame: .zero)
     
     // MARK: - Labels
-    let fullnameLable       = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Full Name")
-    let emailLabel          = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Email")
-    let phoneLabel          = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Phone")
-    let usernameLabel       = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Username")
-    let MonthlyIncomeLabel  = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Monthly")
-    let genderLabel         = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Gender")
+    private let fullnameLable       = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Full Name")
+    private let emailLabel          = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Email")
+    private let phoneLabel          = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Phone")
+    private let usernameLabel       = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Username")
+    private let MonthlyIncomeLabel  = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Monthly")
+    private let genderLabel         = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Gender")
     
     // MARK: - Views
-    let fullnameView            = UIView()
-    let emailView               = UIView()
-    let phoneView               = UIView()
-    let usernameView            = UIView()
-    let monthlyIncomeView       = UIView()
-    let genderView              = UIView()
-    var itemviews: [UIView]     = []
+    private let fullnameView            = UIView()
+    private let emailView               = UIView()
+    private let phoneView               = UIView()
+    private let usernameView            = UIView()
+    private let monthlyIncomeView       = UIView()
+    private let genderView              = UIView()
+    private var itemviews: [UIView]     = []
     
     
     // MARK: - Text
-    let fullnameTextfeild: UITextField = {
+    private let fullnameTextfeild: UITextField = {
         let textfeild = UITextField(frame: .zero)
         textfeild.borderStyle = .none
         textfeild.clearsOnBeginEditing = true
@@ -46,7 +46,7 @@ class EditProfileVC: UIViewController {
         textfeild.translatesAutoresizingMaskIntoConstraints = false
         return textfeild
     }()
-    let emailTextfeild: UITextField = {
+    private let emailTextfeild: UITextField = {
         let textfeild = UITextField(frame: .zero)
         textfeild.textContentType = .emailAddress
         textfeild.textColor               = .label
@@ -60,7 +60,7 @@ class EditProfileVC: UIViewController {
         textfeild.translatesAutoresizingMaskIntoConstraints = false
         return textfeild
     }()
-    let phoneTextfeild: UITextField = {
+    private let phoneTextfeild: UITextField = {
         let textfeild = UITextField(frame: .zero)
         textfeild.textColor               = .label
         textfeild.tintColor               = .label
@@ -73,7 +73,7 @@ class EditProfileVC: UIViewController {
         textfeild.translatesAutoresizingMaskIntoConstraints = false
         return textfeild
     }()
-    let usernameTextfeild: UITextField = {
+    private let usernameTextfeild: UITextField = {
         let textfeild = UITextField(frame: .zero)
         textfeild.textColor               = .label
         textfeild.tintColor               = .label
@@ -87,9 +87,9 @@ class EditProfileVC: UIViewController {
         return textfeild
     }()
     
-    let MonthlyIncome: [String] = ["$500 - $1500", "$1500 - $3000", "$3000 - $5000", "$5000 - $10k"]
+    private let MonthlyIncome: [String] = ["$500 - $1500", "$1500 - $3000", "$3000 - $5000", "$5000 - $10k"]
     
-    let MonthlyIncomeTextfeild: UITextField = {
+    private let MonthlyIncomeTextfeild: UITextField = {
         let textfeild = UITextField(frame: .zero)
         textfeild.textColor               = .label
         textfeild.tintColor               = .label
@@ -110,9 +110,9 @@ class EditProfileVC: UIViewController {
         return pickerView
     }()
     
-    let genderType: [String] = ["Male", "Female"]
+    private let genderType: [String] = ["Male", "Female"]
     
-    let genderTextfeild: UITextField = {
+    private let genderTextfeild: UITextField = {
         let textfeild = UITextField(frame: .zero)
         textfeild.textColor               = .label
         textfeild.tintColor               = .label
@@ -134,7 +134,7 @@ class EditProfileVC: UIViewController {
     }()
     
     // MARK: - Buttons
-    let saveBtn  = GradientButton(frame: .zero)
+    private let saveBtn  = GradientButton(frame: .zero)
     
     override func viewDidLoad() {
         super.viewDidLoad()
