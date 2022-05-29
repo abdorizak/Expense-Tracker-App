@@ -248,7 +248,6 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
         cell.selectionStyle = .none
         return cell
     }
-    
-    
+ 
 }
 
