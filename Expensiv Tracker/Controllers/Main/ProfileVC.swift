@@ -66,7 +66,9 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 return self.navigationController?.pushViewController(editProfileVC, animated: true)
             }),
             SettingOpetions(icon: Images.userStatementIcon, title: "E-Statement", handler: {
-                print("a")
+                let eStatement = UserStatementVC()
+                eStatement.title = "Statement"
+                return self.navigationController?.pushViewController(eStatement, animated: true)
             }),
             SettingOpetions(icon: Images.changePassword, title: "Change Password", handler: {
                 print("a")
