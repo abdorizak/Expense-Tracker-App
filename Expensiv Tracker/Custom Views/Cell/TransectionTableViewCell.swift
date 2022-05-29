@@ -49,8 +49,6 @@ class TransectionTableViewCell: UITableViewCell {
     }
     
     func config() {
-//        5af857 E5E5DE
-//        contentView.backgroundColor = UIColor(hex: "E5E5DE")
         typeTransectionView.addSubview(typeTransection)
         typeTransection.textColor = .black
         descriptionLabel.adjustsFontForContentSizeCategory   = true
