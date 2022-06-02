@@ -8,7 +8,8 @@
 import Foundation
 
 struct Transections {
+    let title: String
     let description: String
-    let ammount: Int
-    let date: String
+    let type: String
+    let ammount: Double
 }
