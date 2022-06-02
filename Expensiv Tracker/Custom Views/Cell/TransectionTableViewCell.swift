@@ -23,11 +23,10 @@ class TransectionTableViewCell: UITableViewCell {
 //        return view
 //    }()
     let titleLabel = CustomLabel(textAlignment: .left, fontSize: 22, textWeight: .semibold, text: "Hayaat Market")
-    let descriptionLabel = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .regular, text: "Waxaa soo Gatay 3 Shaati Anigoo iska maraayo taleex aa arkay suuqa xayaat. Waxaa soo Gatay 3 Shaati Anigoo iska maraayo taleex aa arkay suuqa xayaat")
+    let descriptionLabel = CustomLabel(textAlignment: .left, fontSize: 14, textWeight: .thin, text: "Waxaa soo Gatay 3 Shaati Anigoo iska maraayo taleex aa arkay suuqa xayaat. Waxaa soo Gatay 3 Shaati Anigoo iska maraayo taleex aa arkay suuqa xayaat")
     let typeTransectionView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-//        41E64A
         view.backgroundColor = UIColor(hex: "67ff63")
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = .zero
@@ -37,7 +36,8 @@ class TransectionTableViewCell: UITableViewCell {
         return view
     }()
     let typeTransection  = CustomLabel(textAlignment: .center, fontSize: 12, textWeight: .semibold, text: "Expense")
-    let AmountLabel = CustomLabel(textAlignment: .left, fontSize: 32, textWeight: .semibold)
+    let AmountLabel = CustomLabel(textAlignment: .left, fontSize: 34, textWeight: .semibold)
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -55,12 +55,12 @@ class TransectionTableViewCell: UITableViewCell {
         descriptionLabel.adjustsFontSizeToFitWidth           = true
         descriptionLabel.numberOfLines                       = 2
         descriptionLabel.minimumScaleFactor                  = 0.75
-        descriptionLabel.lineBreakMode                       = .byTruncatingMiddle
+        descriptionLabel.lineBreakMode                       = .byTruncatingTail
         AmountLabel.attributedText = makeFormattedBalance(dollars: "2,034", cents: "43")
         contentView.addSubViews(titleLabel, typeTransectionView, descriptionLabel, AmountLabel)
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
             titleLabel.heightAnchor.constraint(equalToConstant: 24),
             
             typeTransectionView.centerYAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 8),
@@ -75,13 +75,14 @@ class TransectionTableViewCell: UITableViewCell {
             typeTransection.bottomAnchor.constraint(equalTo: typeTransectionView.bottomAnchor),
             
             descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 14),
-            descriptionLabel.heightAnchor.constraint(equalToConstant: 16),
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            descriptionLabel.heightAnchor.constraint(equalToConstant: 35),
+            descriptionLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 200),
             
             AmountLabel.topAnchor.constraint(equalTo: typeTransectionView.bottomAnchor, constant: 8),
             AmountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            AmountLabel.leadingAnchor.constraint(greaterThanOrEqualToSystemSpacingAfter: descriptionLabel.trailingAnchor, multiplier: 4),
-            AmountLabel.heightAnchor.constraint(equalToConstant: 34)
+            AmountLabel.leadingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor, constant: 90),
+            AmountLabel.heightAnchor.constraint(equalToConstant: 38)
             
             
         ])
@@ -91,6 +92,19 @@ class TransectionTableViewCell: UITableViewCell {
         super.layoutSubviews()
         let bottomSpace: CGFloat = 10.0
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: bottomSpace, right: 0))
+    }
+    
+    func display(_ transection: Transections) {
+        titleLabel.text = transection.title
+        descriptionLabel.text = transection.description
+        let ammount = String(transection.ammount)
+        AmountLabel.attributedText =  makeFormattedBalance(dollars: ammount, cents: "00")
+        if transection.type == "Expense" {
+            typeTransectionView.backgroundColor = UIColor(hex: "ff2c2c")
+        } else {
+            typeTransection.text = transection.type
+            typeTransectionView.backgroundColor = UIColor(hex: "67ff63")
+        }
     }
     
 }
