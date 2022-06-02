@@ -68,7 +68,15 @@ class HomeVC: UIViewController {
         table.separatorStyle = .none
         return table
     }()
-
+    
+    // MARK: - Transection data
+    let transection: [Transections] = [
+        .init(title: "Hayaat Market", description: "Waxaa soo Gatay 3 Shaati Anigoo iska maraayo taleex aa arkay suuqa xayaat. Waxaa soo Gatay 3 Shaati Anigoo iska maraayo taleex aa arkay suuqa xayaat", type: "Expense", ammount: 392.80),
+        .init(title: "Gadasho Dhar", description: "Waxaan Maanta Soo ibsaday 2 Shaati 3 Surwaal iyo nigis", type: "Expense", ammount: 56.0),
+        .init(title: "Mishaar", description: "waxaa Helay Mishaar Kasocda Company X", type: "Income", ammount: 6829.00),
+    ]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configHomeVC()
@@ -240,12 +248,13 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        transection.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TransectionTableViewCell.identifier, for: indexPath) as! TransectionTableViewCell
         cell.selectionStyle = .none
+        cell.display(transection[indexPath.row])
         return cell
     }
  
