@@ -17,3 +17,13 @@ struct LoginResponse: Codable {
     let userInfo: String    // userId
     let access_token: String
 }
+
+struct User: Decodable {
+    
+}
+
+struct UserIncomeAndExpense {
+    let balance: Double
+    let income: Double
+    let Expense: Double
+}
