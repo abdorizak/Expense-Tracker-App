@@ -19,6 +19,8 @@
 		106BC1CD280E932500ADB75C /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106BC1CC280E932500ADB75C /* ChangePasswordVC.swift */; };
 		1082FE0D28058E3300538FFE /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1082FE0C28058E3300538FFE /* ProfileHeaderView.swift */; };
 		1082FE0F28058E5700538FFE /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1082FE0E28058E5700538FFE /* ProfileHeaderView.xib */; };
+		109FF577284DE0A60060CD64 /* BalanceFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109FF576284DE0A60060CD64 /* BalanceFormater.swift */; };
+		109FF57B2850FC480060CD64 /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109FF57A2850FC480060CD64 /* AboutUsVC.swift */; };
 		10A8870827E86A6C0001794B /* UITextFeild+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8870727E86A6C0001794B /* UITextFeild+Ext.swift */; };
 		10A8870A27EF5D060001794B /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8870927EF5D060001794B /* DatePicker.swift */; };
 		10A8872C27F0B4AA0001794B /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8872B27F0B4AA0001794B /* ProfileVC.swift */; };
@@ -61,6 +63,8 @@
 		106BC1CC280E932500ADB75C /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		1082FE0C28058E3300538FFE /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		1082FE0E28058E5700538FFE /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
+		109FF576284DE0A60060CD64 /* BalanceFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceFormater.swift; sourceTree = "<group>"; };
+		109FF57A2850FC480060CD64 /* AboutUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsVC.swift; sourceTree = "<group>"; };
 		10A8870727E86A6C0001794B /* UITextFeild+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextFeild+Ext.swift"; sourceTree = "<group>"; };
 		10A8870927EF5D060001794B /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		10A8872B27F0B4AA0001794B /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 				106BC1C8280E92D900ADB75C /* EditProfileVC.swift */,
 				106BC1CA280E930500ADB75C /* UserStatementVC.swift */,
 				106BC1CC280E932500ADB75C /* ChangePasswordVC.swift */,
+				109FF57A2850FC480060CD64 /* AboutUsVC.swift */,
 			);
 			path = ProfileViews;
 			sourceTree = "<group>";
@@ -324,6 +329,7 @@
 				10C5B3A427CDF09500B60A4A /* AppError.swift */,
 				10C5B3A627CDF13000B60A4A /* Constants.swift */,
 				10A8870927EF5D060001794B /* DatePicker.swift */,
+				109FF576284DE0A60060CD64 /* BalanceFormater.swift */,
 			);
 			path = Utilits;
 			sourceTree = "<group>";
@@ -413,6 +419,7 @@
 				10C5B3BB27CE32B500B60A4A /* PasswordTextField.swift in Sources */,
 				10C5B3C127CFF09300B60A4A /* ForgetPasswordVC.swift in Sources */,
 				106531492815AC03009FD888 /* Transection.swift in Sources */,
+				109FF57B2850FC480060CD64 /* AboutUsVC.swift in Sources */,
 				1008990B27D8C2E600A94B4F /* HeaderVC.swift in Sources */,
 				1082FE0D28058E3300538FFE /* ProfileHeaderView.swift in Sources */,
 				101EA9D527E250DA00E9534C /* GradientButton.swift in Sources */,
@@ -425,6 +432,7 @@
 				10C5B3A727CDF13100B60A4A /* Constants.swift in Sources */,
 				10C5B3CA27D0E20000B60A4A /* TransectionsVC.swift in Sources */,
 				10A8870A27EF5D060001794B /* DatePicker.swift in Sources */,
+				109FF577284DE0A60060CD64 /* BalanceFormater.swift in Sources */,
 				10C5B3AF27CDFB3D00B60A4A /* LoginVC.swift in Sources */,
 				10A8870827E86A6C0001794B /* UITextFeild+Ext.swift in Sources */,
 				106BC1CD280E932500ADB75C /* ChangePasswordVC.swift in Sources */,
@@ -509,7 +517,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -564,7 +572,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
