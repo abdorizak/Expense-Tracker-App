@@ -5,4 +5,8 @@
 //  Created by Abdirizak Hassan on 6/6/22.
 //
 
-import Foundation
+import UIKit
+
+protocol BalanceFormater {
+    func makeFormattedBalance(dollar: String) -> NSMutableAttributedString
+}
