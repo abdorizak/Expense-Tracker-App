@@ -34,7 +34,7 @@ class HomeVC: UIViewController {
     // MARK: - Card View Balance
     private let totalBalanceLabel       = CustomLabel(textAlignment: .center, fontSize: 20, textWeight: .semibold, text: "Total Balance")
     
-    private let balanceNumber           = CustomLabel(textAlignment: .center, fontSize: 65, textWeight: .bold, text: "$2500.00")
+    private let balanceNumber           = CustomLabel(textAlignment: .center, fontSize: 66)
     
     // MARK: - Card View Income and expenses image and labels
     private let incomeArrowIcon: UIImageView = {
@@ -68,6 +68,9 @@ class HomeVC: UIViewController {
         table.separatorStyle = .none
         return table
     }()
+    
+    // MARK: - User Balnce and Income & Expense
+    var userBalance: UserIncomeAndExpense = .init(balance: 6000, income: 1000, Expense: 2000)
     
     // MARK: - Transection data
     let transection: [Transections] = [
@@ -155,11 +158,14 @@ class HomeVC: UIViewController {
     private func configureShowBlanceView() {
         balanceInfo.addSubViews(totalBalanceLabel, balanceNumber, incomeArrowIcon, expensesArrowIcon, incomelbl, lastIncome, expenseslbl, lastExpense)
         
-        lastIncome.text         = "8500.00"
+        balanceNumber.attributedText = makeFormattedBalance(dollar: String(userBalance.balance))
+        balanceNumber.font  = UIFont.systemFont(ofSize: 65, weight: .bold)
+        
+        lastIncome.attributedText         = makeFormattedBalance(dollar: String(userBalance.income))
         lastIncome.textColor    = .white
         incomelbl.textColor     = .white
         
-        lastExpense.text        = "2300.00"
+        lastExpense.attributedText        = makeFormattedBalance(dollar: String(userBalance.Expense))
         expenseslbl.textColor   = .white
         lastExpense.textColor   = .white
         
@@ -241,7 +247,20 @@ class HomeVC: UIViewController {
 }
 
 
-extension HomeVC: UITableViewDataSource, UITableViewDelegate {
+extension HomeVC: BalanceFormater, UITableViewDataSource, UITableViewDelegate {
+    
+    func makeFormattedBalance(dollar: String) -> NSMutableAttributedString {
+        let dollarSignAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .callout), .baselineOffset: 8]
+        let dollarAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .title1)]
+        
+        let rootString = NSMutableAttributedString(string: "$", attributes: dollarSignAttributes)
+        let dollarString = NSAttributedString(string: dollar, attributes: dollarAttributes)
+
+        
+        rootString.append(dollarString)
+        
+        return rootString
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         90
