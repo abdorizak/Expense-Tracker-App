@@ -79,7 +79,9 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         models.append(Sections(options: [
             SettingOpetions(icon: Images.aboutUs, title: "About us", handler: {
-                print("")
+                let eStatement = AboutUsVC()
+                eStatement.title = "About us"
+                return self.navigationController?.pushViewController(eStatement, animated: true)
             }),
             SettingOpetions(icon: Images.logout, title: "Logout", handler: {
                 print("")
