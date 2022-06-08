@@ -131,9 +131,21 @@ extension TransectionsVC {
     }
     
     private func setIncome() {
-        let values: [Double] = [8, 104, 81, 93, 52, 44, 97, 101, 75, 28,
-            76, 25, 20, 13, 52, 44, 57, 23, 45, 12,
-            99, 14, 4, 48, 40, 71, 106, 41, 45, 61]
+        let values: [Double] = [
+            9000,
+            8000,
+            5000,
+            9000,
+            1000,
+            8000,
+            5000,
+            9000,
+            1000,
+            8000,
+            5000,
+            9000,
+            1000,
+        ]
              
         var enteries:[ChartDataEntry] = []
         
@@ -166,8 +178,21 @@ extension TransectionsVC {
     }
     
     private func setExpenses() {
-        let values: [Double] = [8, 104, 81, 93, 52, 44, 97, 101, 75, 28,
-                                76, 25, 20, 13, 52, 44, 57, 23, 45, 12]
+        let values: [Double] = [
+            9000,
+            8000,
+            5000,
+            9000,
+            1000,
+            8000,
+            5000,
+            9000,
+            1000,
+            8000,
+            5000,
+            9000,
+            1000
+        ]
         
         var enteries:[ChartDataEntry] = []
         
