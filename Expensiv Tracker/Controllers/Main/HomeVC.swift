@@ -34,7 +34,7 @@ class HomeVC: UIViewController {
     // MARK: - Card View Balance
     private let totalBalanceLabel       = CustomLabel(textAlignment: .center, fontSize: 20, textWeight: .semibold, text: "Total Balance")
     
-    private let balanceNumber           = CustomLabel(textAlignment: .center, fontSize: 66)
+    private let balanceNumber           = CustomLabel(textAlignment: .center, fontSize: 66, textWeight: .bold)
     
     // MARK: - Card View Income and expenses image and labels
     private let incomeArrowIcon: UIImageView = {
@@ -158,8 +158,7 @@ class HomeVC: UIViewController {
     private func configureShowBlanceView() {
         balanceInfo.addSubViews(totalBalanceLabel, balanceNumber, incomeArrowIcon, expensesArrowIcon, incomelbl, lastIncome, expenseslbl, lastExpense)
         
-        balanceNumber.attributedText = makeFormattedBalance(dollar: String(userBalance.balance))
-        balanceNumber.font  = UIFont.systemFont(ofSize: 65, weight: .bold)
+        balanceNumber.text = String("$\(userBalance.balance)")
         
         lastIncome.attributedText         = makeFormattedBalance(dollar: String(userBalance.income))
         lastIncome.textColor    = .white
