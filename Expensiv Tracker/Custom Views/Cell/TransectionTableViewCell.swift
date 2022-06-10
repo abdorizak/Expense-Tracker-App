@@ -99,17 +99,16 @@ class TransectionTableViewCell: UITableViewCell {
 
 extension TransectionTableViewCell: BalanceFormater {
     
-    func makeFormattedBalance(dollar: String) -> NSMutableAttributedString {
+    func makeFormattedBalance(dollar dollars: String) -> NSMutableAttributedString {
         let dollarSignAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .callout), .baselineOffset: 8]
         let dollarAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .title1)]
         
         let rootString = NSMutableAttributedString(string: "$", attributes: dollarSignAttributes)
-        let dollarString = NSAttributedString(string: dollar, attributes: dollarAttributes)
+        let dollarString = NSAttributedString(string: dollars, attributes: dollarAttributes)
         
         rootString.append(dollarString)
         
         return rootString
     }
-    
     
 }
