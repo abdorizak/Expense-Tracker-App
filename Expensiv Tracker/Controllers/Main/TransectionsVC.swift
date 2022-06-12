@@ -56,6 +56,32 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
         segment.layer.cornerRadius = 15
         return segment
     }()
+    
+    private let transectionsLabel       = CustomLabel(textAlignment: .left, fontSize: 24, textWeight: .medium, text: "Transections")
+    
+    private let tableView: UITableView  = {
+        let table = UITableView()
+        table.register(TransectionTableViewCell.self, forCellReuseIdentifier: TransectionTableViewCell.identifier)
+        table.showsVerticalScrollIndicator = false
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.separatorStyle = .none
+        return table
+    }()
+    
+    
+    let incomeTransection: [Transections] = [
+        .init(title: "Hayaat Market", description: "Waxaa soo Gatay 3 Shaati Anigoo iska maraayo taleex aa arkay suuqa xayaat. Waxaa soo Gatay 3 Shaati Anigoo iska maraayo taleex aa arkay suuqa xayaat", type: "Income", ammount: 392.80),
+        .init(title: "Gadasho Dhar", description: "Waxaan Maanta Soo ibsaday 2 Shaati 3 Surwaal iyo nigis", type: "Income", ammount: 56.0),
+        .init(title: "Mishaar", description: "waxaa Helay Mishaar Kasocda Company X", type: "Income", ammount: 6829.00),
+    ]
+    
+    let expenseTransection: [Transections] = [
+        .init(title: "Hayaat Market", description: "Waxaa soo Gatay 3 Shaati Anigoo iska maraayo taleex aa arkay suuqa xayaat. Waxaa soo Gatay 3 Shaati Anigoo iska maraayo taleex aa arkay suuqa xayaat", type: "Expense", ammount: 392.80),
+        .init(title: "Gadasho Dhar", description: "Waxaan Maanta Soo ibsaday 2 Shaati 3 Surwaal iyo nigis", type: "Expense", ammount: 56.0),
+        .init(title: "Mishaar", description: "waxaa Helay Mishaar Kasocda Company X", type: "Expense", ammount: 6829.00),
+    ]
+    
+    lazy var rowTransectionIndex = incomeTransection
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +89,9 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
         configTransectionsVC()
         configSegment()
         configChartView()
+        configTableView()
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
     private func ConfigureScrollView() {
@@ -71,7 +100,7 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
         scrollView.pinToEdges(to: view)
         contentView.pinToEdges(to: scrollView)
         
-        let contentView_height = CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 800 : 650)
+        let contentView_height = CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 600 : 800)
         
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
@@ -80,7 +109,7 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
     }
     
     
-    func configTransectionsVC() {
+    private func configTransectionsVC() {
         lineChart.delegate = self
         view.backgroundColor = .systemBackground
         navigationItem.title = "Transections"
@@ -93,10 +122,15 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
         switch segmentController.selectedSegmentIndex {
         case 0:
             self.setIncome()
+            self.rowTransectionIndex = incomeTransection
+            lineChart.animate(xAxisDuration: 2.5, yAxisDuration: 2.5)
         case 1:
             self.setExpenses()
+            self.rowTransectionIndex = expenseTransection
+            lineChart.animate(xAxisDuration: 2.5, yAxisDuration: 2.5)
         default: break
         }
+        tableView.reloadData()
     }
     
     private func configSegment() {
@@ -108,14 +142,70 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
         ])
     }
     
+    private func configTableView() {
+        contentView.addSubViews(transectionsLabel, tableView)
+        NSLayoutConstraint.activate([
+            transectionsLabel.topAnchor.constraint(equalTo: chartView.bottomAnchor, constant: 30),
+            transectionsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            transectionsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            transectionsLabel.heightAnchor.constraint(equalToConstant: 26),
+            
+            tableView.topAnchor.constraint(equalTo: transectionsLabel.bottomAnchor, constant: 10),
+            tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor)
+        ])
+  
+    }
+    
     
 }
 
-extension TransectionsVC {
+extension TransectionsVC: UITableViewDataSource, UITableViewDelegate {
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        90
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        rowTransectionIndex.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: TransectionTableViewCell.identifier, for: indexPath) as! TransectionTableViewCell
+        cell.selectionStyle = .none
+        cell.display(rowTransectionIndex[indexPath.row])
+        return cell
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        lineChart.animate(xAxisDuration: 2.5, yAxisDuration: 2.5)
+        switch segment.selectedSegmentIndex {
+        case 0:
+            setIncome()
+        case 1:
+            setExpenses()
+        default:
+            break
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        switch segment.selectedSegmentIndex {
+        case 0:
+            setIncome()
+            lineChart.animate(xAxisDuration: 2.5, yAxisDuration: 2.5)
+        case 1:
+            setExpenses()
+            lineChart.animate(xAxisDuration: 2.5, yAxisDuration: 2.5)
+        default:
+            break
+        }
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -132,19 +222,19 @@ extension TransectionsVC {
     
     private func setIncome() {
         let values: [Double] = [
-            9000,
-            8000,
+            4000,
             5000,
-            9000,
-            1000,
-            8000,
             5000,
-            9000,
+            7000,
             1000,
-            8000,
+            8700,
             5000,
-            9000,
-            1000,
+            800,
+            100,
+            300,
+            5200,
+            1200,
+            6500,
         ]
              
         var enteries:[ChartDataEntry] = []
