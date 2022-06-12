@@ -14,6 +14,7 @@ struct URL_S {
 
 enum Images {
     static let placeHolderImage      = UIImage(named: "default")
+    static let aboutUS_ExpenseImage  = UIImage(named: "Expense_Backgroud")
     static let usernameIcon          = UIImage(named: "username_icon")
     static let passwordIcon          = UIImage(named: "password_icon")
     static let login_Image           = UIImage(named: "Login_logo")
