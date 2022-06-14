@@ -45,7 +45,7 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
     private let contentView         = UIView()
     
     lazy var segment: UISegmentedControl = {
-        let items = ["Income", "Expenses"]
+        let items = ["Income", "Expense"]
         let segment = UISegmentedControl(items: items)
         segment.selectedSegmentIndex = 0
         let font = UIFont.systemFont(ofSize: 18)
@@ -76,9 +76,9 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
     ]
     
     let expenseTransection: [Transections] = [
-        .init(title: "Hayaat Market", description: "Waxaa soo Gatay 3 Shaati Anigoo iska maraayo taleex aa arkay suuqa xayaat. Waxaa soo Gatay 3 Shaati Anigoo iska maraayo taleex aa arkay suuqa xayaat", type: "Expense", ammount: 392.80),
-        .init(title: "Gadasho Dhar", description: "Waxaan Maanta Soo ibsaday 2 Shaati 3 Surwaal iyo nigis", type: "Expense", ammount: 56.0),
-        .init(title: "Mishaar", description: "waxaa Helay Mishaar Kasocda Company X", type: "Expense", ammount: 6829.00),
+        .init(title: "Hayaat Market", description: "Waxaa soo Gatay 3 Shaati Anigoo iska maraayo taleex aa arkay suuqa xayaat. Waxaa soo Gatay 3 Shaati Anigoo iska maraayo taleex aa arkay suuqa xayaat", type: "Expense", ammount: 542.80),
+        .init(title: "Gadasho Dhar", description: "Waxaan Maanta Soo ibsaday 2 Shaati 3 Surwaal iyo nigis", type: "Expense", ammount: 536.0),
+        .init(title: "Mishaar", description: "waxaa Helay Mishaar Kasocda Company X", type: "Expense", ammount: 8829.00),
     ]
     
     lazy var rowTransectionIndex = incomeTransection
@@ -121,12 +121,12 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
     @objc func siutDidChange(_ segmentController: UISegmentedControl) {
         switch segmentController.selectedSegmentIndex {
         case 0:
-            self.setIncome()
-            self.rowTransectionIndex = incomeTransection
+            rowTransectionIndex = incomeTransection
+            setIncome()
             lineChart.animate(xAxisDuration: 2.5, yAxisDuration: 2.5)
         case 1:
-            self.setExpenses()
-            self.rowTransectionIndex = expenseTransection
+            rowTransectionIndex = expenseTransection
+            setExpenses()
             lineChart.animate(xAxisDuration: 2.5, yAxisDuration: 2.5)
         default: break
         }
@@ -181,42 +181,32 @@ extension TransectionsVC: UITableViewDataSource, UITableViewDelegate {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
         switch segment.selectedSegmentIndex {
         case 0:
+            rowTransectionIndex = incomeTransection
             setIncome()
+            lineChart.animate(xAxisDuration: 2.5, yAxisDuration: 2.5)
         case 1:
+            rowTransectionIndex = expenseTransection
             setExpenses()
-        default:
-            break
+            lineChart.animate(xAxisDuration: 2.5, yAxisDuration: 2.5)
+        default: break
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        switch segment.selectedSegmentIndex {
-        case 0:
-            setIncome()
-            lineChart.animate(xAxisDuration: 2.5, yAxisDuration: 2.5)
-        case 1:
-            setExpenses()
-            lineChart.animate(xAxisDuration: 2.5, yAxisDuration: 2.5)
-        default:
-            break
-        }
-        
-    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         switch segment.selectedSegmentIndex {
         case 0:
+            rowTransectionIndex = incomeTransection
             setIncome()
         case 1:
+            rowTransectionIndex = expenseTransection
             setExpenses()
-        default:
-            break
+        default: break
         }
     }
     
@@ -269,19 +259,19 @@ extension TransectionsVC: UITableViewDataSource, UITableViewDelegate {
     
     private func setExpenses() {
         let values: [Double] = [
-            9000,
-            8000,
-            5000,
-            9000,
-            1000,
-            8000,
-            5000,
-            9000,
-            1000,
-            8000,
-            5000,
-            9000,
-            1000
+            9200,
+            8100,
+            5400,
+            1200,
+            5400,
+            4300,
+            2300,
+            6700,
+            100,
+            800,
+            400,
+            3400,
+            3400
         ]
         
         var enteries:[ChartDataEntry] = []
@@ -290,7 +280,7 @@ extension TransectionsVC: UITableViewDataSource, UITableViewDelegate {
             enteries.append(ChartDataEntry(x: Double(i), y: val))
         }
         
-        let set = LineChartDataSet(entries: enteries, label: "Expenses")
+        let set = LineChartDataSet(entries: enteries, label: "Expense")
         set.mode = .cubicBezier
         set.lineCapType = .round
         set.drawCirclesEnabled = false
