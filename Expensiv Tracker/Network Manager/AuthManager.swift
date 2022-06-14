@@ -5,16 +5,22 @@
 //  Created by Abdirizak Hassan on 2/28/22.
 //
 
+// Example of login with out network only For UI
+
 import UIKit
 
 final class AuthManager {
     
     static let shared = AuthManager()
     
+    private var user: User?
+    
     private init() {}
     
+    var itTrue: Bool?
+    
     var isSingedIn: Bool {
-        return true
+        return itTrue ?? false
     }
     
     private var accessToken: String? {
@@ -26,6 +32,7 @@ final class AuthManager {
             completion(token)
         }
     }
+    
     
     func login(username: String, password: String, completion: @escaping (Result<LoginResponse, ExError>) -> Void) {
         guard let url = URL(string: URL_S.login_URL) else {
@@ -45,7 +52,7 @@ final class AuthManager {
                 completion(.failure(.inValidData))
                 return
             }
-                  
+            
             guard let httpResponse = res as? HTTPURLResponse, httpResponse.statusCode == 200
             else {
                 completion(.failure(.httpResponse))
