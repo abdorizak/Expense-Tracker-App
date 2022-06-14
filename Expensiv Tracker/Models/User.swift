@@ -18,8 +18,10 @@ struct LoginResponse: Codable {
     let access_token: String
 }
 
-struct User: Decodable {
-    
+
+struct User {
+    let fullname: String
+    let email: String
 }
 
 struct UserIncomeAndExpense {
