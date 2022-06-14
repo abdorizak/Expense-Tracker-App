@@ -19,6 +19,11 @@ private struct SettingOpetions {
 }
 
 class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    enum logoutOptions: CaseIterable {
+        case logout
+        case cancel
+    }
 
     private var models: [Sections] = []
     
@@ -84,7 +89,11 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 return self.navigationController?.pushViewController(eStatement, animated: true)
             }),
             SettingOpetions(icon: Images.logout, title: "Logout", handler: {
-                print("")
+                let ac = UIAlertController(title: "Are sure you want Logout?", message: nil, preferredStyle: .actionSheet)
+                for i in logoutOptions.allCases {
+                    ac.addAction(UIAlertAction(title: "\(i)", style: .default, handler: self.didTapLogout(action:)))
+                }
+                return self.present(ac, animated: true, completion: nil)
             })
         ]))
         
@@ -94,6 +103,26 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    @objc func didTapLogout(action: UIAlertAction) {
+        guard let actionTitle = action.title else { return }
+        if actionTitle == "logout" {
+            let ac =  UIAlertController(title: "Sing Out", message: "Are you sure?", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            ac.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { _ in
+                if AuthManager.shared.isSingedIn {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                           
+                        }
+                    }
+                }))
+            present(ac, animated: true, completion: nil)
+        } else if actionTitle == "cancel" {
+            let ac =  UIAlertController(title: "Are you sure?", message: nil, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "ok", style: .cancel, handler: nil))
+            present(ac, animated: true, completion: nil)
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
