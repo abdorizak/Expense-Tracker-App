@@ -31,7 +31,6 @@ class LoginVC: UIViewController {
                                       title: "Login",
                                       TextStyle: .headline)
     let signUpbtn           = EButton(titleColor: .link, title: "SignUp Now")
-    
 
     var forgetBtnLeadingConstraint: NSLayoutConstraint!
     
@@ -52,7 +51,34 @@ class LoginVC: UIViewController {
         contentView.addSubViews(loginImageView, loginglbl, loginFormView, forgetPassword, loginBtn, registeryLabel, signUpbtn)
         forgetPassword.addTarget(self, action: #selector(pushForgetVC), for: .touchUpInside)
         signUpbtn.addTarget(self, action: #selector(pushSingUpVC), for: .touchUpInside)
+        loginBtn.addTarget(self, action: #selector(loginBtnClicked), for: .touchUpInside)
         navigationController?.setNavigationBarHidden(true, animated: true)
+
+    }
+    
+    
+    @objc func loginBtnClicked() {
+        guard let username = usernameTextFeild.text,
+              let password = passwordTextFeild.text else {
+            print("Please enter email and password")
+            return
+        }
+        
+        if username == "admin" && password == "admin" {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+                AuthManager.shared.itTrue = true
+                let h = TabBarVC()
+                h.modalPresentationStyle = .fullScreen
+                h.modalTransitionStyle = .coverVertical
+                self?.navigationController?.pushViewController(h, animated: true)
+            }
+        } else if username == "admin" || password == "" {
+            print("Please enter email and password")
+        } else if password == "admin" || username == "" {
+            print("Please enter email and password")
+        } else {
+            print("Please enter email and password")
+        }
     }
     
     private func createDismissKeyboardTapGesture() {
@@ -107,7 +133,7 @@ class LoginVC: UIViewController {
     }
     
     private func configureLoginFromView() {
-        
+        usernameTextFeild.autocapitalizationType = .none
         loginFormView.translatesAutoresizingMaskIntoConstraints = false
         loginFormView.layer.cornerRadius = 10
         loginFormView.backgroundColor = .secondarySystemBackground
