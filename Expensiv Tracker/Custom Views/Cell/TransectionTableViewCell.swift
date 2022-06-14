@@ -88,8 +88,9 @@ class TransectionTableViewCell: UITableViewCell {
         let ammount = String(transection.ammount)
         AmountLabel.attributedText =  makeFormattedBalance(dollar: ammount)
         if transection.type == "Expense" {
+            typeTransection.text = transection.type
             typeTransectionView.backgroundColor = UIColor(hex: "ff2c2c")
-        } else {
+        } else if transection.type == "Income" {
             typeTransection.text = transection.type
             typeTransectionView.backgroundColor = UIColor(hex: "67ff63")
         }
