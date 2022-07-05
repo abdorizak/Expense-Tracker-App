@@ -4,8 +4,7 @@
 //
 //  Created by Abdirizak Hassan on 2/28/22.
 //
-
-// Example of login with out network only For UI
+// UI DESING
 
 import UIKit
 

@@ -5,6 +5,8 @@
 //  Created by Abdirizak Hassan on 3/26/22.
 //
 
+// UI DESING
+
 import UIKit
 
 class DateTimePicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
