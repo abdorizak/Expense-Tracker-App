@@ -12,7 +12,7 @@
 		101EA9D327E1253600E9534C /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101EA9D227E1253600E9534C /* CustomView.swift */; };
 		101EA9D527E250DA00E9534C /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101EA9D427E250DA00E9534C /* GradientButton.swift */; };
 		101EA9D827E50D9E00E9534C /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 101EA9D727E50D9E00E9534C /* Charts */; };
-		103B9FB628748C49004A91A5 /* CustomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103B9FB528748C49004A91A5 /* CustomTableViewController.swift */; };
+		103B9FB628748C49004A91A5 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103B9FB528748C49004A91A5 /* CustomTableView.swift */; };
 		103B9FB828748C96004A91A5 /* AllTransactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103B9FB728748C96004A91A5 /* AllTransactions.swift */; };
 		106531492815AC03009FD888 /* Transection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106531482815AC03009FD888 /* Transection.swift */; };
 		1065314B2815B137009FD888 /* TransectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1065314A2815B137009FD888 /* TransectionTableViewCell.swift */; };
@@ -58,7 +58,7 @@
 		1008990D27D9E95500A94B4F /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		101EA9D227E1253600E9534C /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		101EA9D427E250DA00E9534C /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
-		103B9FB528748C49004A91A5 /* CustomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewController.swift; sourceTree = "<group>"; };
+		103B9FB528748C49004A91A5 /* CustomTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		103B9FB728748C96004A91A5 /* AllTransactions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTransactions.swift; sourceTree = "<group>"; };
 		106531482815AC03009FD888 /* Transection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transection.swift; sourceTree = "<group>"; };
 		1065314A2815B137009FD888 /* TransectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -133,7 +133,7 @@
 		103B9FB428748C49004A91A5 /* Custom TableView */ = {
 			isa = PBXGroup;
 			children = (
-				103B9FB528748C49004A91A5 /* CustomTableViewController.swift */,
+				103B9FB528748C49004A91A5 /* CustomTableView.swift */,
 			);
 			path = "Custom TableView";
 			sourceTree = "<group>";
@@ -449,7 +449,7 @@
 				10C5B3C327D0A9CE00B60A4A /* ForgetPasswordTextFeild.swift in Sources */,
 				10C5B3AC27CDFADB00B60A4A /* TabBarVC.swift in Sources */,
 				101EA9D327E1253600E9534C /* CustomView.swift in Sources */,
-				103B9FB628748C49004A91A5 /* CustomTableViewController.swift in Sources */,
+				103B9FB628748C49004A91A5 /* CustomTableView.swift in Sources */,
 				10F3E167282C3DED0071942B /* Color+Ext.swift in Sources */,
 				10EEDF8927CD05AD00BC03D3 /* SceneDelegate.swift in Sources */,
 				1008990E27D9E95500A94B4F /* AvatarImageView.swift in Sources */,

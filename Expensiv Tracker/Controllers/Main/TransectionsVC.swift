@@ -60,7 +60,7 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
     
     private let transectionsLabel       = CustomLabel(textAlignment: .left, fontSize: 24, textWeight: .medium, text: "Transections")
     
-    private let tableView = CustomTableViewController(indicator: false, separtorStyle: .singleLine, TransectionTableViewCell.self, forCellReuseIdentifier: TransectionTableViewCell.identifier)
+    private let tableView = CustomTableView(indicator: false, separtorStyle: .singleLine, TransectionTableViewCell.self, forCellReuseIdentifier: TransectionTableViewCell.identifier)
     
     
     let incomeTransection: [Transections] = [
