@@ -41,8 +41,8 @@ class HomeVC: UIViewController {
     private let lastIncome  = CustomLabel(textAlignment: .left, fontSize: 26)
     private let lastExpense = CustomLabel(textAlignment: .left, fontSize: 26)
     
-    private let tableView = CustomTableViewController(indicator: false, separtorStyle: .singleLine, TransectionTableViewCell.self, forCellReuseIdentifier: TransectionTableViewCell.identifier)
-    
+    private let tableView = CustomTableView(indicator: false, separtorStyle: .singleLine, TransectionTableViewCell.self, forCellReuseIdentifier: TransectionTableViewCell.identifier)
+    private let viewMoreButton = UIButton(type: .system)
     
     // MARK: - User Balnce and Income & Expense
     var userBalance: UserIncomeAndExpense = .init(balance: 6000, income: 1000, Expense: 2000)
@@ -66,7 +66,7 @@ class HomeVC: UIViewController {
         tableView.delegate   = self
         tableView.dataSource = self
         
-        view.addSubViews(headerView, balanceInfo, transectionsLabel, tableView)
+        view.addSubViews(headerView, balanceInfo, transectionsLabel, viewMoreButton, tableView)
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapSetting))
         profile.addGestureRecognizer(tap)
         profile.isUserInteractionEnabled = true
@@ -200,12 +200,28 @@ class HomeVC: UIViewController {
     
     
     private func configTransectionLabel() {
-        
+        var config = UIButton.Configuration.plain()
+        config.image = UIImage(systemName: "arrow.right.circle")
+        config.imagePlacement = .trailing
+        config.title = "More "
+        viewMoreButton.configuration = config
+        viewMoreButton.translatesAutoresizingMaskIntoConstraints = false
+        viewMoreButton.addAction(UIAction(handler: { _ in
+            let transactionVC = UINavigationController(rootViewController: AllTransaction())
+            transactionVC.modalPresentationStyle = .popover
+            transactionVC.modalTransitionStyle   = .coverVertical
+            self.present(transactionVC, animated: true, completion: nil)
+        }), for: .touchUpInside)
         NSLayoutConstraint.activate([
             transectionsLabel.topAnchor.constraint(equalTo: balanceInfo.bottomAnchor, constant: 30),
             transectionsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             transectionsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            transectionsLabel.heightAnchor.constraint(equalToConstant: 26)
+            transectionsLabel.heightAnchor.constraint(equalToConstant: 26),
+            
+            viewMoreButton.topAnchor.constraint(equalTo: balanceInfo.bottomAnchor, constant: 30),
+            viewMoreButton.centerYAnchor.constraint(equalTo: transectionsLabel.centerYAnchor),
+            viewMoreButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            viewMoreButton.heightAnchor.constraint(equalTo: transectionsLabel.heightAnchor)
         ])
     }
     
