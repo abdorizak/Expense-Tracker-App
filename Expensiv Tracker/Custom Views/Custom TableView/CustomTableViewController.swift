@@ -18,6 +18,15 @@ class CustomTableViewController: UITableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    convenience init(indicator: Bool, separtorStyle: UITableViewCell.SeparatorStyle, _ clas: AnyClass?, forCellReuseIdentifier: String) {
+        self.init(frame: .zero, style: .plain)
+        showsVerticalScrollIndicator = indicator
+        translatesAutoresizingMaskIntoConstraints = false
+        separatorStyle = separtorStyle
+//        register(nib, forCellReuseIdentifier: forCellReuseIdentifier)
+        register(clas, forCellReuseIdentifier: forCellReuseIdentifier)
+    }
+    
     private func configTable() {
         showsVerticalScrollIndicator = false
         translatesAutoresizingMaskIntoConstraints = false
