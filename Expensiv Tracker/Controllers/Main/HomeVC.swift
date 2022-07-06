@@ -17,14 +17,8 @@ class HomeVC: UIViewController {
     private let userImage       = AvatarImageView(frame: .zero)
     private let welcomeLabel    = CustomLabel(textAlignment: .left, fontSize: 20, textWeight: .ultraLight, text: "Hi Welcome")
     private let fullnameLabel           = CustomLabel(textAlignment: .left, fontSize: 18, textWeight: .regular)
-    private let profile: UIImageView = {
-        let image = UIImageView(frame: .zero)
-        image.contentMode = .scaleAspectFit
-        image.image = UIImage(systemName: "text.alignright")
-        image.tintColor = .systemGray2
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
+    
+    private let profile = AvatarImageView(color: .systemGray2, icon: "text.alignright", mode: .scaleAspectFit)
     
     // MARK: - Card View
     private let balanceInfo             = CardView(frame: .zero)
@@ -38,37 +32,17 @@ class HomeVC: UIViewController {
     private let balanceNumber           = CustomLabel(textAlignment: .center, fontSize: 66, textWeight: .bold)
     
     // MARK: - Card View Income and expenses image and labels
-    private let incomeArrowIcon: UIImageView = {
-        let img = UIImageView(frame: .zero)
-        img.contentMode = .scaleAspectFill
-        img.image = UIImage(systemName: "arrow.down")
-        img.tintColor = .green
-        img.translatesAutoresizingMaskIntoConstraints = false
-        return img
-    }()
+    private let incomeArrowIcon = AvatarImageView(color: .green, icon: "arrow.down", mode: .scaleAspectFill)
     
-    private let expensesArrowIcon: UIImageView = {
-        let img = UIImageView(frame: .zero)
-        img.contentMode = .scaleAspectFill
-        img.image = UIImage(systemName: "arrow.up")
-        img.tintColor = .red
-        img.translatesAutoresizingMaskIntoConstraints = false
-        return img
-    }()
+    private let expensesArrowIcon = AvatarImageView(color: .red, icon: "arrow.up", mode: .scaleAspectFill)
     
     private let incomelbl   = CustomLabel(textAlignment: .left, fontSize: 13, textWeight: .light, text: "Income")
     private let expenseslbl   = CustomLabel(textAlignment: .left, fontSize: 13, textWeight: .light, text: "Expenses")
     private let lastIncome  = CustomLabel(textAlignment: .left, fontSize: 26)
     private let lastExpense = CustomLabel(textAlignment: .left, fontSize: 26)
-     
-    private let tableView: UITableView  = {
-        let table = UITableView()
-        table.register(TransectionTableViewCell.self, forCellReuseIdentifier: TransectionTableViewCell.identifier)
-        table.showsVerticalScrollIndicator = false
-        table.translatesAutoresizingMaskIntoConstraints = false
-        table.separatorStyle = .none
-        return table
-    }()
+    
+    private let tableView = CustomTableViewController(indicator: false, separtorStyle: .singleLine, TransectionTableViewCell.self, forCellReuseIdentifier: TransectionTableViewCell.identifier)
+    
     
     // MARK: - User Balnce and Income & Expense
     var userBalance: UserIncomeAndExpense = .init(balance: 6000, income: 1000, Expense: 2000)
@@ -226,6 +200,7 @@ class HomeVC: UIViewController {
     
     
     private func configTransectionLabel() {
+        
         NSLayoutConstraint.activate([
             transectionsLabel.topAnchor.constraint(equalTo: balanceInfo.bottomAnchor, constant: 30),
             transectionsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
