@@ -60,14 +60,7 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
     
     private let transectionsLabel       = CustomLabel(textAlignment: .left, fontSize: 24, textWeight: .medium, text: "Transections")
     
-    private let tableView: UITableView  = {
-        let table = UITableView()
-        table.register(TransectionTableViewCell.self, forCellReuseIdentifier: TransectionTableViewCell.identifier)
-        table.showsVerticalScrollIndicator = false
-        table.translatesAutoresizingMaskIntoConstraints = false
-        table.separatorStyle = .none
-        return table
-    }()
+    private let tableView = CustomTableViewController(indicator: false, separtorStyle: .singleLine, TransectionTableViewCell.self, forCellReuseIdentifier: TransectionTableViewCell.identifier)
     
     
     let incomeTransection: [Transections] = [
@@ -163,7 +156,6 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
 }
 
 extension TransectionsVC: UITableViewDataSource, UITableViewDelegate {
-    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         90

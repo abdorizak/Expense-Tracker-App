@@ -59,27 +59,27 @@ class LoginVC: UIViewController {
     
     
     @objc func loginBtnClicked() {
-        guard let username = usernameTextFeild.text,
-              let password = passwordTextFeild.text else {
-            print("Please enter email and password")
-            return
-        }
-        
-        if username == "admin" && password == "admin" {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-                AuthManager.shared.itTrue = true
-                let h = TabBarVC()
-                h.modalPresentationStyle = .fullScreen
-                h.modalTransitionStyle = .coverVertical
-                self?.navigationController?.pushViewController(h, animated: true)
-            }
-        } else if username == "admin" || password == "" {
-            print("Please enter email and password")
-        } else if password == "admin" || username == "" {
-            print("Please enter email and password")
-        } else {
-            print("Please enter email and password")
-        }
+//        guard let username = usernameTextFeild.text,
+//              let password = passwordTextFeild.text else {
+//            print("Please enter email and password")
+//            return
+//        }
+//
+//        if username == "admin" && password == "admin" {
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+//                AuthManager.shared.itTrue = true
+//                let h = TabBarVC()
+//                h.modalPresentationStyle = .fullScreen
+//                h.modalTransitionStyle = .coverVertical
+//                self?.navigationController?.pushViewController(h, animated: true)
+//            }
+//        } else if username == "admin" || password == "" {
+//            print("Please enter email and password")
+//        } else if password == "admin" || username == "" {
+//            print("Please enter email and password")
+//        } else {
+//            print("Please enter email and password")
+//        }
     }
     
     private func createDismissKeyboardTapGesture() {

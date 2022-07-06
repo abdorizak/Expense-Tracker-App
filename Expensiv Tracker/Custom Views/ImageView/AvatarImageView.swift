@@ -21,6 +21,14 @@ class AvatarImageView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    convenience init(color: UIColor, icon img: String, mode: UIView.ContentMode) {
+        self.init(frame: .zero)
+        contentMode = mode
+        image = UIImage(systemName: img)
+        tintColor = color
+        translatesAutoresizingMaskIntoConstraints = false
+    }
+    
     func configImage() {
         translatesAutoresizingMaskIntoConstraints = false
         clipsToBounds = true
