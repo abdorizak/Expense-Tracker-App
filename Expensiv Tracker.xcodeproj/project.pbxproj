@@ -149,6 +149,13 @@
 			path = ProfileViews;
 			sourceTree = "<group>";
 		};
+		1081EF1B287F3C74005849B5 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
 		10A8872D27F2072B0001794B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +269,7 @@
 		10EEDF8527CD05AD00BC03D3 /* Expensiv Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				1081EF1B287F3C74005849B5 /* View Model */,
 				10EEDF9A27CD094A00BC03D3 /* Resources */,
 				10EEDFA327CD0B2600BC03D3 /* Utilits */,
 				10EEDFA227CD0B0F00BC03D3 /* Extentions */,
