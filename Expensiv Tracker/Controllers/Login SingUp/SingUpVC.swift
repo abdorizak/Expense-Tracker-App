@@ -35,6 +35,7 @@ class SingUpVC: UIViewController {
     private let usernameTextFeild            = CustomTextFields(textContentType: .username, isSecureTextEntry: false, placeholder: "Username")
     private let passwordTextFeild            = CustomTextFields(textContentType: .newPassword, isSecureTextEntry: true, placeholder: "Password")
     private let confirmPasswordTextFeild     = CustomTextFields(textContentType: .newPassword, isSecureTextEntry: true, placeholder: "Confirm Password")
+    private let pinTextFeild                  = CustomTextFields(isSecureTextEntry: false)
 
     var items: [CustomTextFields] = []
     
@@ -131,6 +132,11 @@ class SingUpVC: UIViewController {
             confirmPasswordTextFeild.leadingAnchor.constraint(equalTo: signUpView.leadingAnchor, constant: 20),
             confirmPasswordTextFeild.heightAnchor.constraint(equalToConstant: 45),
             
+            pinTextFeild.topAnchor.constraint(equalTo: confirmPasswordTextFeild.bottomAnchor, constant: 20),
+            pinTextFeild.trailingAnchor.constraint(equalTo: signUpView.trailingAnchor, constant: -20),
+            pinTextFeild.leadingAnchor.constraint(equalTo: signUpView.leadingAnchor, constant: 20),
+            pinTextFeild.heightAnchor.constraint(equalToConstant: 45),
+            
         ])
     }
     
@@ -145,3 +151,14 @@ class SingUpVC: UIViewController {
     }
 }
 
+
+extension SingUpVC: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let maxLength = 4
+        
+        let currentText: NSString = (textField.text ?? "") as NSString
+        let newString: NSString = currentText.replacingCharacters(in: range, with: string) as NSString
+        
+        return newString.length <= maxLength
+    }
+}
