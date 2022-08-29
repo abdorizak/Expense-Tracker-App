@@ -34,7 +34,7 @@ class ForgetPasswordTextFeild: UITextField {
         font            = UIFont.systemFont(ofSize: 17)
         minimumFontSize = 17
         
-        backgroundColor     = .secondarySystemBackground
+        backgroundColor     = .clear
         autocorrectionType  = .no
         returnKeyType       = .go
         clearButtonMode     = .whileEditing
