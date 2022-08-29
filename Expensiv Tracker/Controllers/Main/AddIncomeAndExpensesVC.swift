@@ -47,7 +47,7 @@ class AddIncomeAndExpensesVC: UIViewController {
         return textField
     }()
     
-    let transectionType: [String] = ["expense", "income"]
+    let transactionType: [String] = ["expense", "income"]
     
     private let transectionTypeTextField: UITextField = {
         let category = UITextField(frame: .zero)
@@ -133,7 +133,6 @@ class AddIncomeAndExpensesVC: UIViewController {
         contentView.addSubViews(EIlabel, itemView1, itemView2, itemView3, itemView4, itemView5, SaveButton)
         let tap  = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
-
     }
     
     
@@ -237,15 +236,15 @@ extension AddIncomeAndExpensesVC: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        transectionType.count
+        transactionType.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        transectionType[row]
+        transactionType[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        transectionTypeTextField.text = transectionType[row]
+        transectionTypeTextField.text = transactionType[row]
         transectionTypeTextField.resignFirstResponder()
     }
 }
