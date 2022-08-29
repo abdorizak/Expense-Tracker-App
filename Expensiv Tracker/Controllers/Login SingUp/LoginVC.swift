@@ -24,16 +24,17 @@ class LoginVC: UIViewController {
     // MARK: - LOGIN FORM
     let loginglbl           = CustomLabel(textAlignment: .left, fontSize: 40)
     let registeryLabel      = CustomLabel(textAlignment: .left, fontSize: 22)
+    let orLable             = CustomLabel(textAlignment: .center, fontSize: 18, textWeight: .light, text: "Or")
     let usernameTextFeild   = UsernameTextField(frame: .zero)
     let passwordTextFeild   = PasswordTextField(frame: .zero)
     let forgetPassword      = EButton(titleColor: .link,
                                       title: "Forget Password")
-    let loginBtn            = EButton(backgroundColor: .link,
-                                      title: "Login",
-                                      TextStyle: .headline)
+    let loginBtn            = EButton(backgroundColor: .link, title: "Login", TextStyle: .headline)
+    let loginWithPin            = EButton(backgroundColor: .link, title: "Login With Pin", TextStyle: .headline)
     let signUpbtn           = EButton(titleColor: .link, title: "SignUp Now")
 
     var forgetBtnLeadingConstraint: NSLayoutConstraint!
+    private var loginViewModel = LoginViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,37 +50,57 @@ class LoginVC: UIViewController {
     
     private func confgiruVC() {
         view.backgroundColor = .systemBackground
-        contentView.addSubViews(loginImageView, loginglbl, loginFormView, forgetPassword, loginBtn, registeryLabel, signUpbtn)
+        contentView.addSubViews(loginImageView, loginglbl, loginFormView, forgetPassword, loginBtn, loginWithPin, orLable, registeryLabel, signUpbtn)
         forgetPassword.addTarget(self, action: #selector(pushForgetVC), for: .touchUpInside)
         signUpbtn.addTarget(self, action: #selector(pushSingUpVC), for: .touchUpInside)
         loginBtn.addTarget(self, action: #selector(loginBtnClicked), for: .touchUpInside)
+        loginWithPin.addTarget(self, action: #selector(loginwithPinClicked), for: .touchUpInside)
         navigationController?.setNavigationBarHidden(true, animated: true)
 
     }
     
     
+    
     @objc func loginBtnClicked() {
-//        guard let username = usernameTextFeild.text,
-//              let password = passwordTextFeild.text else {
-//            print("Please enter email and password")
-//            return
-//        }
-//
-//        if username == "admin" && password == "admin" {
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-//                AuthManager.shared.itTrue = true
-//                let h = TabBarVC()
-//                h.modalPresentationStyle = .fullScreen
-//                h.modalTransitionStyle = .coverVertical
-//                self?.navigationController?.pushViewController(h, animated: true)
-//            }
-//        } else if username == "admin" || password == "" {
-//            print("Please enter email and password")
-//        } else if password == "admin" || username == "" {
-//            print("Please enter email and password")
-//        } else {
-//            print("Please enter email and password")
-//        }
+        let validate = Validate(usernameTextFeild, passwordTextFeild)
+        showLoadingview()
+        switch validate {
+        case .Valid:
+            Task {
+                do {
+                    let result = try await AuthManager.shared.login(username: usernameTextFeild.text!, password: passwordTextFeild.text!)
+                    if result.status != 200 {
+                        presentAlertOnMainThread(title: "Opps!", message: result.message ?? "N/A", btnTitle: "ok")
+                        dismissLoding()
+                    } else {
+                        DispatchQueue.main.async {
+                            let home = TabBarVC()
+                            home.modalTransitionStyle = .crossDissolve
+                            home.modalPresentationStyle = .fullScreen
+                            self.present(home, animated: true)
+                            self.dismissLoding()
+                        }
+                    }
+                } catch {
+                    if let err = error as? ExError {
+                        presentAlertOnMainThread(title: "Opps!", message: "\(err.rawValue)", btnTitle: "ok")
+                    } else {
+                        presentDefaultError()
+                    }
+                    dismissLoding()
+                }
+            }
+        case .InValid(let err):
+            presentAlertOnMainThread(title: "Opps!", message: "\(err)", btnTitle: "OK")
+            dismissLoding()
+        }
+    }
+    
+    @objc func loginwithPinClicked() {
+        let pinLogin = UINavigationController(rootViewController: LoginWithPinVC())
+        pinLogin.modalTransitionStyle = .coverVertical
+        pinLogin.modalPresentationStyle = .popover
+        present(pinLogin, animated: true)
     }
     
     private func createDismissKeyboardTapGesture() {
@@ -109,7 +130,7 @@ class LoginVC: UIViewController {
             loginImageView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 20),
             loginImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 20),
             loginImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            loginImageView.heightAnchor.constraint(equalToConstant: 350),
+            loginImageView.heightAnchor.constraint(equalToConstant: 300),
         ])
     }
     
@@ -127,7 +148,7 @@ class LoginVC: UIViewController {
             loginglbl.heightAnchor.constraint(equalToConstant: 50),
             
             
-            registeryLabel.topAnchor.constraint(equalTo: loginBtn.bottomAnchor, constant: 40),
+            registeryLabel.topAnchor.constraint(equalTo: loginWithPin.bottomAnchor, constant: 40),
             registeryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 130),
             registeryLabel.heightAnchor.constraint(equalToConstant: 22)
         ])
@@ -192,7 +213,6 @@ class LoginVC: UIViewController {
             forgetPassword.topAnchor.constraint(equalTo: loginFormView.bottomAnchor, constant: 25),
             forgetPassword.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             forgetPassword.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: leadingConstraintConstant),
-            
         ])
     }
     
@@ -203,6 +223,16 @@ class LoginVC: UIViewController {
             loginBtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -90),
             loginBtn.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 90),
             loginBtn.heightAnchor.constraint(equalToConstant: 50),
+            
+            orLable.topAnchor.constraint(equalTo: loginBtn.bottomAnchor, constant: 10),
+            orLable.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            orLable.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+//            orLable.heightAnchor.constraint(equalToConstant: 18),
+            
+            loginWithPin.topAnchor.constraint(equalTo: orLable.bottomAnchor, constant: 10),
+            loginWithPin.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -90),
+            loginWithPin.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 90),
+            loginWithPin.heightAnchor.constraint(equalToConstant: 50),
             
             signUpbtn.topAnchor.constraint(equalTo: registeryLabel.bottomAnchor, constant: -22),
             signUpbtn.leadingAnchor.constraint(equalTo: registeryLabel.trailingAnchor, constant: 6),
