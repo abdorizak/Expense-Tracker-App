@@ -38,16 +38,6 @@ extension UIViewController {
         return .Valid
     }
     
-//    func validateTexFields(_ username: UITextField, _ pass: UITextField) {
-//        if (username.text?.isEmpty)! && (pass.text?.isEmpty)! {
-//            presentAlertOnMainThread(title: "Opps!", message: "Username and password cannot be Empty.", btnTitle: "OK")
-//        } else if (username.text?.isEmpty)! {
-//            presentAlertOnMainThread(title: "Opps!", message: "Username cannot be Empty.", btnTitle: "OK")
-//        } else if (pass.text?.isEmpty)! {
-//            presentAlertOnMainThread(title: "Opps!", message: "password cannot be Empty.", btnTitle: "OK")
-//        }
-//    }
-    
     func validateTexFields(_ p1: UITextField, _ p2: UITextField, _ p3: UITextField, _ p4: UITextField) {
         if (p1.text?.isEmpty)! && (p2.text?.isEmpty)! && (p3.text?.isEmpty)! && (p4.text?.isEmpty)! {
             presentAlertOnMainThread(title: "Warning!", message: "Pin Number cannot be Empty", btnTitle: "OK")
