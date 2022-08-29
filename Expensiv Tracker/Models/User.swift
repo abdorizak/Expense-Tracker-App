@@ -8,25 +8,38 @@
 
 import UIKit
 
-struct LoginBody: Codable {
-    let username: String
-    let password: String
+struct User: Decodable {
+    let avatar: String
+    let name: String
 }
 
-struct LoginResponse: Codable {
-    let success: Int
-    let userInfo: String    // userId
-    let access_token: String
-}
-
-
-struct User {
-    let fullname: String
-    let email: String
-}
-
-struct UserIncomeAndExpense {
+struct UserBalanceIncomeExpense: Decodable {
+    let status: Int
+    let message: String
+    let user: User
     let balance: Double
-    let income: Double
-    let Expense: Double
+    let income:  Double
+    let expense: Double
+    
+    enum CodingKeys: String, CodingKey {
+        case status
+        case message
+        case user
+        case balance = "balance"
+        case income  = "userincome"
+        case expense = "userExpense"
+    }
+}
+
+
+struct UserIncome: Decodable, Hashable {
+    let status: Int
+    let message: String
+    let userIncome: [Double]
+}
+
+struct UserExpenses: Decodable, Hashable {
+    let status: Int
+    let message: String
+    let userExpense: [Double]
 }
