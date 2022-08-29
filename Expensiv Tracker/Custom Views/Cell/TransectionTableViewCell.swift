@@ -83,11 +83,11 @@ class TransectionTableViewCell: UITableViewCell {
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: bottomSpace, right: 0))
     }
     
-    func display(_ transection: Transections) {
+    func display(_ transection: Transaction) {
         titleLabel.text = transection.title
         descriptionLabel.text = transection.description
-        let ammount = String(transection.ammount)
-        AmountLabel.attributedText =  makeFormattedBalance(dollar: ammount)
+//        let ammount = transection.amount
+        AmountLabel.attributedText =  makeFormattedBalance(dollar: transection.amount.toString())
         if transection.type == "Expense" {
             typeTransection.text = transection.type
             typeTransectionView.backgroundColor = UIColor(hex: "ff2c2c")
