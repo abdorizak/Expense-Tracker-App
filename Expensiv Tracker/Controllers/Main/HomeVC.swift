@@ -12,6 +12,8 @@ class HomeVC: UIViewController {
     
     // MARK: HeaderView
     private let headerView              = UIView()
+    private let Statechanger            = UIView()
+    private let messageLabel    = AlertTitleLabel(textAlignment: .center, fontSize: 20)
     
     // MARK: - HeaderView Item's
     private let userImage       = AvatarImageView(frame: .zero)
@@ -25,7 +27,7 @@ class HomeVC: UIViewController {
     
     // MARK: - Transection Label & Table View Label
     private let transectionsLabel       = CustomLabel(textAlignment: .left, fontSize: 24, textWeight: .medium, text: "Transections")
-
+    
     // MARK: - Card View Balance
     private let totalBalanceLabel       = CustomLabel(textAlignment: .center, fontSize: 20, textWeight: .semibold, text: "Total Balance")
     
@@ -38,43 +40,73 @@ class HomeVC: UIViewController {
     
     private let incomelbl   = CustomLabel(textAlignment: .left, fontSize: 13, textWeight: .light, text: "Income")
     private let expenseslbl   = CustomLabel(textAlignment: .left, fontSize: 13, textWeight: .light, text: "Expenses")
-    private let lastIncome  = CustomLabel(textAlignment: .left, fontSize: 26)
-    private let lastExpense = CustomLabel(textAlignment: .left, fontSize: 26)
+    private let lastIncome  = CustomLabel(textAlignment: .left, fontSize: 20)
+    private let lastExpense = CustomLabel(textAlignment: .left, fontSize: 18)
     
     private let tableView = CustomTableView(indicator: false, separtorStyle: .singleLine, TransectionTableViewCell.self, forCellReuseIdentifier: TransectionTableViewCell.identifier)
     private let viewMoreButton = UIButton(type: .system)
     
-    // MARK: - User Balnce and Income & Expense
-    var userBalance: UserIncomeAndExpense = .init(balance: 6000, income: 1000, Expense: 2000)
     
     // MARK: - Transection data
-    let transection: [Transections] = [
-        .init(title: "Hayaat Market", description: "Waxaa soo Gatay 3 Shaati Anigoo iska maraayo taleex aa arkay suuqa xayaat. Waxaa soo Gatay 3 Shaati Anigoo iska maraayo taleex aa arkay suuqa xayaat", type: "Expense", ammount: 392.80),
-        .init(title: "Gadasho Dhar", description: "Waxaan Maanta Soo ibsaday 2 Shaati 3 Surwaal iyo nigis", type: "Expense", ammount: 56.0),
-        .init(title: "Mishaar", description: "waxaa Helay Mishaar Kasocda Company X", type: "Income", ammount: 6829.00),
-    ]
-    
+    var transaction = [Transaction]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configHomeVC()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchData()
+        fetchTrasanction()
     }
     
     func configHomeVC() {
         view.backgroundColor = .systemBackground
         navigationController?.setNavigationBarHidden(true, animated: true)
-        tableView.delegate   = self
         tableView.dataSource = self
+        tableView.delegate = self
         
-        view.addSubViews(headerView, balanceInfo, transectionsLabel, viewMoreButton, tableView)
+        view.addSubViews(headerView, balanceInfo, transectionsLabel, viewMoreButton, tableView, Statechanger)
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapSetting))
         profile.addGestureRecognizer(tap)
         profile.isUserInteractionEnabled = true
+        fetchData()
         ConfigureHeaderView()
         ConfigureHeaderElements()
-        configureShowBlanceView()
         configTransectionLabel()
-        configTableView()
+        configStateView()
+        fetchTrasanction()
+    }
+    
+    
+    private func fetchData() {
+        Task {
+            do {
+                let userData = try await NetworkManager.shared.getDashboardData()
+                configData(userData)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    private func fetchTrasanction() {
+        Task {
+            do {
+                let transactions = try await NetworkManager.shared.getTransaction()
+                self.transaction = transactions.transaction
+                if !transaction.isEmpty {
+                    configTableView()
+                    self.tableView.reloadDataOnMainThread()
+                } else {
+                    layoutLable("This user doesn't have any Transactions. Go an make Expenses or Income 😀.")
+                }
+            } catch {
+                print(error.localizedDescription    )
+            }
+        }
     }
     
     private func ConfigureHeaderView() {
@@ -98,13 +130,34 @@ class HomeVC: UIViewController {
         present(profileVC, animated: true, completion: nil)
     }
     
+    private func configData(_ data: UserBalanceIncomeExpense){
+        fullnameLabel.text = data.user.name
+        
+        balanceNumber.text = "$\(data.balance)"
+        lastIncome.attributedText         = makeFormattedBalance(dollar: String(format:"%.01f", data.income))
+        lastExpense.attributedText        = makeFormattedBalance(dollar: String(data.expense))
+    }
+    
     private func ConfigureHeaderElements() {
         headerView.addSubViews(userImage, welcomeLabel, fullnameLabel, profile)
         userImage.layer.cornerRadius = 25
-        fullnameLabel.text = "Abdorizak Abdalla"
         
         profile.layer.cornerRadius = 10
+        balanceInfo.addSubViews(totalBalanceLabel, balanceNumber, incomeArrowIcon, expensesArrowIcon, incomelbl, lastIncome, expenseslbl, lastExpense)
         
+        lastIncome.textColor    = .white
+        incomelbl.textColor     = .white
+        
+        
+        expenseslbl.textColor   = .white
+        lastExpense.textColor   = .white
+        
+        balanceInfo.layer.shouldRasterize = true
+        balanceInfo.layer.rasterizationScale = UIScreen.main.scale
+        
+        totalBalanceLabel.textColor = .white
+        balanceNumber.textColor     = .white
+
         NSLayoutConstraint.activate([
             userImage.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 10),
             userImage.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 10),
@@ -115,7 +168,7 @@ class HomeVC: UIViewController {
             welcomeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             welcomeLabel.leadingAnchor.constraint(equalTo: userImage.trailingAnchor, constant: 8),
             welcomeLabel.heightAnchor.constraint(equalToConstant: 22),
-
+            
             fullnameLabel.bottomAnchor.constraint(equalTo: userImage.bottomAnchor),
             fullnameLabel.leadingAnchor.constraint(equalTo: userImage.trailingAnchor, constant: 8),
             fullnameLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -20),
@@ -124,32 +177,8 @@ class HomeVC: UIViewController {
             profile.centerYAnchor.constraint(equalTo: userImage.centerYAnchor),
             profile.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -10),
             profile.widthAnchor.constraint(equalToConstant: 30),
-            profile.heightAnchor.constraint(equalToConstant: 30)
-        ])
-        
-    }
-
-    
-    private func configureShowBlanceView() {
-        balanceInfo.addSubViews(totalBalanceLabel, balanceNumber, incomeArrowIcon, expensesArrowIcon, incomelbl, lastIncome, expenseslbl, lastExpense)
-        
-        balanceNumber.text = String("$\(userBalance.balance)")
-        
-        lastIncome.attributedText         = makeFormattedBalance(dollar: String(userBalance.income))
-        lastIncome.textColor    = .white
-        incomelbl.textColor     = .white
-        
-        lastExpense.attributedText        = makeFormattedBalance(dollar: String(userBalance.Expense))
-        expenseslbl.textColor   = .white
-        lastExpense.textColor   = .white
-        
-        balanceInfo.layer.shouldRasterize = true
-        balanceInfo.layer.rasterizationScale = UIScreen.main.scale
-
-        totalBalanceLabel.textColor = .white
-        balanceNumber.textColor     = .white
-        
-        NSLayoutConstraint.activate([
+            profile.heightAnchor.constraint(equalToConstant: 30),
+            
             balanceInfo.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
             balanceInfo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             balanceInfo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -192,13 +221,13 @@ class HomeVC: UIViewController {
             
             lastExpense.bottomAnchor.constraint(equalTo: expensesArrowIcon.bottomAnchor),
             lastExpense.leadingAnchor.constraint(equalTo: expensesArrowIcon.trailingAnchor, constant: 8),
-            lastExpense.trailingAnchor.constraint(equalTo: balanceInfo.trailingAnchor, constant: -20),
+            lastExpense.trailingAnchor.constraint(equalTo: balanceInfo.trailingAnchor, constant: -10),
             lastExpense.heightAnchor.constraint(equalToConstant: 28),
-            
         ])
+        
     }
     
-    
+
     private func configTransectionLabel() {
         var config = UIButton.Configuration.plain()
         config.image = UIImage(systemName: "arrow.right.circle")
@@ -228,10 +257,35 @@ class HomeVC: UIViewController {
     
     private func configTableView() {
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: transectionsLabel.bottomAnchor, constant: 10),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            tableView.topAnchor.constraint(equalTo: Statechanger.topAnchor, constant: 0),
+            tableView.trailingAnchor.constraint(equalTo: Statechanger.trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: Statechanger.leadingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: Statechanger.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+    
+    func configStateView() {
+        Statechanger.addSubview(messageLabel)
+        Statechanger.addSubview(tableView)
+        Statechanger.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            Statechanger.topAnchor.constraint(equalTo: transectionsLabel.bottomAnchor, constant: 10),
+            Statechanger.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            Statechanger.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            Statechanger.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            ])
+    }
+    
+    func layoutLable(_ msg: String) {
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        messageLabel.text = msg
+        messageLabel.numberOfLines  = 3
+        messageLabel.textColor      = .secondaryLabel
+                
+        NSLayoutConstraint.activate([
+            messageLabel.centerYAnchor.constraint(equalTo: Statechanger.centerYAnchor),
+            messageLabel.leadingAnchor.constraint(equalTo: Statechanger.leadingAnchor, constant: 40),
+            messageLabel.trailingAnchor.constraint(equalTo: Statechanger.trailingAnchor, constant: -40),
         ])
     }
     
@@ -246,7 +300,7 @@ extension HomeVC: BalanceFormater, UITableViewDataSource, UITableViewDelegate {
         
         let rootString = NSMutableAttributedString(string: "$", attributes: dollarSignAttributes)
         let dollarString = NSAttributedString(string: dollar, attributes: dollarAttributes)
-
+        
         
         rootString.append(dollarString)
         
@@ -258,15 +312,15 @@ extension HomeVC: BalanceFormater, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        transection.count
+        transaction.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TransectionTableViewCell.identifier, for: indexPath) as! TransectionTableViewCell
         cell.selectionStyle = .none
-        cell.display(transection[indexPath.row])
+        cell.display(transaction[indexPath.row])
         return cell
     }
- 
+    
 }
 
