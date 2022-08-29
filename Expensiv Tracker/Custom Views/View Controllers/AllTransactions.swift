@@ -17,6 +17,8 @@ class AllTransaction: UIViewController, UITableViewDataSource, UITableViewDelega
         .init(title: "Mishaar", description: "waxaa Helay Mishaar Kasocda Company X", type: "Income", ammount: 6829.00),
     ]
     
+//    let transaction: Transactions?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -47,7 +49,7 @@ class AllTransaction: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TransectionTableViewCell.identifier, for: indexPath) as! TransectionTableViewCell
         cell.selectionStyle = .none
-        cell.display(transection[indexPath.row])
+//        cell.display(transection[indexPath.row])
         return cell
     }
 }
