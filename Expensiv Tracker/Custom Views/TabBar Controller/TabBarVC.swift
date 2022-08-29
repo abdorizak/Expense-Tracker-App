@@ -17,7 +17,9 @@ class TabBarVC: UITabBarController {
 //            let appearance = UITabBarAppearance()
 //            appearance.configureWithOpaqueBackground()
 //            UITabBar.appearance().standardAppearance = appearance
-//            UITabBar.appearance().scrollEdgeAppearance = appearance
+//            if #available(iOS 15.0, *) {
+//                UITabBar.appearance().scrollEdgeAppearance = appearance
+//            }
 //        }
     }
     
@@ -41,7 +43,7 @@ class TabBarVC: UITabBarController {
     
     private func transectionVC() -> UINavigationController {
         let tranVC = TransectionsVC()
-        tranVC.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "waveform"), tag: 2)
+        tranVC.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "chart.pie.fill"), tag: 2)
         return UINavigationController(rootViewController: tranVC)
         
     }
