@@ -18,6 +18,17 @@ class UserStatementVC: UIViewController {
 //        table.separatorStyle = .none
         return table
     }()
+    
+    var transactions: [Transaction] = []
+    
+    init(Transaction statement: [Transaction]) {
+        super.init(nibName: nil, bundle: nil)
+        self.transactions = statement
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +58,13 @@ extension UserStatementVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        transactions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TransectionTableViewCell.identifier, for: indexPath) as! TransectionTableViewCell
         cell.selectionStyle = .none
+        cell.display(transactions[indexPath.row])
         return cell
     }
  
