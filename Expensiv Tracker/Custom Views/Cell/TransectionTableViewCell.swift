@@ -86,7 +86,6 @@ class TransectionTableViewCell: UITableViewCell {
     func display(_ transection: Transaction) {
         titleLabel.text = transection.title
         descriptionLabel.text = transection.description
-//        let ammount = transection.amount
         AmountLabel.attributedText =  makeFormattedBalance(dollar: transection.amount.toString())
         if transection.type == "Expense" {
             typeTransection.text = transection.type
