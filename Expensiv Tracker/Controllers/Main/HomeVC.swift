@@ -36,7 +36,7 @@ class HomeVC: UIViewController {
     // MARK: - Card View Income and expenses image and labels
     private let incomeArrowIcon = AvatarImageView(color: .green, icon: "arrow.down", mode: .scaleAspectFill)
     
-    private let expensesArrowIcon = AvatarImageView(color: .red, icon: "arrow.up", mode: .scaleAspectFill)
+    private let expensesArrowIcon = AvatarImageView(color: .red, icon: "arrow.up", mode: .scaleAspectFit)
     
     private let incomelbl   = CustomLabel(textAlignment: .left, fontSize: 13, textWeight: .light, text: "Income")
     private let expenseslbl   = CustomLabel(textAlignment: .left, fontSize: 13, textWeight: .light, text: "Expenses")
@@ -49,6 +49,8 @@ class HomeVC: UIViewController {
     
     // MARK: - Transection data
     var transaction = [Transaction]()
+    
+    var profileData: UserBalanceIncomeExpense?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,6 +87,8 @@ class HomeVC: UIViewController {
         Task {
             do {
                 let userData = try await NetworkManager.shared.getDashboardData()
+                self.profileData = userData
+                print(profileData)
                 configData(userData)
             } catch {
                 print(error)
@@ -104,7 +108,7 @@ class HomeVC: UIViewController {
                     layoutLable("This user doesn't have any Transactions. Go an make Expenses or Income 😀.")
                 }
             } catch {
-                print(error.localizedDescription    )
+                print(error.localizedDescription)
             }
         }
     }
@@ -124,7 +128,10 @@ class HomeVC: UIViewController {
     }
     
     @objc func didTapSetting() {
-        let profileVC = UINavigationController(rootViewController: ProfileVC())
+        guard let profileData = profileData else {
+            return
+        }
+        let profileVC = UINavigationController(rootViewController: ProfileVC(eStatement: transaction, userImage: profileData.user.avatar, fullname: profileData.user.name))
         profileVC.modalPresentationStyle = .popover
         profileVC.modalTransitionStyle   = .coverVertical
         present(profileVC, animated: true, completion: nil)
@@ -132,7 +139,7 @@ class HomeVC: UIViewController {
     
     private func configData(_ data: UserBalanceIncomeExpense){
         fullnameLabel.text = data.user.name
-        
+        userImage.downloadImage(fromURL: "http://localhost:4400/" + data.user.avatar)
         balanceNumber.text = "$\(data.balance)"
         lastIncome.attributedText         = makeFormattedBalance(dollar: String(format:"%.01f", data.income))
         lastExpense.attributedText        = makeFormattedBalance(dollar: String(data.expense))
@@ -236,7 +243,7 @@ class HomeVC: UIViewController {
         viewMoreButton.configuration = config
         viewMoreButton.translatesAutoresizingMaskIntoConstraints = false
         viewMoreButton.addAction(UIAction(handler: { _ in
-            let transactionVC = UINavigationController(rootViewController: AllTransaction())
+            let transactionVC = UINavigationController(rootViewController: AllTransaction(Transactions: self.transaction))
             transactionVC.modalPresentationStyle = .popover
             transactionVC.modalTransitionStyle   = .coverVertical
             self.present(transactionVC, animated: true, completion: nil)
@@ -312,7 +319,7 @@ extension HomeVC: BalanceFormater, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        transaction.count
+        4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
