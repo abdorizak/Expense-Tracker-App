@@ -163,7 +163,7 @@ class HomeVC: UIViewController {
         
         totalBalanceLabel.textColor = .white
         balanceNumber.textColor     = .white
-
+        
         NSLayoutConstraint.activate([
             userImage.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 10),
             userImage.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 10),
@@ -233,7 +233,7 @@ class HomeVC: UIViewController {
         
     }
     
-
+    
     private func configTransectionLabel() {
         var config = UIButton.Configuration.plain()
         config.image = UIImage(systemName: "arrow.right.circle")
@@ -279,7 +279,7 @@ class HomeVC: UIViewController {
             Statechanger.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             Statechanger.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             Statechanger.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            ])
+        ])
     }
     
     func layoutLable(_ msg: String) {
@@ -287,7 +287,7 @@ class HomeVC: UIViewController {
         messageLabel.text = msg
         messageLabel.numberOfLines  = 3
         messageLabel.textColor      = .secondaryLabel
-                
+        
         NSLayoutConstraint.activate([
             messageLabel.centerYAnchor.constraint(equalTo: Statechanger.centerYAnchor),
             messageLabel.leadingAnchor.constraint(equalTo: Statechanger.leadingAnchor, constant: 40),
