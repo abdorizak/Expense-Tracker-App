@@ -17,56 +17,62 @@ class ProfileHeaderView: UIView {
     
     
     override init(frame: CGRect) {
-            super.init(frame: frame)
-            commonInit()
-        }
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    convenience init(user name: String, image userImage: String) {
+        self.init(frame: .zero)
+        self.user_fullName.text = name
+        self.userImage.downloadImage(fromURL: "http://localhost:4400/" + userImage)
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: UIView.noIntrinsicMetric, height: 250)
+    }
+    
+    private func commonInit() {
         
-        required init?(coder aDecoder: NSCoder) {
-            super.init(coder: aDecoder)
-            commonInit()
-        }
+        let bundle = Bundle(for: ProfileHeaderView.self)
+        bundle.loadNibNamed("ProfileHeaderView", owner: self, options: nil)
+        addSubview(contentView)
         
-        override var intrinsicContentSize: CGSize {
-            return CGSize(width: UIView.noIntrinsicMetric, height: 250)
-        }
+        contentView.translatesAutoresizingMaskIntoConstraints   = false
+        userImage.translatesAutoresizingMaskIntoConstraints     = false
+        user_fullName.translatesAutoresizingMaskIntoConstraints = false
         
-        private func commonInit() {
+        contentView.backgroundColor = .clear
+        contentView.addSubViews(userImage, user_fullName)
+        
+        user_fullName.text = "Abdorizak Abdalla Hassan"
+        userImage.contentMode = .scaleAspectFill
+        userImage.layer.cornerRadius = 70
+        userImage.clipsToBounds = true
+        
+        
+        NSLayoutConstraint.activate([
             
-            let bundle = Bundle(for: ProfileHeaderView.self)
-            bundle.loadNibNamed("ProfileHeaderView", owner: self, options: nil)
-            addSubview(contentView)
+            contentView.topAnchor.constraint(equalTo: self.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
-            contentView.translatesAutoresizingMaskIntoConstraints   = false
-            userImage.translatesAutoresizingMaskIntoConstraints     = false
-            user_fullName.translatesAutoresizingMaskIntoConstraints = false
+            userImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
+            userImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            userImage.heightAnchor.constraint(equalToConstant: 150),
+            userImage.widthAnchor.constraint(equalToConstant: 150),
             
-            contentView.backgroundColor = .clear
-            contentView.addSubViews(userImage, user_fullName)
+            user_fullName.topAnchor.constraint(equalTo: userImage.bottomAnchor, constant: 20),
+            user_fullName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            user_fullName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             
-            user_fullName.text = "Abdorizak Abdalla Hassan"
-            userImage.contentMode = .scaleAspectFill
-            userImage.layer.cornerRadius = 70
-            userImage.clipsToBounds = true
-            
-            
-            NSLayoutConstraint.activate([
-                
-                contentView.topAnchor.constraint(equalTo: self.topAnchor),
-                contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-                contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-                contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-                
-                userImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
-                userImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-                userImage.heightAnchor.constraint(equalToConstant: 150),
-                userImage.widthAnchor.constraint(equalToConstant: 150),
-                
-                user_fullName.topAnchor.constraint(equalTo: userImage.bottomAnchor, constant: 20),
-                user_fullName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-                user_fullName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-                
-            ])
-            
-        }
+        ])
+        
+    }
     
 }
