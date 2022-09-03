@@ -147,7 +147,7 @@ class LoginWithPinVC: UIViewController {
                 break
             }
         }
-
+        
         if text?.count == 0 {
             switch textField {
             case passInput1:
@@ -162,38 +162,42 @@ class LoginWithPinVC: UIViewController {
                 break
             }
         }
-        
-        
     }
     
     func pinLogin() {
-        validateTexFields(passInput1, passInput2, passInput3, passInput4)
+        let validate = Validate(passInput1, passInput2, passInput3, passInput4)
         let pin = String(passInput1.text! + passInput2.text! + passInput3.text! + passInput4.text!)
         guard let pin = Int(pin) else { return }
         showLoadingview()
-        Task {
-            do {
-                let result = try await AuthManager.shared.login(with: pin)
-                if result.status != 200 {
-                    presentAlertOnMainThread(title: "Opps!", message: "\(result.message ?? "N/A") 😁", btnTitle: "ok")
-                    dismissLoding()
-                } else {
-                    DispatchQueue.main.async {
-                        let home = TabBarVC()
-                        home.modalTransitionStyle = .crossDissolve
-                        home.modalPresentationStyle = .fullScreen
-                        self.present(home, animated: true)
-                        self.dismissLoding()
+        switch validate {
+            case .Valid:
+                Task {
+                    do {
+                        let result = try await AuthManager.shared.login(with: pin)
+                        if result.status != 200 {
+                            presentAlertOnMainThread(title: "Opps!", message: "\(result.message ?? "N/A") 😁", btnTitle: "ok")
+                            dismissLoding()
+                        } else {
+                            DispatchQueue.main.async {
+                                let home = TabBarVC()
+                                home.modalTransitionStyle = .crossDissolve
+                                home.modalPresentationStyle = .fullScreen
+                                self.present(home, animated: true)
+                                self.dismissLoding()
+                            }
+                        }
+                    } catch {
+                        if let err = error as? ExError {
+                            presentAlertOnMainThread(title: "Opps!", message: "\(err.rawValue)", btnTitle: "ok")
+                        } else {
+                            presentDefaultError()
+                        }
+                        dismissLoding()
                     }
                 }
-            } catch {
-                if let err = error as? ExError {
-                    presentAlertOnMainThread(title: "Opps!", message: "\(err.rawValue)", btnTitle: "ok")
-                } else {
-                    presentDefaultError()
-                }
+            case .InValid(let err):
+                presentAlertOnMainThread(title: "Opps!", message: "\(err)", btnTitle: "OK")
                 dismissLoding()
-            }
         }
     }
     
