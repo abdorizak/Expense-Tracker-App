@@ -29,7 +29,6 @@
 		1082FE0F28058E5700538FFE /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1082FE0E28058E5700538FFE /* ProfileHeaderView.xib */; };
 		1083073928B7B40900CD8916 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1083073828B7B40800CD8916 /* ViewModel.swift */; };
 		1083073B28B9435800CD8916 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1083073A28B9435800CD8916 /* Double+Ext.swift */; };
-		1083073D28B947B100CD8916 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1083073C28B947B100CD8916 /* EmptyStateView.swift */; };
 		1083073F28B9DC6500CD8916 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1083073E28B9DC6500CD8916 /* UITableView+Ext.swift */; };
 		1083376A2895B1ED00374F67 /* LoginWithPinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108337692895B1EC00374F67 /* LoginWithPinVC.swift */; };
 		109FF577284DE0A60060CD64 /* BalanceFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109FF576284DE0A60060CD64 /* BalanceFormater.swift */; };
@@ -90,7 +89,6 @@
 		1082FE0E28058E5700538FFE /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		1083073828B7B40800CD8916 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		1083073A28B9435800CD8916 /* Double+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Ext.swift"; sourceTree = "<group>"; };
-		1083073C28B947B100CD8916 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		1083073E28B9DC6500CD8916 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		108337692895B1EC00374F67 /* LoginWithPinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithPinVC.swift; sourceTree = "<group>"; };
 		109FF576284DE0A60060CD64 /* BalanceFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceFormater.swift; sourceTree = "<group>"; };
@@ -291,7 +289,6 @@
 				101EA9D227E1253600E9534C /* CustomView.swift */,
 				1082FE0C28058E3300538FFE /* ProfileHeaderView.swift */,
 				1082FE0E28058E5700538FFE /* ProfileHeaderView.xib */,
-				1083073C28B947B100CD8916 /* EmptyStateView.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -487,7 +484,6 @@
 				10C5B3B327CE048200B60A4A /* UIView+Ext.swift in Sources */,
 				10FE42EB2882A36500D7C372 /* LoginViewModel.swift in Sources */,
 				10C5B3BB27CE32B500B60A4A /* PasswordTextField.swift in Sources */,
-				1083073D28B947B100CD8916 /* EmptyStateView.swift in Sources */,
 				10C5B3C127CFF09300B60A4A /* ForgetPasswordVC.swift in Sources */,
 				106531492815AC03009FD888 /* Transection.swift in Sources */,
 				109FF57B2850FC480060CD64 /* AboutUsVC.swift in Sources */,
