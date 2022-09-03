@@ -17,7 +17,7 @@ enum UserValidateState {
 }
 
 extension UIViewController {
-
+    
     func presentAlertOnMainThread(title: String, message: String, btnTitle: String) {
         DispatchQueue.main.async {
             let ac = AlertController(title: title, message: message, buttonTitle: btnTitle)
@@ -38,11 +38,43 @@ extension UIViewController {
         return .Valid
     }
     
+    func Validate(_ amount: UITextField, _ type: UITextField, _ title: UITextField, _ description: UITextField, _ date: UITextField) -> UserValidateState {
+        if (amount.text?.isEmpty)! && (type.text?.isEmpty)! && (title.text?.isEmpty)! && (description.text?.isEmpty)! && (date.text?.isEmpty)! {
+            return .InValid("Fill All TextFields. 🥊")
+        } else if (amount.text?.isEmpty)! {
+            return .InValid("Amount cannot be Empty.")
+        } else if (type.text?.isEmpty)! {
+            return .InValid("Type cannot be Empty.")
+        } else if (description.text?.isEmpty)! {
+            return .InValid("Description cannot be Empty.")
+        } else if (date.text?.isEmpty)! {
+            return .InValid("Date cannot be Empty.")
+        }
+        return .Valid
+    }
+    
+    
+    func Validate(_ p1: UITextField, _ p2: UITextField, _ p3: UITextField, _ p4: UITextField) -> UserValidateState {
+        if (p1.text?.isEmpty)! && (p2.text?.isEmpty)! && (p3.text?.isEmpty)! && (p4.text?.isEmpty)! {
+            return .InValid("Pin Number cannot be Empty")
+        } else if (p1.text?.isEmpty)! {
+            return .InValid("pin 1 cannot be Empty.")
+        } else if (p2.text?.isEmpty)! {
+            return .InValid("pin 2 cannot be Empty.")
+        } else if (p3.text?.isEmpty)! {
+            return .InValid("pin 3 cannot be Empty.")
+        } else if (p4.text?.isEmpty)! {
+            return .InValid("pin 4 cannot be Empty.")
+        }
+        return .Valid
+    }
+    
+    
     func validateTexFields(_ p1: UITextField, _ p2: UITextField, _ p3: UITextField, _ p4: UITextField) {
         if (p1.text?.isEmpty)! && (p2.text?.isEmpty)! && (p3.text?.isEmpty)! && (p4.text?.isEmpty)! {
-            presentAlertOnMainThread(title: "Warning!", message: "Pin Number cannot be Empty", btnTitle: "OK")
+            presentAlertOnMainThread(title: "Warning!", message: "", btnTitle: "OK")
         } else if (p1.text?.isEmpty)! {
-            presentAlertOnMainThread(title: "Opps!", message: "p1 cannot be Empty.", btnTitle: "OK")
+            presentAlertOnMainThread(title: "Opps!", message: "", btnTitle: "OK")
         } else if (p2.text?.isEmpty)! {
             presentAlertOnMainThread(title: "Opps!", message: "p2 cannot be Empty.", btnTitle: "OK")
         } else if (p3.text?.isEmpty)! {
@@ -54,8 +86,8 @@ extension UIViewController {
     
     func presentDefaultError() {
         let alertVC = AlertController(title: "Something Went Wrong",
-                                message: "We were unable to complete your task at this time. Please try again.",
-                                buttonTitle: "Ok")
+                                      message: "We were unable to complete your task at this time. Please try again.",
+                                      buttonTitle: "Ok")
         alertVC.modalPresentationStyle  = .overFullScreen
         alertVC.modalTransitionStyle    = .crossDissolve
         present(alertVC, animated: true)
