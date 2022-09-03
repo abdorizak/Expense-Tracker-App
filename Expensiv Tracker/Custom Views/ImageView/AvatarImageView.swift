@@ -36,4 +36,8 @@ class AvatarImageView: UIImageView {
     }
     
     
+    func downloadImage(fromURL url: String) {
+        Task { image = await NetworkManager.shared.downloadImage(from: url) ?? placeHolderImage }
+    }
+    
 }
