@@ -36,6 +36,21 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return tableView
     }()
     
+    var eTrasactions: [Transaction] = []
+    var userImage: String = ""
+    var fullname: String = ""
+    
+    init(eStatement: [Transaction], userImage: String, fullname: String) {
+        super.init(nibName: nil, bundle: nil)
+        self.eTrasactions = eStatement
+        self.fullname = fullname
+        self.userImage = userImage
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configProfileVC()
@@ -57,7 +72,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     private func setupTableHeaderView() {
-        let header = ProfileHeaderView(frame: .zero)
+        let header = ProfileHeaderView(user: fullname, image: userImage)
         var size = header.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         size.width = UIScreen.main.bounds.width
         header.frame.size = size
@@ -72,7 +87,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 return self.navigationController?.pushViewController(editProfileVC, animated: true)
             }),
             SettingOpetions(icon: Images.userStatementIcon, title: "E-Statement", handler: {
-                let eStatement = UserStatementVC()
+                let eStatement = UserStatementVC(Transaction: self.eTrasactions)
                 eStatement.title = "Statement"
                 return self.navigationController?.pushViewController(eStatement, animated: true)
             }),
@@ -112,15 +127,19 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let ac =  UIAlertController(title: "Sing Out", message: "Are you sure?", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             ac.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { _ in
-                if AuthManager.shared.isSingedIn {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                           
-                        }
+                let logout = AuthManager.shared.SingOut()
+                if logout {
+                    DispatchQueue.main.async {
+                        let LoginScreen = LoginVC()
+                        LoginScreen.modalTransitionStyle = .crossDissolve
+                        LoginScreen.modalPresentationStyle = .fullScreen
+                        self.present(LoginScreen, animated: true)
                     }
-                }))
+                }
+            }))
             present(ac, animated: true, completion: nil)
         } else if actionTitle == "cancel" {
-            let ac =  UIAlertController(title: "Are you sure?", message: nil, preferredStyle: .alert)
+            let ac =  UIAlertController(title: nil, message: "Are you sure?", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "ok", style: .cancel, handler: nil))
             present(ac, animated: true, completion: nil)
         }
