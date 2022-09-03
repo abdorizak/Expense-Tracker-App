@@ -40,7 +40,7 @@ struct Transaction: Decodable {
     }
 }
 
-struct TransactionBody: Codable, Equatable {
+struct TransactionBody: Codable {
     let userID: String
     let type: String
     let title: String
