@@ -88,7 +88,6 @@ class HomeVC: UIViewController {
             do {
                 let userData = try await NetworkManager.shared.getDashboardData()
                 self.profileData = userData
-                print(profileData)
                 configData(userData)
             } catch {
                 print(error)
