@@ -47,7 +47,7 @@ class AddIncomeAndExpensesVC: UIViewController {
         return textField
     }()
     
-    let transactionType: [String] = ["expense", "income"]
+    let transactionType: [String] = ["Expense", "Income"]
     
     private let transectionTypeTextField: UITextField = {
         let category = UITextField(frame: .zero)
@@ -150,12 +150,12 @@ class AddIncomeAndExpensesVC: UIViewController {
             itemView1.topAnchor.constraint(equalTo: EIlabel.bottomAnchor, constant: 30),
             itemView1.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50),
             itemView1.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 50),
-            itemView1.heightAnchor.constraint(equalToConstant: 80),
+            itemView1.heightAnchor.constraint(equalToConstant: 70),
             
             expensesAndIncomeTextField.topAnchor.constraint(equalTo: itemView1.topAnchor),
             expensesAndIncomeTextField.trailingAnchor.constraint(equalTo: itemView1.trailingAnchor),
             expensesAndIncomeTextField.leadingAnchor.constraint(equalTo: itemView1.leadingAnchor),
-            expensesAndIncomeTextField.heightAnchor.constraint(equalToConstant: 80)
+            expensesAndIncomeTextField.heightAnchor.constraint(equalToConstant: 70)
         ])
     }
 
@@ -176,7 +176,7 @@ class AddIncomeAndExpensesVC: UIViewController {
         
         // btn
         SaveButton.setTitle("Save", for: .normal)
-        
+        SaveButton.addTarget(self, action: #selector(postTransaction), for: .touchUpInside)
         let top_anchor = CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 30)
         
         NSLayoutConstraint.activate([
@@ -225,6 +225,25 @@ class AddIncomeAndExpensesVC: UIViewController {
             SaveButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 100),
             SaveButton.heightAnchor.constraint(equalToConstant: 60)
         ])
+    }
+    
+    @objc func postTransaction() {
+        let validate = Validate(expensesAndIncomeTextField, transectionTypeTextField, titleTextField, descriptionTextField, dateTextField)
+        switch validate {
+        case .Valid:
+            Task {
+                do {
+                    let result = try await NetworkManager.shared.makeTransaction(transectionTypeTextField.text!, titleTextField.text!, descriptionTextField.text!, Double(expensesAndIncomeTextField.text!)!)
+                    presentAlertOnMainThread(title: "\(result.status == 200 ? "Success" : "Opss!")", message: result.message ?? "N/A", btnTitle: "Ok")
+                } catch {
+                    print(error)
+                }
+            }
+        case .InValid(let err):
+            presentAlertOnMainThread(title: "Opps!", message: "\(err)", btnTitle: "OK")
+            dismissLoding()
+        }
+
     }
 }
 
