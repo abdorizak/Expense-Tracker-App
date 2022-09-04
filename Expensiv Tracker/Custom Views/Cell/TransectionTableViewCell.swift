@@ -26,7 +26,7 @@ class TransectionTableViewCell: UITableViewCell {
         return view
     }()
     let typeTransection  = CustomLabel(textAlignment: .center, fontSize: 12, textWeight: .semibold, text: "Expense")
-    let AmountLabel = CustomLabel(textAlignment: .right, fontSize: 34, textWeight: .semibold)
+    let AmountLabel = CustomLabel(textAlignment: .right, fontSize: CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 16 : 34), textWeight: .semibold)
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -70,7 +70,7 @@ class TransectionTableViewCell: UITableViewCell {
             
             AmountLabel.topAnchor.constraint(equalTo: typeTransectionView.bottomAnchor, constant: 8),
             AmountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            AmountLabel.leadingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor, constant: 90),
+            AmountLabel.leadingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor, constant: CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 10 : 90)),
             AmountLabel.heightAnchor.constraint(equalToConstant: 38)
             
             
