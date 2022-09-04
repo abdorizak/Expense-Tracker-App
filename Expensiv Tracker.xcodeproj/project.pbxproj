@@ -27,7 +27,6 @@
 		106BC1CD280E932500ADB75C /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106BC1CC280E932500ADB75C /* ChangePasswordVC.swift */; };
 		1082FE0D28058E3300538FFE /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1082FE0C28058E3300538FFE /* ProfileHeaderView.swift */; };
 		1082FE0F28058E5700538FFE /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1082FE0E28058E5700538FFE /* ProfileHeaderView.xib */; };
-		1083073928B7B40900CD8916 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1083073828B7B40800CD8916 /* ViewModel.swift */; };
 		1083073B28B9435800CD8916 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1083073A28B9435800CD8916 /* Double+Ext.swift */; };
 		1083073F28B9DC6500CD8916 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1083073E28B9DC6500CD8916 /* UITableView+Ext.swift */; };
 		1083376A2895B1ED00374F67 /* LoginWithPinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108337692895B1EC00374F67 /* LoginWithPinVC.swift */; };
@@ -62,7 +61,6 @@
 		10EEDF9327CD05AD00BC03D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10EEDF9127CD05AD00BC03D3 /* LaunchScreen.storyboard */; };
 		10EEDFA527CD0B4B00BC03D3 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EEDFA427CD0B4B00BC03D3 /* AuthManager.swift */; };
 		10F3E167282C3DED0071942B /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F3E166282C3DED0071942B /* Color+Ext.swift */; };
-		10FE42EB2882A36500D7C372 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FE42EA2882A36500D7C372 /* LoginViewModel.swift */; };
 		10FE42ED2882A5C200D7C372 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FE42EC2882A5C200D7C372 /* NetworkManager.swift */; };
 		10FE42EF2882A61100D7C372 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FE42EE2882A61100D7C372 /* HTTPMethod.swift */; };
 /* End PBXBuildFile section */
@@ -87,7 +85,6 @@
 		106BC1CC280E932500ADB75C /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		1082FE0C28058E3300538FFE /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		1082FE0E28058E5700538FFE /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
-		1083073828B7B40800CD8916 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		1083073A28B9435800CD8916 /* Double+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Ext.swift"; sourceTree = "<group>"; };
 		1083073E28B9DC6500CD8916 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		108337692895B1EC00374F67 /* LoginWithPinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithPinVC.swift; sourceTree = "<group>"; };
@@ -124,7 +121,6 @@
 		10EEDF9427CD05AD00BC03D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10EEDFA427CD0B4B00BC03D3 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		10F3E166282C3DED0071942B /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
-		10FE42EA2882A36500D7C372 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		10FE42EC2882A5C200D7C372 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		10FE42EE2882A61100D7C372 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -187,15 +183,6 @@
 				1065E9F328A6953C00EA17E9 /* AlertController.swift */,
 			);
 			path = AlertView;
-			sourceTree = "<group>";
-		};
-		1081EF1B287F3C74005849B5 /* View Model */ = {
-			isa = PBXGroup;
-			children = (
-				10FE42EA2882A36500D7C372 /* LoginViewModel.swift */,
-				1083073828B7B40800CD8916 /* ViewModel.swift */,
-			);
-			path = "View Model";
 			sourceTree = "<group>";
 		};
 		10A8872D27F2072B0001794B /* Cell */ = {
@@ -317,7 +304,6 @@
 				10EEDFA127CD0A9E00BC03D3 /* Network Manager */,
 				10EEDFA227CD0B0F00BC03D3 /* Extentions */,
 				10EEDFA027CD09E700BC03D3 /* Models */,
-				1081EF1B287F3C74005849B5 /* View Model */,
 				10EEDF9D27CD099E00BC03D3 /* Custom Views */,
 				10C5B3A827CDF9AD00B60A4A /* Controllers */,
 				10EEDF8F27CD05AD00BC03D3 /* Assets.xcassets */,
@@ -482,7 +468,6 @@
 				10C5B3CC27D209AF00B60A4A /* UIViewController+Ext.swift in Sources */,
 				10A8872C27F0B4AA0001794B /* ProfileVC.swift in Sources */,
 				10C5B3B327CE048200B60A4A /* UIView+Ext.swift in Sources */,
-				10FE42EB2882A36500D7C372 /* LoginViewModel.swift in Sources */,
 				10C5B3BB27CE32B500B60A4A /* PasswordTextField.swift in Sources */,
 				10C5B3C127CFF09300B60A4A /* ForgetPasswordVC.swift in Sources */,
 				106531492815AC03009FD888 /* Transection.swift in Sources */,
@@ -518,7 +503,6 @@
 				10C5B3AC27CDFADB00B60A4A /* TabBarVC.swift in Sources */,
 				1065E9F428A6953C00EA17E9 /* AlertBtn.swift in Sources */,
 				1083376A2895B1ED00374F67 /* LoginWithPinVC.swift in Sources */,
-				1083073928B7B40900CD8916 /* ViewModel.swift in Sources */,
 				101EA9D327E1253600E9534C /* CustomView.swift in Sources */,
 				103B9FB628748C49004A91A5 /* CustomTableView.swift in Sources */,
 				10F3E167282C3DED0071942B /* Color+Ext.swift in Sources */,
