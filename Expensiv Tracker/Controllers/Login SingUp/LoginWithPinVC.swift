@@ -81,7 +81,7 @@ class LoginWithPinVC: UIViewController {
             backgroundImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            backgroundImage.heightAnchor.constraint(equalToConstant: 250),
+            backgroundImage.heightAnchor.constraint(equalToConstant: CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 180 : 200)),
             
             passInput1.centerXAnchor.constraint(equalTo: viewInput1.centerXAnchor),
             passInput1.centerYAnchor.constraint(equalTo: viewInput1.centerYAnchor),
