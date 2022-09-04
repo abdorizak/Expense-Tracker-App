@@ -16,13 +16,21 @@
 ![Image](Screenshots.png)
 
 ### Fetures 📌
-- 100% Swift. 
-- programmatic UI. 
-- Supports Iphone SE. 
-- User Authentication. 
-- Add Income and Expenses. 
-- Display Income and Expenses in line chart with table uisng UISegmentedControl. 
-- network request using URLSession async and await. with generic function. 
+- 100% Swift.
+- programmatic UI.
+- Supports Iphone SE.
+- User Authentication.
+- Add Income and Expenses.
+- Display Income and Expenses in line chart with table uisng UISegmentedControl.
+- network request using URLSession async and await. with generic function.
+- ImagePicker. (camera and photo library) ...Upcoming
 
 ## Author 📝
 **©** **Abdorizak Abdalla** **2022**
+
+### Credits 📚
+- [Charts](https://github.com/abdorizak/Expensive-Tracker-App/blob/main/license.md) by Daniel Gindi 
+- [Expenses Manager API](https://github.com/zakiahmed2020/expense_managerBackEnd) by **[Zaki Ahmed](https://github.com/zakiahmed2020)** && **[Abdorizak Abdalla](https://github.com/abdorizak)**
+
+### License 📜
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/abdorizak/Expensive-Tracker-App/blob/main/license.md) file for details
