@@ -16,13 +16,13 @@
 ![Image](Screenshots.png)
 
 ### Fetures 📌
-• 100% Swift. 
-• programmatic UI. 
-• Supports Iphone SE. 
-• User Authentication. 
-• Add Income and Expenses. 
-• Display Income and Expenses in line chart with table uisng UISegmentedControl. 
-• network request using URLSession async and await. with generic function. 
+- 100% Swift. 
+- programmatic UI. 
+- Supports Iphone SE. 
+- User Authentication. 
+- Add Income and Expenses. 
+- Display Income and Expenses in line chart with table uisng UISegmentedControl. 
+- network request using URLSession async and await. with generic function. 
 
 ## Author 📝
 **©** **Abdorizak Abdalla** **2022**
