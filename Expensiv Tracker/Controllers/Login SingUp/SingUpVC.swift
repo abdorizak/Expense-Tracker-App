@@ -33,19 +33,17 @@ class SingUpVC: UIViewController {
     private let emailTextFeild               = CustomTextFields(textContentType: .emailAddress, isSecureTextEntry: false, placeholder: "Email")
     private let phoneTextFeild               = CustomTextFields(textContentType: .telephoneNumber, isSecureTextEntry: false, placeholder: "Mobile")
     private let usernameTextFeild            = CustomTextFields(textContentType: .username, isSecureTextEntry: false, placeholder: "Username")
+    private let pinTextFeild                  = CustomTextFields(textContentType: .newPassword, isSecureTextEntry: true, placeholder: "PIN Number")
     private let passwordTextFeild            = CustomTextFields(textContentType: .newPassword, isSecureTextEntry: true, placeholder: "Password")
     private let confirmPasswordTextFeild     = CustomTextFields(textContentType: .newPassword, isSecureTextEntry: true, placeholder: "Confirm Password")
-    private let pinTextFeild                  = CustomTextFields(isSecureTextEntry: false)
+    
 
     var items: [CustomTextFields] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configVC()
-        configScrollView()
-        configSingUPImage()
-        configSignUpFormView()
-        configSignUPBtn()
+        
     }
     
     private func configVC() {
@@ -53,7 +51,11 @@ class SingUpVC: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissVC))
         let tap  = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
+        configScrollView()
         ContentView.addSubViews(signUPImage, signUplabel, signUpView, signUpBtn)
+        configSingUPImage()
+        configSignUpFormView()
+        configSignUPBtn()
     }
     
     private func configScrollView() {
@@ -73,17 +75,17 @@ class SingUpVC: UIViewController {
             signUPImage.topAnchor.constraint(equalTo: ContentView.safeAreaLayoutGuide.topAnchor, constant: 20),
             signUPImage.trailingAnchor.constraint(equalTo: ContentView.trailingAnchor, constant: -20),
             signUPImage.leadingAnchor.constraint(equalTo: ContentView.leadingAnchor, constant: 20),
-            signUPImage.heightAnchor.constraint(equalToConstant: 250)
+            signUPImage.heightAnchor.constraint(equalToConstant: 280)
         ])
     }
     
     private func configSignUpFormView() {
-        signUpView.addSubViews(fullnameTextFeild, emailTextFeild, phoneTextFeild, usernameTextFeild, passwordTextFeild, confirmPasswordTextFeild)
+        signUpView.addSubViews(fullnameTextFeild, emailTextFeild, phoneTextFeild, usernameTextFeild, pinTextFeild, passwordTextFeild, confirmPasswordTextFeild)
         signUpView.translatesAutoresizingMaskIntoConstraints = false
         signUpView.backgroundColor = .secondarySystemBackground
         signUpView.layer.cornerRadius = 15
         
-        items = [fullnameTextFeild, emailTextFeild, phoneTextFeild, usernameTextFeild, passwordTextFeild, confirmPasswordTextFeild]
+        items = [fullnameTextFeild, emailTextFeild, phoneTextFeild, usernameTextFeild, passwordTextFeild, confirmPasswordTextFeild, pinTextFeild]
         
         for i in items {
             i.addLine(position: .bottom, color: .label, width: 0.4)
@@ -99,7 +101,7 @@ class SingUpVC: UIViewController {
             signUpView.topAnchor.constraint(equalTo: signUplabel.bottomAnchor, constant: 20),
             signUpView.trailingAnchor.constraint(equalTo: ContentView.trailingAnchor, constant: -20),
             signUpView.leadingAnchor.constraint(equalTo: ContentView.leadingAnchor, constant: 20),
-            signUpView.heightAnchor.constraint(equalToConstant: 400),
+            signUpView.heightAnchor.constraint(equalToConstant: 450),
             
             
             fullnameTextFeild.topAnchor.constraint(equalTo: signUpView.topAnchor, constant: 15),
@@ -121,8 +123,13 @@ class SingUpVC: UIViewController {
             usernameTextFeild.trailingAnchor.constraint(equalTo: signUpView.trailingAnchor, constant: -20),
             usernameTextFeild.leadingAnchor.constraint(equalTo: signUpView.leadingAnchor, constant: 20),
             usernameTextFeild.heightAnchor.constraint(equalToConstant: 45),
+            
+            pinTextFeild.topAnchor.constraint(equalTo: usernameTextFeild.bottomAnchor, constant: 20),
+            pinTextFeild.trailingAnchor.constraint(equalTo: signUpView.trailingAnchor, constant: -20),
+            pinTextFeild.leadingAnchor.constraint(equalTo: signUpView.leadingAnchor, constant: 20),
+            pinTextFeild.heightAnchor.constraint(equalToConstant: 45),
 
-            passwordTextFeild.topAnchor.constraint(equalTo: usernameTextFeild.bottomAnchor, constant: 20),
+            passwordTextFeild.topAnchor.constraint(equalTo: pinTextFeild.bottomAnchor, constant: 20),
             passwordTextFeild.trailingAnchor.constraint(equalTo: signUpView.trailingAnchor, constant: -20),
             passwordTextFeild.leadingAnchor.constraint(equalTo: signUpView.leadingAnchor, constant: 20),
             passwordTextFeild.heightAnchor.constraint(equalToConstant: 45),
@@ -131,12 +138,7 @@ class SingUpVC: UIViewController {
             confirmPasswordTextFeild.trailingAnchor.constraint(equalTo: signUpView.trailingAnchor, constant: -20),
             confirmPasswordTextFeild.leadingAnchor.constraint(equalTo: signUpView.leadingAnchor, constant: 20),
             confirmPasswordTextFeild.heightAnchor.constraint(equalToConstant: 45),
-            
-            pinTextFeild.topAnchor.constraint(equalTo: confirmPasswordTextFeild.bottomAnchor, constant: 20),
-            pinTextFeild.trailingAnchor.constraint(equalTo: signUpView.trailingAnchor, constant: -20),
-            pinTextFeild.leadingAnchor.constraint(equalTo: signUpView.leadingAnchor, constant: 20),
-            pinTextFeild.heightAnchor.constraint(equalToConstant: 45),
-            
+
         ])
     }
     
