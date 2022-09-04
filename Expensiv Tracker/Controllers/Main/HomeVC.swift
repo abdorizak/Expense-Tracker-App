@@ -40,8 +40,8 @@ class HomeVC: UIViewController {
     
     private let incomelbl   = CustomLabel(textAlignment: .left, fontSize: 13, textWeight: .light, text: "Income")
     private let expenseslbl   = CustomLabel(textAlignment: .left, fontSize: 13, textWeight: .light, text: "Expenses")
-    private let lastIncome  = CustomLabel(textAlignment: .left, fontSize: 20)
-    private let lastExpense = CustomLabel(textAlignment: .left, fontSize: 18)
+    private let lastIncome  = CustomLabel(textAlignment: .left, fontSize: CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 14 : 20))
+    private let lastExpense = CustomLabel(textAlignment: .left, fontSize: CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 14 : 18))
     
     private let tableView = CustomTableView(indicator: false, separtorStyle: .singleLine, TransectionTableViewCell.self, forCellReuseIdentifier: TransectionTableViewCell.identifier)
     private let viewMoreButton = UIButton(type: .system)
