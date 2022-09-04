@@ -46,6 +46,9 @@ class LoginVC: UIViewController {
         configforgetBtn()
         configLoginAndSingUpBtn()
         createDismissKeyboardTapGesture()
+//        let currentScreen = UIScreen.main.bounds.size.height
+//        let currentScreen1 = UIScreen.main.bounds.size.width
+//        print(max(currentScreen, currentScreen1))
     }
     
     private func confgiruVC() {
@@ -116,7 +119,7 @@ class LoginVC: UIViewController {
         
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            contentView.heightAnchor.constraint(equalToConstant: 800)
+            contentView.heightAnchor.constraint(equalToConstant: 820)
         ])
     }
     
@@ -140,6 +143,8 @@ class LoginVC: UIViewController {
         
         registeryLabel.text = "New Here"
         registeryLabel.font = .systemFont(ofSize: 22, weight: .regular)
+        
+        let leadingConstraintConstant = CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 90 : 130)
 
         NSLayoutConstraint.activate([
             loginglbl.topAnchor.constraint(equalTo: loginImageView.bottomAnchor, constant: 10),
@@ -149,7 +154,7 @@ class LoginVC: UIViewController {
             
             
             registeryLabel.topAnchor.constraint(equalTo: loginWithPin.bottomAnchor, constant: 40),
-            registeryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 130),
+            registeryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: leadingConstraintConstant),
             registeryLabel.heightAnchor.constraint(equalToConstant: 22)
         ])
     }
@@ -205,14 +210,11 @@ class LoginVC: UIViewController {
     }
     
     private func configforgetBtn() {
-        
-        let leadingConstraintConstant = CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 250 : 220)
-        
-        
+                
         NSLayoutConstraint.activate([
             forgetPassword.topAnchor.constraint(equalTo: loginFormView.bottomAnchor, constant: 25),
             forgetPassword.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            forgetPassword.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: leadingConstraintConstant),
+            forgetPassword.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 180 : 220)),
         ])
     }
     
@@ -227,7 +229,6 @@ class LoginVC: UIViewController {
             orLable.topAnchor.constraint(equalTo: loginBtn.bottomAnchor, constant: 10),
             orLable.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             orLable.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-//            orLable.heightAnchor.constraint(equalToConstant: 18),
             
             loginWithPin.topAnchor.constraint(equalTo: orLable.bottomAnchor, constant: 10),
             loginWithPin.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -90),
@@ -236,7 +237,7 @@ class LoginVC: UIViewController {
             
             signUpbtn.topAnchor.constraint(equalTo: registeryLabel.bottomAnchor, constant: -22),
             signUpbtn.leadingAnchor.constraint(equalTo: registeryLabel.trailingAnchor, constant: 6),
-            signUpbtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -100),
+            signUpbtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: CGFloat(DeviceTypes.isiPhoneSE ? -90 : -100)),
             signUpbtn.heightAnchor.constraint(equalTo: registeryLabel.heightAnchor)
             
         ])
