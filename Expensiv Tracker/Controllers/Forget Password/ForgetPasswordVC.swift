@@ -38,8 +38,8 @@ class ForgetPasswordVC: UIViewController {
         NSLayoutConstraint.activate([
             forgetPasswordImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             forgetPasswordImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            forgetPasswordImage.heightAnchor.constraint(equalToConstant: 350),
-            forgetPasswordImage.widthAnchor.constraint(equalToConstant: 350),
+            forgetPasswordImage.heightAnchor.constraint(equalToConstant: CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 200 : 350)),
+            forgetPasswordImage.widthAnchor.constraint(equalToConstant: CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 200 : 350)),
         ])
     }
     
