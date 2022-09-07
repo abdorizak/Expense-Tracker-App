@@ -12,6 +12,7 @@
 		101EA9D327E1253600E9534C /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101EA9D227E1253600E9534C /* CustomView.swift */; };
 		101EA9D527E250DA00E9534C /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101EA9D427E250DA00E9534C /* GradientButton.swift */; };
 		101EA9D827E50D9E00E9534C /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 101EA9D727E50D9E00E9534C /* Charts */; };
+		102D5A8828C4A4F4008E8B68 /* ImageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102D5A8728C4A4F4008E8B68 /* ImageViewer.swift */; };
 		103B9FB628748C49004A91A5 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103B9FB528748C49004A91A5 /* CustomTableView.swift */; };
 		103B9FB828748C96004A91A5 /* AllTransactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103B9FB728748C96004A91A5 /* AllTransactions.swift */; };
 		1048EA93288B30470037536A /* ValidationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048EA92288B30470037536A /* ValidationTextField.swift */; };
@@ -70,6 +71,7 @@
 		1008990D27D9E95500A94B4F /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		101EA9D227E1253600E9534C /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		101EA9D427E250DA00E9534C /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
+		102D5A8728C4A4F4008E8B68 /* ImageViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewer.swift; sourceTree = "<group>"; };
 		103B9FB528748C49004A91A5 /* CustomTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		103B9FB728748C96004A91A5 /* AllTransactions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTransactions.swift; sourceTree = "<group>"; };
 		1048EA92288B30470037536A /* ValidationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationTextField.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			children = (
 				103B9FB728748C96004A91A5 /* AllTransactions.swift */,
 				1008990A27D8C2E600A94B4F /* HeaderVC.swift */,
+				102D5A8728C4A4F4008E8B68 /* ImageViewer.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 				1048EA93288B30470037536A /* ValidationTextField.swift in Sources */,
 				10C5B3C327D0A9CE00B60A4A /* ForgetPasswordTextFeild.swift in Sources */,
 				1065E9F828A6953C00EA17E9 /* AlertController.swift in Sources */,
+				102D5A8828C4A4F4008E8B68 /* ImageViewer.swift in Sources */,
 				10C5B3AC27CDFADB00B60A4A /* TabBarVC.swift in Sources */,
 				1065E9F428A6953C00EA17E9 /* AlertBtn.swift in Sources */,
 				1083376A2895B1ED00374F67 /* LoginWithPinVC.swift in Sources */,
