@@ -34,7 +34,6 @@ class LoginVC: UIViewController {
     let signUpbtn           = EButton(titleColor: .link, title: "SignUp Now")
 
     var forgetBtnLeadingConstraint: NSLayoutConstraint!
-    private var loginViewModel = LoginViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,9 +45,6 @@ class LoginVC: UIViewController {
         configforgetBtn()
         configLoginAndSingUpBtn()
         createDismissKeyboardTapGesture()
-//        let currentScreen = UIScreen.main.bounds.size.height
-//        let currentScreen1 = UIScreen.main.bounds.size.width
-//        print(max(currentScreen, currentScreen1))
     }
     
     private func confgiruVC() {
@@ -59,7 +55,9 @@ class LoginVC: UIViewController {
         loginBtn.addTarget(self, action: #selector(loginBtnClicked), for: .touchUpInside)
         loginWithPin.addTarget(self, action: #selector(loginwithPinClicked), for: .touchUpInside)
         navigationController?.setNavigationBarHidden(true, animated: true)
-
+        let currentScreen = UIScreen.main.bounds.size.height
+        let currentScreen1 = UIScreen.main.bounds.size.width
+        print(max(currentScreen, currentScreen1))
     }
     
     
@@ -76,7 +74,7 @@ class LoginVC: UIViewController {
                         presentAlertOnMainThread(title: "Opps!", message: result.message ?? "N/A", btnTitle: "ok")
                         dismissLoding()
                     } else {
-                        DispatchQueue.main.async {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                             let home = TabBarVC()
                             home.modalTransitionStyle = .crossDissolve
                             home.modalPresentationStyle = .fullScreen
@@ -143,8 +141,6 @@ class LoginVC: UIViewController {
         
         registeryLabel.text = "New Here"
         registeryLabel.font = .systemFont(ofSize: 22, weight: .regular)
-        
-        let leadingConstraintConstant = CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 90 : 130)
 
         NSLayoutConstraint.activate([
             loginglbl.topAnchor.constraint(equalTo: loginImageView.bottomAnchor, constant: 10),
@@ -154,9 +150,24 @@ class LoginVC: UIViewController {
             
             
             registeryLabel.topAnchor.constraint(equalTo: loginWithPin.bottomAnchor, constant: 40),
-            registeryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: leadingConstraintConstant),
             registeryLabel.heightAnchor.constraint(equalToConstant: 22)
         ])
+        
+        if DeviceTypes.isiPhoneSE {
+            registeryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 90).isActive = true
+            signUpbtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -90).isActive = true
+        } else if DeviceTypes.isiPhoneMini {
+            registeryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 80).isActive = true
+            signUpbtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -80).isActive = true
+        } else if DeviceTypes.isiPhone11 {
+            signUpbtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -90).isActive = true
+        } else if DeviceTypes.isiPhonePro {
+            registeryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 80).isActive = true
+            signUpbtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -90).isActive = true
+        } else {
+            registeryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 120).isActive = true
+            signUpbtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -100).isActive = true
+        }
     }
     
     private func configureLoginFromView() {
@@ -237,7 +248,6 @@ class LoginVC: UIViewController {
             
             signUpbtn.topAnchor.constraint(equalTo: registeryLabel.bottomAnchor, constant: -22),
             signUpbtn.leadingAnchor.constraint(equalTo: registeryLabel.trailingAnchor, constant: 6),
-            signUpbtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: CGFloat(DeviceTypes.isiPhoneSE ? -90 : -100)),
             signUpbtn.heightAnchor.constraint(equalTo: registeryLabel.heightAnchor)
             
         ])
