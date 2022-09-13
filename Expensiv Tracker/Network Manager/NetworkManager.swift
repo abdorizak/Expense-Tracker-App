@@ -8,10 +8,10 @@
 import UIKit
 
 final class NetworkManager {
-    static  let shared = NetworkManager()
+    static  let shared          = NetworkManager()
     private let cache           = NSCache<NSString, UIImage>()
-    private let decoder = JSONDecoder()
-    private let userID = UserDefaults.standard.string(forKey: "user_id")
+    private let decoder         = JSONDecoder()
+    private let userID          = UserDefaults.standard.string(forKey: "user_id")
     
     // init
     private init() {
@@ -91,21 +91,21 @@ final class NetworkManager {
     }
     
     
-    
-    private func createRequest(with url: URL?, type: HTTPMethod, body: AnyObject? = nil) async throws -> URLRequest {
+    //
+    private func createRequest(with url: URL?, type: HTTPMethod = .GET) async throws -> URLRequest {
         let token = try await AuthManager.shared.withValidate()
-        
+
         guard let apiURL = url else {
             throw ExError.invalidURL
         }
-        
+
         var request = URLRequest(url: apiURL)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "authorization")
         request.httpMethod = type.rawValue
         return request
     }
     
-    private func createRequest<T:Encodable>(with url: URL?, type: HTTPMethod, body: T?) async throws -> URLRequest {
+    private func createRequest<T: Encodable>(with url: URL?, type: HTTPMethod, body: T?) async throws -> URLRequest {
         let token = try await AuthManager.shared.withValidate()
         
         guard let apiURL = url, let body = body else {
@@ -121,6 +121,29 @@ final class NetworkManager {
         }
         
         return request
+    }
+    
+    func Signup(fullname: String, email: String, mobile: String, username: String, pin: Int, passowrd: String) async throws -> SignUpResponse {
+        
+        guard let url = URL(string: API.baseURL + "users/create-user") else {
+            throw ExError.invalidURL
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONEncoder().encode(SignUp(name: fullname, email: email, phone: mobile, username: username, password: passowrd, pin: pin))
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        print(response)
+        
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw ExError.invalidResponse }
+        do {
+            return try decoder.decode(SignUpResponse.self, from: data)
+        } catch {
+            throw ExError.inValidData
+        }
     }
     
     func downloadImage(from urlString: String) async -> UIImage? {
