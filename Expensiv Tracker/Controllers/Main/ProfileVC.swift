@@ -61,6 +61,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
+        setupTableHeaderView()
     }
     
     private func configProfileVC() {
@@ -73,7 +74,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private func setupTableHeaderView() {
         let header = ProfileHeaderView(user: fullname, image: userImage)
-        var size = header.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        var size = header.systemLayoutSizeFitting(UIView.layoutFittingExpandedSize)
         size.width = UIScreen.main.bounds.width
         header.frame.size = size
         tableView.tableHeaderView = header
@@ -122,11 +123,12 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func didTapLogout(action: UIAlertAction) {
+        showLoadingview()
         guard let actionTitle = action.title else { return }
         if actionTitle == "logout" {
             let ac =  UIAlertController(title: "Sing Out", message: "Are you sure?", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            ac.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { _ in
+            ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in self.dismissLoding()}))
+            ac.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { [unowned self] _ in
                 let logout = AuthManager.shared.SingOut()
                 if logout {
                     DispatchQueue.main.async {
@@ -134,6 +136,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         LoginScreen.modalTransitionStyle = .crossDissolve
                         LoginScreen.modalPresentationStyle = .fullScreen
                         self.present(LoginScreen, animated: true)
+                        self.dismissLoding()
                     }
                 }
             }))
@@ -142,6 +145,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let ac =  UIAlertController(title: nil, message: "Are you sure?", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "ok", style: .cancel, handler: nil))
             present(ac, animated: true, completion: nil)
+            self.dismissLoding()
         }
     }
     
