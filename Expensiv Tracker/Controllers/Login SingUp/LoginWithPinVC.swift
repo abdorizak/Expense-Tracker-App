@@ -55,6 +55,8 @@ class LoginWithPinVC: UIViewController {
         configbackgroundandStacks()
         configGobtn()
         passInput1.becomeFirstResponder()
+        let tap  = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
     }
     
     func configbackgroundandStacks() {
@@ -125,7 +127,6 @@ class LoginWithPinVC: UIViewController {
             goButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 50),
             goButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -90),
             goButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 90),
-            //            goButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
