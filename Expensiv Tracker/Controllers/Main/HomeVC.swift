@@ -112,6 +112,11 @@ class HomeVC: UIViewController {
         }
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        ConfigureHeaderElements()
+    }
+    
     private func ConfigureHeaderView() {
         headerView.translatesAutoresizingMaskIntoConstraints = false
         headerView.layer.cornerRadius = 5
@@ -139,14 +144,16 @@ class HomeVC: UIViewController {
     private func configData(_ data: UserBalanceIncomeExpense){
         fullnameLabel.text = data.user.name
         userImage.downloadImage(fromURL: "http://localhost:4400/" + data.user.avatar)
-        balanceNumber.text = "$\(data.balance)"
-        lastIncome.attributedText         = makeFormattedBalance(dollar: String(format:"%.01f", data.income))
-        lastExpense.attributedText        = makeFormattedBalance(dollar: String(data.expense))
+        balanceNumber.text = "$\(data.balance.formatNumber())"
+        lastIncome.attributedText         = makeFormattedBalance(dollar: String(data.income.formatNumber()))
+        lastExpense.attributedText        = makeFormattedBalance(dollar: String(data.expense.formatNumber()))
     }
     
     private func ConfigureHeaderElements() {
         headerView.addSubViews(userImage, welcomeLabel, fullnameLabel, profile)
-        userImage.layer.cornerRadius = 25
+        
+        userImage.contentMode = .scaleAspectFit
+        userImage.layer.cornerRadius = userImage.frame.width / 2
         
         profile.layer.cornerRadius = 10
         balanceInfo.addSubViews(totalBalanceLabel, balanceNumber, incomeArrowIcon, expensesArrowIcon, incomelbl, lastIncome, expenseslbl, lastExpense)
@@ -241,7 +248,7 @@ class HomeVC: UIViewController {
         config.title = "More "
         viewMoreButton.configuration = config
         viewMoreButton.translatesAutoresizingMaskIntoConstraints = false
-        viewMoreButton.addAction(UIAction(handler: { _ in
+        viewMoreButton.addAction(UIAction(handler: { [unowned self] _ in
             let transactionVC = UINavigationController(rootViewController: AllTransaction(Transactions: self.transaction))
             transactionVC.modalPresentationStyle = .popover
             transactionVC.modalTransitionStyle   = .coverVertical
