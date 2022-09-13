@@ -7,6 +7,8 @@
 // UI DESING
 
 import UIKit
+import Photos
+import PhotosUI
 
 class EditProfileVC: UIViewController {
     
@@ -36,73 +38,14 @@ class EditProfileVC: UIViewController {
     
     
     // MARK: - Text
-    private let fullnameTextfeild: UITextField = {
-        let textfeild = UITextField(frame: .zero)
-        textfeild.borderStyle = .none
-        textfeild.clearsOnBeginEditing = true
-        textfeild.textAlignment = .left
-        textfeild.placeholder = "Full Name"
-        
-        textfeild.minimumFontSize = 17
-        textfeild.translatesAutoresizingMaskIntoConstraints = false
-        return textfeild
-    }()
-    private let emailTextfeild: UITextField = {
-        let textfeild = UITextField(frame: .zero)
-        textfeild.textContentType = .emailAddress
-        textfeild.textColor               = .label
-        textfeild.tintColor               = .label
-        textfeild.borderStyle = .none
-        textfeild.clearsOnBeginEditing = true
-        textfeild.textAlignment = .left
-        textfeild.placeholder = "Email"
-        textfeild.autocorrectionType      = .no
-        textfeild.minimumFontSize = 17
-        textfeild.translatesAutoresizingMaskIntoConstraints = false
-        return textfeild
-    }()
-    private let phoneTextfeild: UITextField = {
-        let textfeild = UITextField(frame: .zero)
-        textfeild.textColor               = .label
-        textfeild.tintColor               = .label
-        textfeild.borderStyle = .none
-        textfeild.clearsOnBeginEditing = true
-        textfeild.textAlignment = .left
-        textfeild.placeholder = "Phone"
-        textfeild.autocorrectionType      = .no
-        textfeild.minimumFontSize = 17
-        textfeild.translatesAutoresizingMaskIntoConstraints = false
-        return textfeild
-    }()
-    private let usernameTextfeild: UITextField = {
-        let textfeild = UITextField(frame: .zero)
-        textfeild.textColor               = .label
-        textfeild.tintColor               = .label
-        textfeild.borderStyle = .none
-        textfeild.clearsOnBeginEditing = true
-        textfeild.textAlignment = .left
-        textfeild.placeholder = "Username"
-        textfeild.autocorrectionType      = .no
-        textfeild.minimumFontSize = 17
-        textfeild.translatesAutoresizingMaskIntoConstraints = false
-        return textfeild
-    }()
+    private let fullnameTextfeild = CustomTextFields(holder: "Full Name", type: .name)
+    private let emailTextfeild = CustomTextFields(holder: "Email", type: .emailAddress)
+    private let phoneTextfeild = CustomTextFields(holder: "Phone", type: .telephoneNumber)
+    private let usernameTextfeild = CustomTextFields(holder: "Username", type: .username)
     
     private let MonthlyIncome: [String] = ["$500 - $1500", "$1500 - $3000", "$3000 - $5000", "$5000 - $10k"]
     
-    private let MonthlyIncomeTextfeild: UITextField = {
-        let textfeild = UITextField(frame: .zero)
-        textfeild.textColor               = .label
-        textfeild.tintColor               = .label
-        textfeild.borderStyle = .none
-        textfeild.clearsOnBeginEditing = true
-        textfeild.textAlignment = .left
-        textfeild.placeholder = "Monthly Income"
-        textfeild.autocorrectionType      = .no
-        textfeild.minimumFontSize = 17
-        textfeild.translatesAutoresizingMaskIntoConstraints = false
-        return textfeild
-    }()
+    private let MonthlyIncomeTextfeild = CustomTextFields(placeholder: "Monthly Income")
     
     lazy var monthlyTypePicker: UIPickerView = {
         let pickerView = UIPickerView()
@@ -113,19 +56,7 @@ class EditProfileVC: UIViewController {
     
     private let genderType: [String] = ["Male", "Female"]
     
-    private let genderTextfeild: UITextField = {
-        let textfeild = UITextField(frame: .zero)
-        textfeild.textColor               = .label
-        textfeild.tintColor               = .label
-        textfeild.borderStyle = .none
-        textfeild.clearsOnBeginEditing = true
-        textfeild.textAlignment = .left
-        textfeild.placeholder = "Gender"
-        textfeild.autocorrectionType      = .no
-        textfeild.minimumFontSize = 17
-        textfeild.translatesAutoresizingMaskIntoConstraints = false
-        return textfeild
-    }()
+    private let genderTextfeild = CustomTextFields(placeholder: "Gender")
     
     lazy var genderTypePicker: UIPickerView = {
         let pickerView = UIPickerView()
@@ -137,46 +68,65 @@ class EditProfileVC: UIViewController {
     // MARK: - Buttons
     private let saveBtn  = GradientButton(frame: .zero)
     
+    private let editView = UIView()
+    private let editBtn = UIButton(type: .system)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         ConfigureScrollView()
         configImage()
+        editViewButton()
         configForm()
+        layoutViewsAndLabelsAndTextfeilds()
         genderTextfeild.inputView = genderTypePicker
         MonthlyIncomeTextfeild.inputView = monthlyTypePicker
-        layoutViewsAndLabelsAndTextfeilds()
         let tap  = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
         configSavebtn()
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        configImage()
+    }
+    
     func ConfigureScrollView() {
-            view.addSubview(scrollView)
-            scrollView.addSubview(contentView)
-            scrollView.pinToEdges(to: view)
-            contentView.pinToEdges(to: scrollView)
-            
-            NSLayoutConstraint.activate([
-                contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-                contentView.heightAnchor.constraint(equalToConstant: 900)
-            ])
-        }
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        scrollView.pinToEdges(to: view)
+        contentView.pinToEdges(to: scrollView)
+        
+        NSLayoutConstraint.activate([
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.heightAnchor.constraint(equalToConstant: 900)
+        ])
+    }
     
     func configImage() {
-        avaterImage.contentMode = .scaleAspectFit
-        avaterImage.layer.cornerRadius = 12
+        avaterImage.contentMode = .scaleAspectFill
+        avaterImage.layer.cornerRadius = avaterImage.frame.width / 2
         avaterImage.layer.shadowColor = UIColor.black.cgColor
         avaterImage.layer.shadowOffset = .zero
         avaterImage.layer.shadowRadius = 12
         avaterImage.layer.shadowOpacity = 0.3
         
-        contentView.addSubview(avaterImage)
+        contentView.addSubViews(avaterImage, editView)
+        editView.addSubview(editBtn)
         NSLayoutConstraint.activate([
             avaterImage.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 20),
             avaterImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             avaterImage.heightAnchor.constraint(equalToConstant: 120),
-            avaterImage.widthAnchor.constraint(equalToConstant: 120)
+            avaterImage.widthAnchor.constraint(equalToConstant: 120),
+            
+            editView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 108),
+            editView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 45),
+            editView.heightAnchor.constraint(equalToConstant: 35),
+            editView.widthAnchor.constraint(equalToConstant:  35),
+            
+            editBtn.centerXAnchor.constraint(equalTo: editView.centerXAnchor),
+            editBtn.centerYAnchor.constraint(equalTo: editView.centerYAnchor),
+            
         ])
     }
     
@@ -199,6 +149,60 @@ class EditProfileVC: UIViewController {
         usernameView.addSubview(usernameTextfeild)
         monthlyIncomeView.addSubview(MonthlyIncomeTextfeild)
         genderView.addSubview(genderTextfeild)
+    }
+    
+    private func editViewButton() {
+        editView.translatesAutoresizingMaskIntoConstraints = false
+        editView.backgroundColor = .systemBackground
+        editView.layer.cornerRadius = 12
+
+        var editBtnConfiguration = UIButton.Configuration.plain()
+        editBtnConfiguration.image = UIImage(systemName: "square.and.pencil")
+        editBtnConfiguration.imagePlacement = .leading
+        editBtnConfiguration.imageColorTransformer = .preferredTint
+        editBtn.configuration = editBtnConfiguration
+        editBtn.addAction(UIAction(handler: { [unowned self] _ in
+            self.choosePhotoAlert()
+            print("Tap")
+        }), for: .touchUpInside)
+        editBtn.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func choosePhotoAlert() {
+        let ac = UIAlertController(title: "Choose Photer By Tacking Camera or Photo", message: nil, preferredStyle: .actionSheet)
+        ac.addAction(UIAlertAction(title: "Camera", style: .default, handler: { [unowned self] _ in
+            self.openCamera()
+        }))
+        ac.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { [unowned self] _ in
+            self.openPhoto()
+        }))
+        ac.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
+        present(ac, animated: true)
+    }
+    
+    private func openCamera() {
+        print("Tapped Camera")
+        // first will check Sourche Type
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerController.SourceType.camera
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        } else {
+            presentAlertOnMainThread(title: "Opps!", message: "You don't have camera", btnTitle: "Ok")
+        }
+    }
+    
+    private func openPhoto() {
+        print("Tapped Photo")
+        var configuration = PHPickerConfiguration(photoLibrary: .shared())
+        configuration.filter = .images
+        configuration.selection = .default
+        configuration.selectionLimit = 1
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        present(picker, animated: true)
     }
     
     func layoutViewsAndLabelsAndTextfeilds() {
@@ -310,7 +314,25 @@ class EditProfileVC: UIViewController {
 }
 
 
-extension EditProfileVC: UIPickerViewDelegate, UIPickerViewDataSource {
+extension EditProfileVC: UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, PHPickerViewControllerDelegate {
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        
+        results.forEach { result in
+            result.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+                guard let image = image as? UIImage, error == nil else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.avaterImage.image = image
+                }
+            }
+        }
+        
+    }
+    
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }
