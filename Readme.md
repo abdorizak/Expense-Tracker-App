@@ -17,13 +17,16 @@
 
 ### Fetures 📌
 - 100% Swift.
+- MVC design pattern.
 - programmatic UI.
-- Supports Iphone SE.
+- iPhone SE support.
+- Native image caching using `NSCache`
+- network request using URLSession async and await. with generic function.
+- Custom alert view.
 - User Authentication.
 - Add Income and Expenses.
 - Display Income and Expenses in line chart with table uisng UISegmentedControl.
-- network request using URLSession async and await. with generic function.
-- ImagePicker. (camera and photo library) ...Upcoming
+- ImagePicker, Using Photos, and PhotosUI.
 
 ## Author 📝
 **©** **Abdorizak Abdalla** **2022**
