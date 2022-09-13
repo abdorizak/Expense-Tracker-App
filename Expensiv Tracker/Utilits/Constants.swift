@@ -12,7 +12,7 @@ struct API {
     static let baseURL = "http://localhost:4400/api/v1/"
 }
 enum Images {
-    static let placeHolderImage      = UIImage(named: "default")
+    static let placeHolderImage      = UIImage(named: "placeholder-profile")
     static let aboutUS_ExpenseImage  = UIImage(named: "Expense_Backgroud")
     static let usernameIcon          = UIImage(named: "username_icon")
     static let passwordIcon          = UIImage(named: "password_icon")
@@ -49,7 +49,10 @@ enum DeviceTypes {
     static let isiPhone8PlusStandard    = idiom == .phone && ScreenSize.maxLength == 736.0
     static let isiPhone8PlusZoomed      = idiom == .phone && ScreenSize.maxLength == 736.0 && nativeScale > scale
     static let isiPhoneX                = idiom == .phone && ScreenSize.maxLength == 812.0
+    static let isiPhonePro                = idiom == .phone && ScreenSize.maxLength == 812.0
+    static let isiPhoneMini             = idiom == .phone && ScreenSize.maxLength == 812.0
     static let isiPhoneXsMaxAndXr       = idiom == .phone && ScreenSize.maxLength == 896.0
+    static let isiPhone11               = idiom == .phone && ScreenSize.maxLength == 896.0
     static let isiPad                   = idiom == .pad && ScreenSize.maxLength >= 1024.0
 
     static func isiPhoneXAspectRatio() -> Bool {
