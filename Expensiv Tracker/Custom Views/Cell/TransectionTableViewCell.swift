@@ -70,11 +70,18 @@ class TransectionTableViewCell: UITableViewCell {
             
             AmountLabel.topAnchor.constraint(equalTo: typeTransectionView.bottomAnchor, constant: 8),
             AmountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            AmountLabel.leadingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor, constant: CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 10 : 90)),
             AmountLabel.heightAnchor.constraint(equalToConstant: 38)
-            
-            
         ])
+        
+        // TODO: -
+        // fixed the layout leading when the device is Mini
+        if DeviceTypes.isiPhoneMini {
+            AmountLabel.leadingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor, constant: 0).isActive = true
+        } else if DeviceTypes.isiPhoneSE {
+            AmountLabel.leadingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor, constant: 10).isActive = true
+        } else {
+            AmountLabel.leadingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor, constant: 90).isActive = true
+        }
     }
     
     override func layoutSubviews() {
@@ -86,7 +93,7 @@ class TransectionTableViewCell: UITableViewCell {
     func display(_ transection: Transaction) {
         titleLabel.text = transection.title
         descriptionLabel.text = transection.description
-        AmountLabel.attributedText =  makeFormattedBalance(dollar: transection.amount.toString())
+        AmountLabel.attributedText =  makeFormattedBalance(dollar: transection.amount.formatNumber())
         if transection.type == "Expense" {
             typeTransection.text = transection.type
             typeTransectionView.backgroundColor = UIColor(hex: "ff2c2c")
