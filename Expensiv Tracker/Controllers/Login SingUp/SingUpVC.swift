@@ -38,12 +38,11 @@ class SingUpVC: UIViewController {
     private let confirmPasswordTextFeild     = CustomTextFields(textContentType: .newPassword, isSecureTextEntry: true, placeholder: "Confirm Password")
     
 
-    var items: [CustomTextFields] = []
+    private var items: [CustomTextFields] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configVC()
-        
     }
     
     private func configVC() {
@@ -143,7 +142,7 @@ class SingUpVC: UIViewController {
     }
     
     private func configSignUPBtn() {
-        
+        signUpBtn.addTarget(self, action: #selector(didTapSignUp), for: .touchUpInside)
         NSLayoutConstraint.activate([
             signUpBtn.topAnchor.constraint(equalTo: signUpView.bottomAnchor, constant: 20),
             signUpBtn.trailingAnchor.constraint(equalTo: ContentView.trailingAnchor, constant: -80),
@@ -155,6 +154,34 @@ class SingUpVC: UIViewController {
 
 
 extension SingUpVC: UITextFieldDelegate {
+    
+    @objc func didTapSignUp() {
+        let validate = Validate(fullnameTextFeild, emailTextFeild, phoneTextFeild, usernameTextFeild, pinTextFeild, passwordTextFeild, confirmPasswordTextFeild)
+        showLoadingview()
+        switch validate {
+        case .Valid:
+            Task {
+                do {
+                    let signUpResult = try await NetworkManager.shared.Signup(fullname: fullnameTextFeild.text!, email: emailTextFeild.text!, mobile: phoneTextFeild.text!, username: usernameTextFeild.text!, pin: Int(pinTextFeild.text!)!, passowrd: passwordTextFeild.text!)
+                    presentAlertOnMainThread(title: "\(signUpResult.status == 200 ? "Success" : "Opss!")", message: signUpResult.message ?? "N/A", btnTitle: "Ok")
+                    dismissLoding()
+                } catch {
+                    print(error)
+                    if let err = error as? ExError {
+                        presentAlertOnMainThread(title: "Opps!", message: "\(err)", btnTitle: "ok")
+                        print(err)
+                    } else {
+                        presentDefaultError()
+                    }
+                    dismissLoding()
+                }
+            }
+        case .InValid(let err):
+            presentAlertOnMainThread(title: "Opps!", message: "\(err)", btnTitle: "OK")
+            dismissLoding()
+        }
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let maxLength = 4
         
