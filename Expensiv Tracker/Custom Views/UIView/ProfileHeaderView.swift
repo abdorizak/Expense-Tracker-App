@@ -21,6 +21,13 @@ class ProfileHeaderView: UIView {
         commonInit()
     }
     
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        commonInit()
+    }
+    
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
@@ -36,6 +43,7 @@ class ProfileHeaderView: UIView {
         return CGSize(width: UIView.noIntrinsicMetric, height: 250)
     }
     
+    
     private func commonInit() {
         
         let bundle = Bundle(for: ProfileHeaderView.self)
@@ -50,9 +58,11 @@ class ProfileHeaderView: UIView {
         contentView.addSubViews(userImage, user_fullName)
         
         user_fullName.text = "Abdorizak Abdalla Hassan"
-        userImage.contentMode = .scaleAspectFill
-        userImage.layer.cornerRadius = 70
+        userImage.contentMode = .scaleAspectFit
+        userImage.layer.cornerRadius = userImage.bounds.width / 2
         userImage.clipsToBounds = true
+        userImage.layer.borderWidth = 0.2
+        userImage.layer.borderColor = UIColor.label.cgColor
         
         
         NSLayoutConstraint.activate([
