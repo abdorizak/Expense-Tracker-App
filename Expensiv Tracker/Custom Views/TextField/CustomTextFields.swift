@@ -29,19 +29,26 @@ class CustomTextFields: UITextField {
     
     convenience init (isSecureTextEntry: Bool) {
         self.init(frame: .zero)
-//        self.textContentType = textContentType
         self.isSecureTextEntry = isSecureTextEntry
         keyboardType = .numberPad
-//        self.placeholder        = "•"
         textAlignment = .center
         font = UIFont.systemFont(ofSize: 22)
-//        backgroundColor = .systemGray3
-//        borderStyle = .roundedRect
+    }
+    
+    convenience init(holder: String, type: UITextContentType) {
+        self.init(frame: .zero)
+        self.textContentType            = type
+        self.borderStyle                = .none
+        self.clearsOnBeginEditing       = true
+        self.placeholder                = holder
+        self.autocorrectionType         = .no
+        self.minimumFontSize            = 17
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
     
     convenience init (textContentType: UITextContentType, placeholder: String?) {
         self.init(frame: .zero)
-        self.textContentType = textContentType
+        self.textContentType    = textContentType
         self.placeholder        = placeholder
     }
     
