@@ -187,7 +187,7 @@ class EditProfileVC: UIViewController {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = UIImagePickerController.SourceType.camera
-            imagePicker.allowsEditing = false
+            imagePicker.allowsEditing = true
             self.present(imagePicker, animated: true, completion: nil)
         } else {
             presentAlertOnMainThread(title: "Opps!", message: "You don't have camera", btnTitle: "Ok")
@@ -315,6 +315,14 @@ class EditProfileVC: UIViewController {
 
 
 extension EditProfileVC: UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, PHPickerViewControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            // imageViewPic.contentMode = .scaleToFill
+            avaterImage.image = pickedImage
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true)
