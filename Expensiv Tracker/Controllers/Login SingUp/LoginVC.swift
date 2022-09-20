@@ -55,9 +55,6 @@ class LoginVC: UIViewController {
         loginBtn.addTarget(self, action: #selector(loginBtnClicked), for: .touchUpInside)
         loginWithPin.addTarget(self, action: #selector(loginwithPinClicked), for: .touchUpInside)
         navigationController?.setNavigationBarHidden(true, animated: true)
-        let currentScreen = UIScreen.main.bounds.size.height
-        let currentScreen1 = UIScreen.main.bounds.size.width
-        print(max(currentScreen, currentScreen1))
     }
     
     
@@ -74,7 +71,7 @@ class LoginVC: UIViewController {
                         presentAlertOnMainThread(title: "Opps!", message: result.message ?? "N/A", btnTitle: "ok")
                         dismissLoding()
                     } else {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
                             let home = TabBarVC()
                             home.modalTransitionStyle = .crossDissolve
                             home.modalPresentationStyle = .fullScreen
@@ -164,6 +161,9 @@ class LoginVC: UIViewController {
         } else if DeviceTypes.isiPhonePro {
             registeryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 80).isActive = true
             signUpbtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -90).isActive = true
+        } else if DeviceTypes.isiPhone14Pro {
+            registeryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 90).isActive = true
+            signUpbtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -80).isActive = true
         } else {
             registeryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 120).isActive = true
             signUpbtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -100).isActive = true
