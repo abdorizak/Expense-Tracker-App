@@ -298,7 +298,7 @@ extension TransectionsVC: UITableViewDataSource, UITableViewDelegate {
         ] as CFArray
         let colorLocations:[CGFloat] = [1.0, 0.1, 1.0]
         let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: g, locations: colorLocations)
-        set.fill = Fill.fillWithRadialGradient(gradient!)
+        set.fill = RadialGradientFill(gradient: gradient!)
         set.drawFilledEnabled = true
         set.highlightColor = .label
         
@@ -330,7 +330,7 @@ extension TransectionsVC: UITableViewDataSource, UITableViewDelegate {
         ] as CFArray
         let colorLocations:[CGFloat] = [1.0, 0.1, 1.0]
         let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: g, locations: colorLocations)
-        set.fill = Fill.fillWithRadialGradient(gradient!)
+        set.fill = RadialGradientFill(gradient: gradient!)
         set.drawFilledEnabled = true
         set.highlightColor = .label
         
