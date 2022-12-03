@@ -8,9 +8,27 @@
 
 import UIKit
 
+
 struct API {
-    static let baseURL = "http://192.168.1.166:4400/api/v1/"
+    static let baseURL = "http://192.168.100.14:4400/api/v1/"
 }
+
+extension UserDefaults {
+    
+    private enum userDefaultsKeys: String {
+        case hasOnboarded
+    }
+    
+    var hasOnboarded: Bool {
+        get {
+            bool(forKey: userDefaultsKeys.hasOnboarded.rawValue)
+        }
+        set {
+            setValue(newValue, forKey: userDefaultsKeys.hasOnboarded.rawValue)
+        }
+    }
+}
+
 enum Images {
     static let placeHolderImage      = UIImage(named: "placeholder-profile")
     static let aboutUS_ExpenseImage  = UIImage(named: "Expense_Backgroud")
@@ -42,7 +60,7 @@ enum DeviceTypes {
     static let idiom                    = UIDevice.current.userInterfaceIdiom
     static let nativeScale              = UIScreen.main.nativeScale
     static let scale                    = UIScreen.main.scale
-
+    
     static let isiPhoneSE               = idiom == .phone && ScreenSize.maxLength == 667.0
     static let isiPhone8Standard        = idiom == .phone && ScreenSize.maxLength == 667.0 && nativeScale == scale
     static let isiPhone8Zoomed          = idiom == .phone && ScreenSize.maxLength == 667.0 && nativeScale > scale
@@ -55,7 +73,7 @@ enum DeviceTypes {
     static let isiPhoneXsMaxAndXr       = idiom == .phone && ScreenSize.maxLength == 896.0
     static let isiPhone11               = idiom == .phone && ScreenSize.maxLength == 896.0
     static let isiPad                   = idiom == .pad && ScreenSize.maxLength >= 1024.0
-
+    
     static func isiPhoneXAspectRatio() -> Bool {
         return isiPhoneX || isiPhoneXsMaxAndXr
     }
