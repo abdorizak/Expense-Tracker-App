@@ -12,9 +12,17 @@
 		101134E528D316B900A58F4D /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 101134E428D316B900A58F4D /* Charts */; };
 		101EA9D327E1253600E9534C /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101EA9D227E1253600E9534C /* CustomView.swift */; };
 		101EA9D527E250DA00E9534C /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101EA9D427E250DA00E9534C /* GradientButton.swift */; };
+		102CDF2E293A862E0054B973 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102CDF2D293A862E0054B973 /* OnboardingViewController.swift */; };
+		102CDF33293A87D70054B973 /* CustomPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102CDF32293A87D70054B973 /* CustomPageController.swift */; };
+		102CDF39293A87E40054B973 /* InfiniteDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102CDF37293A87E40054B973 /* InfiniteDrawer.swift */; };
+		102CDF3A293A87E40054B973 /* DotDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102CDF34293A87E40054B973 /* DotDrawer.swift */; };
+		102CDF3B293A87E40054B973 /* DrawerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102CDF36293A87E40054B973 /* DrawerProtocol.swift */; };
+		102CDF3C293A87E40054B973 /* InfiniteScrollingDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102CDF38293A87E40054B973 /* InfiniteScrollingDrawer.swift */; };
+		102CDF3D293A87E40054B973 /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102CDF35293A87E40054B973 /* ColorUtils.swift */; };
+		102CDF40293A88270054B973 /* OnBoardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102CDF3F293A88270054B973 /* OnBoardingModel.swift */; };
+		102CDF42293A95860054B973 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102CDF41293A95860054B973 /* OnboardingCell.swift */; };
 		103B9FB628748C49004A91A5 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103B9FB528748C49004A91A5 /* CustomTableView.swift */; };
 		103B9FB828748C96004A91A5 /* AllTransactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103B9FB728748C96004A91A5 /* AllTransactions.swift */; };
-		1048EA93288B30470037536A /* ValidationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048EA92288B30470037536A /* ValidationTextField.swift */; };
 		106531492815AC03009FD888 /* Transection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106531482815AC03009FD888 /* Transection.swift */; };
 		1065314B2815B137009FD888 /* TransectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1065314A2815B137009FD888 /* TransectionTableViewCell.swift */; };
 		1065E9F428A6953C00EA17E9 /* AlertBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1065E9EF28A6953C00EA17E9 /* AlertBtn.swift */; };
@@ -71,9 +79,17 @@
 		1008990D27D9E95500A94B4F /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		101EA9D227E1253600E9534C /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		101EA9D427E250DA00E9534C /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
+		102CDF2D293A862E0054B973 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		102CDF32293A87D70054B973 /* CustomPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPageController.swift; sourceTree = "<group>"; };
+		102CDF34293A87E40054B973 /* DotDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotDrawer.swift; sourceTree = "<group>"; };
+		102CDF35293A87E40054B973 /* ColorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
+		102CDF36293A87E40054B973 /* DrawerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerProtocol.swift; sourceTree = "<group>"; };
+		102CDF37293A87E40054B973 /* InfiniteDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteDrawer.swift; sourceTree = "<group>"; };
+		102CDF38293A87E40054B973 /* InfiniteScrollingDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScrollingDrawer.swift; sourceTree = "<group>"; };
+		102CDF3F293A88270054B973 /* OnBoardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingModel.swift; sourceTree = "<group>"; };
+		102CDF41293A95860054B973 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		103B9FB528748C49004A91A5 /* CustomTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		103B9FB728748C96004A91A5 /* AllTransactions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTransactions.swift; sourceTree = "<group>"; };
-		1048EA92288B30470037536A /* ValidationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationTextField.swift; sourceTree = "<group>"; };
 		106531482815AC03009FD888 /* Transection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transection.swift; sourceTree = "<group>"; };
 		1065314A2815B137009FD888 /* TransectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransectionTableViewCell.swift; sourceTree = "<group>"; };
 		1065E9EF28A6953C00EA17E9 /* AlertBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertBtn.swift; sourceTree = "<group>"; };
@@ -114,7 +130,7 @@
 		10C5B3CD27D3C30600B60A4A /* CustomTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFields.swift; sourceTree = "<group>"; };
 		10C5B3D327D520E400B60A4A /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		10E3D8DE28BB8B28007DEA6A /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
-		10EEDF8327CD05AD00BC03D3 /* Expenses Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expenses Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		10EEDF8327CD05AD00BC03D3 /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10EEDF8627CD05AD00BC03D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10EEDF8827CD05AD00BC03D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		10EEDF8A27CD05AD00BC03D3 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -156,6 +172,27 @@
 			path = ImageView;
 			sourceTree = "<group>";
 		};
+		102CDF2C293A86060054B973 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				102CDF2D293A862E0054B973 /* OnboardingViewController.swift */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		102CDF31293A87C20054B973 /* CustomerPageController */ = {
+			isa = PBXGroup;
+			children = (
+				102CDF32293A87D70054B973 /* CustomPageController.swift */,
+				102CDF35293A87E40054B973 /* ColorUtils.swift */,
+				102CDF34293A87E40054B973 /* DotDrawer.swift */,
+				102CDF36293A87E40054B973 /* DrawerProtocol.swift */,
+				102CDF37293A87E40054B973 /* InfiniteDrawer.swift */,
+				102CDF38293A87E40054B973 /* InfiniteScrollingDrawer.swift */,
+			);
+			path = CustomerPageController;
+			sourceTree = "<group>";
+		};
 		103B9FB428748C49004A91A5 /* Custom TableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				1065314A2815B137009FD888 /* TransectionTableViewCell.swift */,
+				102CDF41293A95860054B973 /* OnboardingCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -198,6 +236,7 @@
 		10C5B3A827CDF9AD00B60A4A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				102CDF2C293A86060054B973 /* OnBoarding */,
 				10523F13281BFE7E00ACC1BB /* ProfileViews */,
 				10C5B3AD27CDFB0600B60A4A /* Login SingUp */,
 				10C5B3BF27CFF07400B60A4A /* Forget Password */,
@@ -293,7 +332,7 @@
 		10EEDF8427CD05AD00BC03D3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				10EEDF8327CD05AD00BC03D3 /* Expenses Tracker.app */,
+				10EEDF8327CD05AD00BC03D3 /* Expense Tracker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -327,6 +366,7 @@
 		10EEDF9D27CD099E00BC03D3 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				102CDF31293A87C20054B973 /* CustomerPageController */,
 				1065E9EE28A6953C00EA17E9 /* AlertView */,
 				103B9FB428748C49004A91A5 /* Custom TableView */,
 				10A8872D27F2072B0001794B /* Cell */,
@@ -348,6 +388,7 @@
 				106531482815AC03009FD888 /* Transection.swift */,
 				10E3D8DE28BB8B28007DEA6A /* Login.swift */,
 				10A1AA1328CF189500E762E3 /* SignUp.swift */,
+				102CDF3F293A88270054B973 /* OnBoardingModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -382,7 +423,6 @@
 				10A8870927EF5D060001794B /* DatePicker.swift */,
 				109FF576284DE0A60060CD64 /* BalanceFormater.swift */,
 				10FE42EE2882A61100D7C372 /* HTTPMethod.swift */,
-				1048EA92288B30470037536A /* ValidationTextField.swift */,
 			);
 			path = Utilits;
 			sourceTree = "<group>";
@@ -390,9 +430,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		10EEDF8227CD05AD00BC03D3 /* Expenses Tracker */ = {
+		10EEDF8227CD05AD00BC03D3 /* Expense Tracker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 10EEDF9727CD05AD00BC03D3 /* Build configuration list for PBXNativeTarget "Expenses Tracker" */;
+			buildConfigurationList = 10EEDF9727CD05AD00BC03D3 /* Build configuration list for PBXNativeTarget "Expense Tracker" */;
 			buildPhases = (
 				10EEDF7F27CD05AD00BC03D3 /* Sources */,
 				10EEDF8027CD05AD00BC03D3 /* Frameworks */,
@@ -402,12 +442,12 @@
 			);
 			dependencies = (
 			);
-			name = "Expenses Tracker";
+			name = "Expense Tracker";
 			packageProductDependencies = (
 				101134E428D316B900A58F4D /* Charts */,
 			);
 			productName = "Expensiv Tracker";
-			productReference = 10EEDF8327CD05AD00BC03D3 /* Expenses Tracker.app */;
+			productReference = 10EEDF8327CD05AD00BC03D3 /* Expense Tracker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -425,7 +465,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 10EEDF7E27CD05AD00BC03D3 /* Build configuration list for PBXProject "Expenses Tracker" */;
+			buildConfigurationList = 10EEDF7E27CD05AD00BC03D3 /* Build configuration list for PBXProject "Expense Tracker" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -441,7 +481,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				10EEDF8227CD05AD00BC03D3 /* Expenses Tracker */,
+				10EEDF8227CD05AD00BC03D3 /* Expense Tracker */,
 			);
 		};
 /* End PBXProject section */
@@ -464,11 +504,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				102CDF3B293A87E40054B973 /* DrawerProtocol.swift in Sources */,
 				10C5B3BE27CE39C600B60A4A /* CustomLabel.swift in Sources */,
 				10EEDF8B27CD05AD00BC03D3 /* HomeVC.swift in Sources */,
+				102CDF39293A87E40054B973 /* InfiniteDrawer.swift in Sources */,
 				1083073B28B9435800CD8916 /* Double+Ext.swift in Sources */,
 				1083073F28B9DC6500CD8916 /* UITableView+Ext.swift in Sources */,
 				10C5B3CC27D209AF00B60A4A /* UIViewController+Ext.swift in Sources */,
+				102CDF40293A88270054B973 /* OnBoardingModel.swift in Sources */,
 				10A1AA1428CF189500E762E3 /* SignUp.swift in Sources */,
 				10A8872C27F0B4AA0001794B /* ProfileVC.swift in Sources */,
 				10C5B3B327CE048200B60A4A /* UIView+Ext.swift in Sources */,
@@ -485,7 +528,10 @@
 				1065E9F528A6953C00EA17E9 /* AlertTitle.swift in Sources */,
 				10C5B3A527CDF09500B60A4A /* AppError.swift in Sources */,
 				10C5B3B627CE2FDB00B60A4A /* UsernameTextField.swift in Sources */,
+				102CDF42293A95860054B973 /* OnboardingCell.swift in Sources */,
 				10FE42EF2882A61100D7C372 /* HTTPMethod.swift in Sources */,
+				102CDF3C293A87E40054B973 /* InfiniteScrollingDrawer.swift in Sources */,
+				102CDF3A293A87E40054B973 /* DotDrawer.swift in Sources */,
 				10EEDF8727CD05AD00BC03D3 /* AppDelegate.swift in Sources */,
 				103B9FB828748C96004A91A5 /* AllTransactions.swift in Sources */,
 				10C5B3A727CDF13100B60A4A /* Constants.swift in Sources */,
@@ -501,14 +547,16 @@
 				10C5B3A327CDEEDD00B60A4A /* User.swift in Sources */,
 				10C5B3CE27D3C30600B60A4A /* CustomTextFields.swift in Sources */,
 				10C5B3C527D0E0B600B60A4A /* AddIncomeAndExpensesVC.swift in Sources */,
-				1048EA93288B30470037536A /* ValidationTextField.swift in Sources */,
 				10C5B3C327D0A9CE00B60A4A /* ForgetPasswordTextFeild.swift in Sources */,
 				1065E9F828A6953C00EA17E9 /* AlertController.swift in Sources */,
 				10C5B3AC27CDFADB00B60A4A /* TabBarVC.swift in Sources */,
 				1065E9F428A6953C00EA17E9 /* AlertBtn.swift in Sources */,
 				1083376A2895B1ED00374F67 /* LoginWithPinVC.swift in Sources */,
+				102CDF2E293A862E0054B973 /* OnboardingViewController.swift in Sources */,
 				101EA9D327E1253600E9534C /* CustomView.swift in Sources */,
+				102CDF33293A87D70054B973 /* CustomPageController.swift in Sources */,
 				103B9FB628748C49004A91A5 /* CustomTableView.swift in Sources */,
+				102CDF3D293A87E40054B973 /* ColorUtils.swift in Sources */,
 				10F3E167282C3DED0071942B /* Color+Ext.swift in Sources */,
 				10EEDF8927CD05AD00BC03D3 /* SceneDelegate.swift in Sources */,
 				1065E9F628A6953C00EA17E9 /* AlertContainer.swift in Sources */,
@@ -585,7 +633,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -640,7 +688,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -659,20 +707,20 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4QS25S2FVW;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Expensiv Tracker/Info.plist";
+				INFOPLIST_FILE = "Expense Tracker/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Expense Tracker";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.abdorizak.Expenses-Tracker";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.abdorizak.Expense-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -692,20 +740,20 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4QS25S2FVW;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Expensiv Tracker/Info.plist";
+				INFOPLIST_FILE = "Expense Tracker/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Expense Tracker";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.abdorizak.Expenses-Tracker";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.abdorizak.Expense-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -719,7 +767,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		10EEDF7E27CD05AD00BC03D3 /* Build configuration list for PBXProject "Expenses Tracker" */ = {
+		10EEDF7E27CD05AD00BC03D3 /* Build configuration list for PBXProject "Expense Tracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				10EEDF9527CD05AD00BC03D3 /* Debug */,
@@ -728,7 +776,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		10EEDF9727CD05AD00BC03D3 /* Build configuration list for PBXNativeTarget "Expenses Tracker" */ = {
+		10EEDF9727CD05AD00BC03D3 /* Build configuration list for PBXNativeTarget "Expense Tracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				10EEDF9827CD05AD00BC03D3 /* Debug */,
