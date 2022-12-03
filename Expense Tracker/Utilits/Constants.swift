@@ -10,6 +10,7 @@ import UIKit
 
 
 struct API {
+    // if you want to run on you Real Device use same network and put here your computer IP.
     static let baseURL = "http://192.168.100.14:4400/api/v1/"
 }
 
