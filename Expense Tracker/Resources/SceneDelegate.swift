@@ -21,11 +21,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         
-        if AuthManager.shared.isSingedIn {
-            window.rootViewController = TabBarVC()
+        if !UserDefaults.standard.hasOnboarded {
+            window.rootViewController = OnboardingViewController()
         } else {
-            let navVC = UINavigationController(rootViewController: LoginVC())
-            window.rootViewController = navVC
+            if AuthManager.shared.isSingedIn {
+                window.rootViewController = TabBarVC()
+            } else {
+                let navVC = UINavigationController(rootViewController: LoginVC())
+                window.rootViewController = navVC
+            }
         }
         
         window.makeKeyAndVisible()
