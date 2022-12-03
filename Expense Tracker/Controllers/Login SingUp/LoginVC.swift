@@ -126,7 +126,7 @@ class LoginVC: UIViewController {
         
         NSLayoutConstraint.activate([
             loginImageView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 20),
-            loginImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 20),
+            loginImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             loginImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             loginImageView.heightAnchor.constraint(equalToConstant: 300),
         ])
