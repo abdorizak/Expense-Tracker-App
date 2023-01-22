@@ -17,6 +17,7 @@ private struct SettingOpetions {
     let icon: UIImage?
     let title: String
     let handler: () -> Void?
+
 }
 
 class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -88,22 +89,22 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 return self.navigationController?.pushViewController(editProfileVC, animated: true)
             }),
             SettingOpetions(icon: Images.userStatementIcon, title: "E-Statement", handler: {
-                let eStatement = UserStatementVC(Transaction: self.eTrasactions)
-                eStatement.title = "Statement"
-                return self.navigationController?.pushViewController(eStatement, animated: true)
+                let userStagement = UserStatementVC(Transaction: self.eTrasactions)
+                userStagement.title = "Statement"
+                return self.navigationController?.pushViewController(userStagement, animated: true)
             }),
             SettingOpetions(icon: Images.changePassword, title: "Change Password", handler: {
-                let eStatement = ChangePasswordVC()
-                eStatement.title = "Change"
-                return self.navigationController?.pushViewController(eStatement, animated: true)
+                let changePass = ChangePasswordVC()
+                changePass.title = "Change"
+                return self.navigationController?.pushViewController(changePass, animated: true)
             }),
         ]))
         
         models.append(Sections(options: [
             SettingOpetions(icon: Images.aboutUs, title: "About us", handler: {
-                let eStatement = AboutUsVC()
-                eStatement.title = "About us"
-                return self.navigationController?.pushViewController(eStatement, animated: true)
+                let aboutUs = AboutUsVC()
+                aboutUs.title = "About us"
+                return self.navigationController?.pushViewController(aboutUs, animated: true)
             }),
             SettingOpetions(icon: Images.logout, title: "Logout", handler: {
                 let ac = UIAlertController(title: "Are sure you want Logout?", message: nil, preferredStyle: .actionSheet)
