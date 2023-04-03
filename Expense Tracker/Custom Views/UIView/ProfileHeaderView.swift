@@ -36,7 +36,7 @@ class ProfileHeaderView: UIView {
     convenience init(user name: String, image userImage: String) {
         self.init(frame: .zero)
         self.user_fullName.text = name
-        self.userImage.downloadImage(fromURL: "http://192.168.1.166:4400/" + userImage)
+        self.userImage.downloadImage(fromURL: "http://localhost:4400/" + userImage)
     }
     
     override var intrinsicContentSize: CGSize {

@@ -101,6 +101,13 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         ]))
         
         models.append(Sections(options: [
+            SettingOpetions(icon: Images.enableAuth, title: "Enable Auth", handler: {
+            // TODO:
+            
+            })
+        ]))
+        
+        models.append(Sections(options: [
             SettingOpetions(icon: Images.aboutUs, title: "About us", handler: {
                 let aboutUs = AboutUsVC()
                 aboutUs.title = "About us"

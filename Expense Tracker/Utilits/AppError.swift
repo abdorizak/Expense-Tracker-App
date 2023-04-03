@@ -22,6 +22,4 @@ enum ExError: String, Error {
     case alreadyInFavorite = "You've already Favorite this user. You must really like them!"
     case NotFound = "Not Found"
     case somethingWrong = "HEYYY!!!! Something Wrong."
-    
-    
 }

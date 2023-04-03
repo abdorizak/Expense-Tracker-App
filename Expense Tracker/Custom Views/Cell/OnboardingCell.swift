@@ -39,7 +39,6 @@ class OnboardingCell: UICollectionViewCell {
         super.init(frame: frame)
         contentView.addSubViews(onBoardingImage, titleLabel, descriptionLabel)
         config()
-//        contentView.backgroundColor = .lightGray
     }
     
     required init?(coder: NSCoder) {
@@ -50,8 +49,7 @@ class OnboardingCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             onBoardingImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             onBoardingImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            onBoardingImage.heightAnchor.constraint(equalToConstant: 300),
-            onBoardingImage.widthAnchor.constraint(equalToConstant: 300),
+            
             
             titleLabel.topAnchor.constraint(equalTo: onBoardingImage.bottomAnchor, constant: 8),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -61,6 +59,14 @@ class OnboardingCell: UICollectionViewCell {
             descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
         ])
+        
+        if DeviceTypes.isiPhoneSE {
+            onBoardingImage.heightAnchor.constraint(equalToConstant: 250).isActive = true
+            onBoardingImage.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        } else {
+            onBoardingImage.heightAnchor.constraint(equalToConstant: 300).isActive = true
+            onBoardingImage.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        }
     }
     
     func display(_ slide: Onboarding) {

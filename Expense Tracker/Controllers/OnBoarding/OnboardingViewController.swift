@@ -54,7 +54,7 @@ class OnboardingViewController: UIViewController {
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 600),
+            collectionView.heightAnchor.constraint(equalToConstant: DeviceTypes.isiPhoneSE ? 470 : 580),
         ])
     }
     

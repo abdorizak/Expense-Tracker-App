@@ -11,7 +11,7 @@ import UIKit
 
 struct API {
     // if you want to run on you Real Device use same network and put here your computer IP.
-    static let baseURL = "http://192.168.100.14:4400/api/v1/"
+    static let baseURL = "http://localhost:4400/api/v1/"
 }
 
 extension UserDefaults {
@@ -42,6 +42,8 @@ enum Images {
     static let edityourProfile       = UIImage(systemName: "slider.horizontal.3")
     static let changePassword        = UIImage(systemName: "key.fill")
     static let userStatementIcon     = UIImage(systemName: "newspaper.fill")
+    
+    static let enableAuth            = UIImage(systemName: "faceid")
     
     static let aboutUs               = UIImage(systemName: "hand.point.up.braille.fill")
     static let logout                = UIImage(systemName: "rectangle.portrait.and.arrow.right.fill")

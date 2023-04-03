@@ -143,7 +143,7 @@ class HomeVC: UIViewController {
     
     private func configData(_ data: UserBalanceIncomeExpense){
         fullnameLabel.text = data.user.name
-        userImage.downloadImage(fromURL: "http://192.168.1.166:4400/" + data.user.avatar)
+        userImage.downloadImage(fromURL: "http://localhost:4400/" + data.user.avatar)
         balanceNumber.text = "$\(data.balance.formatNumber())"
         lastIncome.attributedText         = makeFormattedBalance(dollar: String(data.income.formatNumber()))
         lastExpense.attributedText        = makeFormattedBalance(dollar: String(data.expense.formatNumber()))
