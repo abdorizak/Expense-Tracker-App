@@ -42,7 +42,7 @@ Expenses Tracker is designed to provide a seamless experience for managing your 
 | |____AlertsView
 | |____Button
 | |____Cell
-| |____CustomerTableView
+| |____CustomTableView
 | |____CustomPageControl
 | |____TextField
 | |____UIView
