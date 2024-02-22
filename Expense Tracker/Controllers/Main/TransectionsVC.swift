@@ -58,7 +58,7 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
         return segment
     }()
     
-    private let transectionsLabel       = CustomLabel(textAlignment: .left, fontSize: 24, textWeight: .medium, text: "Transections")
+    private let transectionsLabel       = CustomLabel(textAlignment: .left, fontSize: 24, textWeight: .medium, text: "Transactions")
     
     private let tableView = CustomTableView(indicator: false, separtorStyle: .singleLine, TransectionTableViewCell.self, forCellReuseIdentifier: TransectionTableViewCell.identifier)
     
@@ -68,8 +68,11 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
     
     lazy var rowTransectionIndex = incomeTransactions
     
-    var incomeValues:   [Double]          = []
-    var expensesValues: [Double]          = []
+    // Computed property that returns an array of Double values from userIncome
+    private var incomeValues: [Double] = []
+    
+    private var expensesValues: [Double] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,19 +81,47 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
         configSegment()
         fetchIncomeData()
         fetchExpensesData()
+        getTransaction()
         configTrasactionStateView()
         configTransactionLabel()
         tableView.dataSource = self
         tableView.delegate = self
-        getTransaction()
     }
+    
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        super.viewWillAppear(animated)
+    //        switch segment.selectedSegmentIndex {
+    //        case 0:
+    //            rowTransectionIndex = incomeTransactions
+    //            setIncome()
+    //        case 1:
+    //            rowTransectionIndex = expensesTransactions
+    //            setExpenses()
+    //        default: break
+    //        }
+    //    }
+    
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        switch segment.selectedSegmentIndex {
+        case 0:
+            rowTransectionIndex = incomeTransactions
+            setIncome()
+        case 1:
+            rowTransectionIndex = expensesTransactions
+            setExpenses()
+        default: break
+        }
+    }
+    
     
     private func ConfigureScrollView() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         scrollView.pinToEdges(to: view)
         contentView.pinToEdges(to: scrollView)
-        contentView.addSubViews(segment, chartView, transectionsLabel, transactionStateView)
+        contentView.addSubViews(segment, chartView,transectionsLabel, transactionStateView)
         
         let contentView_height = CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 600 : 800)
         
@@ -119,7 +150,7 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
                 self.expensesValues = expenses.userExpense
                 configChartView()
             } catch {
-                print(error)
+                print("DEBUG XX: \(error)")
             }
         }
     }
@@ -135,24 +166,26 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
                 self.expensesTransactions = tran.transaction.filter({
                     return $0.type == "Expense"
                 })
-                // will check if Income & Expense aren't empty, will build table and display data as well otherwise will display message that will tell to make transaction
-                if !incomeTransactions.isEmpty && !expensesTransactions.isEmpty {
+                
+                if !incomeTransactions.isEmpty || !expensesTransactions.isEmpty {
+                    fetchExpensesData()
                     configTableView()
                     self.tableView.reloadDataOnMainThread()
-                } else {
+                }else if incomeTransactions.isEmpty {
+                    layoutLable("This user doesn't have any Transactions 😁, Go and make Transaction 📈.")
+                } else if expensesTransactions.isEmpty {
                     layoutLable("This user doesn't have any Transactions 😁, Go and make Transaction 📈.")
                 }
                 
             } catch {
-                print(error)
+                print("DEBUG: \(error)")
             }
         }
     }
     
     private func configTransectionsVC() {
-        lineChart.delegate = self
         view.backgroundColor = .systemBackground
-        navigationItem.title = "Transections"
+        navigationItem.title = "Transactions"
         navigationItem.largeTitleDisplayMode  = .always
         navigationController?.navigationBar.prefersLargeTitles = true
     }
@@ -162,11 +195,9 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
         case 0:
             rowTransectionIndex = incomeTransactions
             setIncome()
-            lineChart.animate(xAxisDuration: 2.5, yAxisDuration: 2.5)
         case 1:
             rowTransectionIndex = expensesTransactions
             setExpenses()
-            lineChart.animate(xAxisDuration: 2.5, yAxisDuration: 2.5)
         default: break
         }
         tableView.reloadDataOnMainThread()
@@ -182,6 +213,7 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
     }
     
     private func configTransactionLabel() {
+        
         NSLayoutConstraint.activate([
             transectionsLabel.topAnchor.constraint(equalTo: chartView.bottomAnchor, constant: 30),
             transectionsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
@@ -226,6 +258,25 @@ class TransectionsVC: UIViewController, ChartViewDelegate {
         ])
     }
     
+    private func configChartView() {
+        chartView.translatesAutoresizingMaskIntoConstraints = false
+        chartView.layer.cornerRadius = 15
+        lineChart.delegate = self
+        chartView.addSubview(lineChart)
+        
+        NSLayoutConstraint.activate([
+            chartView.topAnchor.constraint(equalTo: segment.bottomAnchor, constant: 20),
+            chartView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            chartView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            chartView.heightAnchor.constraint(equalToConstant: 300),
+            
+            lineChart.topAnchor.constraint(equalTo: chartView.topAnchor),
+            lineChart.trailingAnchor.constraint(equalTo: chartView.trailingAnchor),
+            lineChart.leadingAnchor.constraint(equalTo: chartView.leadingAnchor),
+            lineChart.bottomAnchor.constraint(equalTo: chartView.bottomAnchor)
+            
+        ])
+    }
     
 }
 
@@ -247,89 +298,34 @@ extension TransectionsVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        switch segment.selectedSegmentIndex {
-        case 0:
-            rowTransectionIndex = incomeTransactions
-            setIncome()
-            lineChart.animate(xAxisDuration: 2.5, yAxisDuration: 2.5)
-        case 1:
-            rowTransectionIndex = expensesTransactions
-            setExpenses()
-            lineChart.animate(xAxisDuration: 2.5, yAxisDuration: 2.5)
-        default: break
-        }
-    }
-    
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        switch segment.selectedSegmentIndex {
-        case 0:
-            rowTransectionIndex = incomeTransactions
-            setIncome()
-        case 1:
-            rowTransectionIndex = expensesTransactions
-            setExpenses()
-        default: break
-        }
-    }
-    
     private func setIncome() {
-        
-        var enteries:[ChartDataEntry] = []
-        
-        for (i, val) in incomeValues.enumerated() {
-            enteries.append(ChartDataEntry(x: Double(i), y: val))
-        }
-        
-        let set = LineChartDataSet(entries: enteries, label: "Income")
-        set.mode = .cubicBezier
-        set.lineCapType = .round
-        set.drawCirclesEnabled = false
-        set.lineWidth = 2
-        set.setColor(.label)
-        
-        let g = [
-            UIColor.systemOrange.cgColor,
-            UIColor.systemPurple.cgColor,
-            UIColor.systemTeal.cgColor,
-        ] as CFArray
-        let colorLocations:[CGFloat] = [1.0, 0.1, 1.0]
-        let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: g, locations: colorLocations)
-        set.fill = RadialGradientFill(gradient: gradient!)
-        set.drawFilledEnabled = true
-        set.highlightColor = .label
-        
-        let data = LineChartData(dataSet: set)
-        data.setDrawValues(true)
-        
-        lineChart.data = data
+        print("incomeValues: \(incomeValues)")
+        setChartData(values: incomeValues, label: "Income", colors: [UIColor.systemOrange.cgColor, UIColor.systemPurple.cgColor, UIColor.systemTeal.cgColor] as CFArray)
     }
     
     private func setExpenses() {
+        print("expensesValues: \(expensesValues)")
+        setChartData(values: expensesValues, label: "Expenses", colors: [UIColor.systemRed.cgColor, UIColor.systemBlue.cgColor, UIColor.systemGreen.cgColor] as CFArray)
+    }
+    
+    private func setChartData(values: [Double], label: String, colors: CFArray) {
+        // DEBUG:
+        print("Debug TT:\(values)")
+        var entries: [ChartDataEntry] = []
         
-        var enteries:[ChartDataEntry] = []
-        
-        for (i, val) in expensesValues.enumerated() {
-            enteries.append(ChartDataEntry(x: Double(i), y: val))
+        for (i, val) in values.enumerated() {
+            entries.append(ChartDataEntry(x: Double(i), y: val))
         }
         
-        let set = LineChartDataSet(entries: enteries, label: "Expense")
+        let set = LineChartDataSet(entries: entries, label: label)
         set.mode = .cubicBezier
         set.lineCapType = .round
         set.drawCirclesEnabled = false
         set.lineWidth = 2
         set.setColor(.label)
         
-        let g = [
-            UIColor.systemOrange.cgColor,
-            UIColor.systemPurple.cgColor,
-            UIColor.systemTeal.cgColor,
-        ] as CFArray
-        let colorLocations:[CGFloat] = [1.0, 0.1, 1.0]
-        let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: g, locations: colorLocations)
+        let colorLocations: [CGFloat] = [1.0, 0.1, 1.0]
+        let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors, locations: colorLocations)
         set.fill = RadialGradientFill(gradient: gradient!)
         set.drawFilledEnabled = true
         set.highlightColor = .label
@@ -338,26 +334,7 @@ extension TransectionsVC: UITableViewDataSource, UITableViewDelegate {
         data.setDrawValues(true)
         
         lineChart.data = data
-    }
-    
-    
-    private func configChartView() {
-        chartView.translatesAutoresizingMaskIntoConstraints = false
-        chartView.layer.cornerRadius = 15
-        chartView.addSubview(lineChart)
-        
-        NSLayoutConstraint.activate([
-            chartView.topAnchor.constraint(equalTo: segment.bottomAnchor, constant: 20),
-            chartView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            chartView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            chartView.heightAnchor.constraint(equalToConstant: 300),
-            
-            lineChart.topAnchor.constraint(equalTo: chartView.topAnchor),
-            lineChart.trailingAnchor.constraint(equalTo: chartView.trailingAnchor),
-            lineChart.leadingAnchor.constraint(equalTo: chartView.leadingAnchor),
-            lineChart.bottomAnchor.constraint(equalTo: chartView.bottomAnchor)
-            
-        ])
+        lineChart.animate(xAxisDuration: 2.5, yAxisDuration: 2.5)
     }
     
 }
