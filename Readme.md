@@ -50,7 +50,7 @@ Expenses Tracker is designed to provide a seamless experience for managing your 
 |____Controllers
 | |____LoginAndRegister
 | |____Onboarding
-  |____Main
+| |____Main
   | |____Home
   | |____AddIncomeAndExpenses
   | |____Transactions
