@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginVC: UIViewController {
+class LoginVC: DataLoadingVC {
     
     // MARK: - ScrollView And UIViews
     let scrollView           = UIScrollView()
@@ -61,36 +61,37 @@ class LoginVC: UIViewController {
     
     @objc func loginBtnClicked() {
         let validate = Validate(usernameTextFeild, passwordTextFeild)
-        showLoadingview()
+        showLoadingView()
         switch validate {
         case .Valid:
             Task {
                 do {
-                    let result = try await AuthManager.shared.login(username: usernameTextFeild.text!, password: passwordTextFeild.text!)
+                    let result = try await AuthManager.shared.login(usernameOrEmail: usernameTextFeild.text!, password: passwordTextFeild.text!)
                     if result.status != 200 {
                         presentAlertOnMainThread(title: "Opps!", message: result.message ?? "N/A", btnTitle: "ok")
-                        dismissLoding()
+                        dismissLoadingView()
                     } else {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
+                        DispatchQueue.main.async() {
                             let home = TabBarVC()
                             home.modalTransitionStyle = .crossDissolve
                             home.modalPresentationStyle = .fullScreen
                             self.present(home, animated: true)
-                            self.dismissLoding()
+                            self.dismissLoadingView()
                         }
                     }
                 } catch {
                     if let err = error as? ExError {
                         presentAlertOnMainThread(title: "Opps!", message: "\(err.rawValue)", btnTitle: "ok")
+                        print("DEBUG:\(err)")
                     } else {
                         presentDefaultError()
                     }
-                    dismissLoding()
+                    dismissLoadingView()
                 }
             }
         case .InValid(let err):
             presentAlertOnMainThread(title: "Opps!", message: "\(err)", btnTitle: "OK")
-            dismissLoding()
+            dismissLoadingView()
         }
     }
     
