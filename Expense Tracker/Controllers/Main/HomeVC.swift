@@ -8,17 +8,23 @@
 
 import UIKit
 
-class HomeVC: UIViewController {
+class HomeVC: DataLoadingVC {
+    
+    // MARK: - Scroll View
+    private let scrollView          = UIScrollView()
+    private let contentView         = UIView()
     
     // MARK: HeaderView
     private let headerView              = UIView()
     private let Statechanger            = UIView()
-    private let messageLabel    = AlertTitleLabel(textAlignment: .center, fontSize: 20)
+    private let messageLabel            = AlertTitleLabel(textAlignment: .center, fontSize: 20)
+    var isLoading                       = false
+
     
     // MARK: - HeaderView Item's
     private let userImage       = AvatarImageView(frame: .zero)
     private let welcomeLabel    = CustomLabel(textAlignment: .left, fontSize: 20, textWeight: .ultraLight, text: "Hi Welcome")
-    private let fullnameLabel           = CustomLabel(textAlignment: .left, fontSize: 18, textWeight: .regular)
+    private let fullnameLabel   = CustomLabel(textAlignment: .left, fontSize: 18, textWeight: .regular)
     
     private let profile = AvatarImageView(color: .systemGray2, icon: "text.alignright", mode: .scaleAspectFit)
     
@@ -52,6 +58,9 @@ class HomeVC: UIViewController {
     
     var profileData: UserBalanceIncomeExpense?
     
+    // MARK: - UI Refresh Controller
+    private var refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configHomeVC()
@@ -60,58 +69,119 @@ class HomeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchData()
-        fetchTrasanction()
     }
     
     func configHomeVC() {
         view.backgroundColor = .systemBackground
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        scrollView.pinToEdges(to: view)
+        contentView.pinToEdges(to: scrollView)
         navigationController?.setNavigationBarHidden(true, animated: true)
         tableView.dataSource = self
         tableView.delegate = self
         
-        view.addSubViews(headerView, balanceInfo, transectionsLabel, viewMoreButton, tableView, Statechanger)
+        contentView.addSubViews(headerView, balanceInfo, transectionsLabel, viewMoreButton, tableView, Statechanger)
+        let contentView_height = CGFloat(DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 800 : 650)
+        
+        NSLayoutConstraint.activate([
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.heightAnchor.constraint(equalToConstant: contentView_height)
+        ])
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapSetting))
         profile.addGestureRecognizer(tap)
         profile.isUserInteractionEnabled = true
+        setupRefreshControl()
         fetchData()
         ConfigureHeaderView()
         ConfigureHeaderElements()
         configTransectionLabel()
         configStateView()
-        fetchTrasanction()
+        
+    }
+    
+    private func setupRefreshControl() {
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        scrollView.addSubview(refreshControl) // Assuming you're using a UIScrollView
+        scrollView.alwaysBounceVertical = true // Enable vertical bounce to allow pull-to-refresh
+    }
+
+    @objc private func refreshData(_ sender: Any) {
+        // Call your fetchData function or a similar function to refresh the data
+        Task {
+            await fetchDashboardData()
+            await fetchTransactions()
+            refreshControl.endRefreshing()
+        }
     }
     
     
     private func fetchData() {
+        showLoadingView()
+        isLoading = true
         Task {
-            do {
-                let userData = try await NetworkManager.shared.getDashboardData()
-                self.profileData = userData
-                configData(userData)
-            } catch {
-                print(error)
-            }
+            await fetchDashboardData()
+            await fetchTransactions()
+            isLoading = false
+            dismissLoadingView()
+            refreshControl.endRefreshing()
         }
     }
-    
-    private func fetchTrasanction() {
-        Task {
-            do {
-                let transactions = try await NetworkManager.shared.getTransaction()
-                self.transaction = transactions.transaction
-                if !transaction.isEmpty {
-                    configTableView()
-                    self.tableView.reloadDataOnMainThread()
-                } else {
-                    layoutLable("This user doesn't have any Transactions. Go an make Expenses or Income 😀.")
-                }
-            } catch {
-                print(error.localizedDescription)
-            }
+
+    private func fetchDashboardData() async {
+        do {
+            let userData = try await NetworkManager.shared.getDashboardData()
+            self.profileData = userData
+            configData(userData)
+        } catch {
+            print(error)
         }
     }
+
+    private func fetchTransactions() async {
+        do {
+            let transactions = try await NetworkManager.shared.getTransaction()
+            self.transaction = transactions.transaction
+            if !transaction.isEmpty {
+                configTableView()
+                self.tableView.reloadDataOnMainThread()
+            } else {
+                layoutLable("This user doesn't have any Transactions. Go and make Expenses or Income 😀.")
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
     
+//    private func fetchDataAndTransactions() {
+//        showLoadingView()
+//        Task {
+//            do {
+//                let userData = try await NetworkManager.shared.getDashboardData()
+//                self.profileData = userData
+//                configData(userData)
+//            } catch {
+//                print(error)
+//            }
+//
+//            do {
+//                let transactions = try await NetworkManager.shared.getTransaction()
+//                self.transaction = transactions.transaction
+//                if !transaction.isEmpty {
+//                    configTableView()
+//                    self.tableView.reloadDataOnMainThread()
+//                } else {
+//                    layoutLable("This user doesn't have any Transactions. Go and make Expenses or Income 😀.")
+//                }
+//            } catch {
+//                print(error.localizedDescription)
+//            }
+//
+//            dismissLoadingView()
+//        }
+//    }
+
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         ConfigureHeaderElements()
@@ -143,7 +213,7 @@ class HomeVC: UIViewController {
     
     private func configData(_ data: UserBalanceIncomeExpense){
         fullnameLabel.text = data.user.name
-        userImage.downloadImage(fromURL: "http://localhost:4400/" + data.user.avatar)
+        userImage.downloadImage(fromURL: "https://expensetracker.abdorizak.dev/" + data.user.avatar)
         balanceNumber.text = "$\(data.balance.formatNumber())"
         lastIncome.attributedText         = makeFormattedBalance(dollar: String(data.income.formatNumber()))
         lastExpense.attributedText        = makeFormattedBalance(dollar: String(data.expense.formatNumber()))
@@ -325,13 +395,15 @@ extension HomeVC: BalanceFormater, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
+        min(transaction.count, 4)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TransectionTableViewCell.identifier, for: indexPath) as! TransectionTableViewCell
         cell.selectionStyle = .none
-        cell.display(transaction[indexPath.row])
+        if indexPath.row < 4 {
+            cell.display(transaction[indexPath.row])
+        }
         return cell
     }
     
