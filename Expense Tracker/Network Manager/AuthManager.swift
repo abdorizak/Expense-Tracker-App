@@ -30,13 +30,13 @@ final class AuthManager {
         return token
     }
     
-    func login(username: String, password: String) async throws -> LoginResponse {
+    func login(usernameOrEmail: String, password: String) async throws -> LoginResponse {
         guard let url = URL(string: API.baseURL + "auth/login") else {
             throw ExError.invalidURL
         }
         
-        let body = LoginBody(username: username, password: password)
-        
+        let body = LoginBody(userCredential: usernameOrEmail, password: password)
+        print("DEBUG:\(body)")
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -44,8 +44,9 @@ final class AuthManager {
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw ExError.invalidResponse }
+        print("DEBUG:\(response)")
         
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw ExError.invalidResponse }
         do {
             let res = try decoder.decode(LoginResponse.self, from: data)
             catchToken(result: res)

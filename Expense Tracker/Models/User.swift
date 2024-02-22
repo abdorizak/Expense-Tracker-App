@@ -32,7 +32,13 @@ struct UserBalanceIncomeExpense: Decodable {
 }
 
 
-struct UserIncome: Decodable, Hashable {
+//struct UserIncome: Decodable, Hashable {
+//    let status: Int
+//    let message: String
+//    let userIncome: [Double]
+//}
+
+struct UserIncome: Codable, Hashable {
     let status: Int
     let message: String
     let userIncome: [Double]
