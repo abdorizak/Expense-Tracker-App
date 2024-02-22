@@ -8,7 +8,7 @@
 import UIKit
 
 
-class LoginWithPinVC: UIViewController {
+class LoginWithPinVC: DataLoadingVC {
     
     private let backgroundImage: UIImageView = {
         let image = UIImageView()
@@ -169,7 +169,7 @@ class LoginWithPinVC: UIViewController {
         let validate = Validate(passInput1, passInput2, passInput3, passInput4)
         let pin = String(passInput1.text! + passInput2.text! + passInput3.text! + passInput4.text!)
         guard let pin = Int(pin) else { return }
-        showLoadingview()
+        showLoadingView()
         switch validate {
             case .Valid:
                 Task {
@@ -177,14 +177,14 @@ class LoginWithPinVC: UIViewController {
                         let result = try await AuthManager.shared.login(with: pin)
                         if result.status != 200 {
                             presentAlertOnMainThread(title: "Opps!", message: "\(result.message ?? "N/A") 😁", btnTitle: "ok")
-                            dismissLoding()
+                            dismissLoadingView()
                         } else {
                             DispatchQueue.main.async {
                                 let home = TabBarVC()
                                 home.modalTransitionStyle = .crossDissolve
                                 home.modalPresentationStyle = .fullScreen
                                 self.present(home, animated: true)
-                                self.dismissLoding()
+                                self.dismissLoadingView()
                             }
                         }
                     } catch {
@@ -193,12 +193,12 @@ class LoginWithPinVC: UIViewController {
                         } else {
                             presentDefaultError()
                         }
-                        dismissLoding()
+                        dismissLoadingView()
                     }
                 }
             case .InValid(let err):
                 presentAlertOnMainThread(title: "Opps!", message: "\(err)", btnTitle: "OK")
-                dismissLoding()
+                dismissLoadingView()
         }
     }
     
