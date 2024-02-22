@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddIncomeAndExpensesVC: UIViewController {
+class AddIncomeAndExpensesVC: DataLoadingVC {
     
     // MARK: ScrollView
     private let scrollView          = UIScrollView()
@@ -229,26 +229,26 @@ class AddIncomeAndExpensesVC: UIViewController {
     
     @objc func postTransaction() {
         let validate = Validate(expensesAndIncomeTextField, transectionTypeTextField, titleTextField, descriptionTextField, dateTextField)
-        showLoadingview()
+        showLoadingView()
         switch validate {
         case .Valid:
             Task {
                 do {
                     let result = try await NetworkManager.shared.makeTransaction(transectionTypeTextField.text!, titleTextField.text!, descriptionTextField.text!, Double(expensesAndIncomeTextField.text!)!)
                     presentAlertOnMainThread(title: "\(result.status == 200 ? "Success" : "Opss!")", message: result.message ?? "N/A", btnTitle: "Ok")
-                    dismissLoding()
+                    dismissLoadingView()
                 } catch {
                     if let err = error as? ExError {
                         presentAlertOnMainThread(title: "Opps!", message: "\(err.rawValue)", btnTitle: "ok")
                     } else {
                         presentDefaultError()
                     }
-                    dismissLoding()
+                    dismissLoadingView()
                 }
             }
         case .InValid(let err):
             presentAlertOnMainThread(title: "Opps!", message: "\(err)", btnTitle: "OK")
-            dismissLoding()
+            dismissLoadingView()
         }
 
     }
