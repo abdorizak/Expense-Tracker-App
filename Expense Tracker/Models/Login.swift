@@ -8,7 +8,7 @@
 import Foundation
 
 struct LoginBody: Codable {
-    let username: String
+    let userCredential: String
     let password: String
 }
 
