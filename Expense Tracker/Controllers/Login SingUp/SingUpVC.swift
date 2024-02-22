@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SingUpVC: UIViewController {
+class SingUpVC: DataLoadingVC {
     
     // MARK: - ScrollView And UIViews
     private let scrollView          = UIScrollView()
@@ -157,28 +157,28 @@ extension SingUpVC: UITextFieldDelegate {
     
     @objc func didTapSignUp() {
         let validate = Validate(fullnameTextFeild, emailTextFeild, phoneTextFeild, usernameTextFeild, pinTextFeild, passwordTextFeild, confirmPasswordTextFeild)
-        showLoadingview()
+        showLoadingView()
         switch validate {
         case .Valid:
             Task {
                 do {
                     let signUpResult = try await NetworkManager.shared.Signup(fullname: fullnameTextFeild.text!, email: emailTextFeild.text!, mobile: phoneTextFeild.text!, username: usernameTextFeild.text!, pin: Int(pinTextFeild.text!)!, passowrd: passwordTextFeild.text!)
                     presentAlertOnMainThread(title: "\(signUpResult.status == 200 ? "Success" : "Opss!")", message: signUpResult.message ?? "N/A", btnTitle: "Ok")
-                    dismissLoding()
+                    dismissLoadingView()
                 } catch {
                     print(error)
                     if let err = error as? ExError {
                         presentAlertOnMainThread(title: "Opps!", message: "\(err)", btnTitle: "ok")
-                        print(err)
+                        print("DEBUG:\(err)")
                     } else {
                         presentDefaultError()
                     }
-                    dismissLoding()
+                    dismissLoadingView()
                 }
             }
         case .InValid(let err):
             presentAlertOnMainThread(title: "Opps!", message: "\(err)", btnTitle: "OK")
-            dismissLoding()
+            dismissLoadingView()
         }
     }
     
