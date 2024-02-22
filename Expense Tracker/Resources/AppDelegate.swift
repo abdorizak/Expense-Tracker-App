@@ -2,36 +2,22 @@
 //  AppDelegate.swift
 //  Expensiv Tracker
 //
-//  Created by Abdirizak Hassan on 2/28/22.
+//  Created by Abdirizak Hassan on 2/28/22 💻.
+// Copyright © 2023 Abdirizak Hassan DR X. All Rights Reserved.
 //
-// UI DESING
+// GitHub: https://github.com/abdorizak
+// Website: https://abdorizak.dev
+
 
 import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        
-        if !UserDefaults.standard.hasOnboarded {
-            window.rootViewController = OnboardingViewController()
-        } else {
-            if AuthManager.shared.isSingedIn {
-                window.rootViewController = TabBarVC()
-            } else {
-                let navVC = UINavigationController(rootViewController: LoginVC())
-                window.rootViewController = navVC
-            }
-        }
-        
-        window.makeKeyAndVisible()
-        self.window = window
-        
         return true
     }
 
