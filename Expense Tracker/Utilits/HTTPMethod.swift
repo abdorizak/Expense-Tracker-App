@@ -2,8 +2,11 @@
 //  HTTPMethod.swift
 //  Expensiv Tracker
 //
-//  Created by Abdirizak Hassan on 7/16/22.
+//  Created by Abdirizak Hassan on 7/16/22 💻.
+// Copyright © 2023 Abdirizak Hassan DR X. All Rights Reserved.
 //
+// GitHub: https://github.com/abdorizak
+// Website: https://abdorizak.dev
 
 import Foundation
 

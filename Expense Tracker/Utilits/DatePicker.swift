@@ -2,10 +2,11 @@
 //  DatePicker.swift
 //  Expensiv Tracker
 //
-//  Created by Abdirizak Hassan on 3/26/22.
+//  Created by Abdirizak Hassan on 3/26/22 💻.
+// Copyright © 2023 Abdirizak Hassan DR X. All Rights Reserved.
 //
-
-// UI DESING
+// GitHub: https://github.com/abdorizak
+// Website: https://abdorizak.dev
 
 import UIKit
 
