@@ -180,5 +180,117 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FA96F9AD-996D-44C6-B533-9EC86564D474"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Expense Tracker/Controllers/Main/HomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "fetchDashboardData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FA96F9AD-996D-44C6-B533-9EC86564D474 - 6d1611fb88081cc6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Expense_Tracker.HomeVC.fetchDashboardData() async -&gt; ()"
+                  moduleName = "Expense Tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xman/Library/Mobile%20Documents/com~apple~CloudDocs/Swift%20Projects/Expense-Tracker-App/Expense%20Tracker/Controllers/Main/HomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  uuid = "FA96F9AD-996D-44C6-B533-9EC86564D474 - a805bfdc9f39146f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Expense_Tracker.HomeVC.fetchDashboardData() async -&gt; ()"
+                  moduleName = "Expense Tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xman/Library/Mobile%20Documents/com~apple~CloudDocs/Swift%20Projects/Expense-Tracker-App/Expense%20Tracker/Controllers/Main/HomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BE007F4C-D965-4AC8-9A2F-62F71D950E40"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Expense Tracker/Controllers/Main/HomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "fetchData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D981FB19-3B24-433B-B000-12851CE9E8FD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Expense Tracker/Controllers/Main/HomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "fetchTransactions()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D981FB19-3B24-433B-B000-12851CE9E8FD - dcb49c04af8732"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Expense_Tracker.HomeVC.fetchTransactions() async -&gt; ()"
+                  moduleName = "Expense Tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xman/Library/Mobile%20Documents/com~apple~CloudDocs/Swift%20Projects/Expense-Tracker-App/Expense%20Tracker/Controllers/Main/HomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "108"
+                  endingLineNumber = "108"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "D981FB19-3B24-433B-B000-12851CE9E8FD - 5c2d041ca0e95cab"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Expense_Tracker.HomeVC.fetchTransactions() async -&gt; ()"
+                  moduleName = "Expense Tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xman/Library/Mobile%20Documents/com~apple~CloudDocs/Swift%20Projects/Expense-Tracker-App/Expense%20Tracker/Controllers/Main/HomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "108"
+                  endingLineNumber = "108"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -21,6 +21,7 @@
 		102CDF3D293A87E40054B973 /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102CDF35293A87E40054B973 /* ColorUtils.swift */; };
 		102CDF40293A88270054B973 /* OnBoardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102CDF3F293A88270054B973 /* OnBoardingModel.swift */; };
 		102CDF42293A95860054B973 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102CDF41293A95860054B973 /* OnboardingCell.swift */; };
+		1033FC152B81487B0039C246 /* CharView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1033FC142B81487B0039C246 /* CharView.swift */; };
 		103B9FB628748C49004A91A5 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103B9FB528748C49004A91A5 /* CustomTableView.swift */; };
 		103B9FB828748C96004A91A5 /* AllTransactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103B9FB728748C96004A91A5 /* AllTransactions.swift */; };
 		106531492815AC03009FD888 /* Transection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106531482815AC03009FD888 /* Transection.swift */; };
@@ -62,6 +63,7 @@
 		10C5B3CC27D209AF00B60A4A /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3CB27D209AF00B60A4A /* UIViewController+Ext.swift */; };
 		10C5B3CE27D3C30600B60A4A /* CustomTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3CD27D3C30600B60A4A /* CustomTextFields.swift */; };
 		10C5B3D427D520E400B60A4A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C5B3D327D520E400B60A4A /* CardView.swift */; };
+		10CD18862AE52B010080C2E6 /* DataLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD18852AE52B010080C2E6 /* DataLoading.swift */; };
 		10E3D8DF28BB8B28007DEA6A /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E3D8DE28BB8B28007DEA6A /* Login.swift */; };
 		10EEDF8727CD05AD00BC03D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EEDF8627CD05AD00BC03D3 /* AppDelegate.swift */; };
 		10EEDF8927CD05AD00BC03D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EEDF8827CD05AD00BC03D3 /* SceneDelegate.swift */; };
@@ -88,6 +90,7 @@
 		102CDF38293A87E40054B973 /* InfiniteScrollingDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScrollingDrawer.swift; sourceTree = "<group>"; };
 		102CDF3F293A88270054B973 /* OnBoardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingModel.swift; sourceTree = "<group>"; };
 		102CDF41293A95860054B973 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
+		1033FC142B81487B0039C246 /* CharView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharView.swift; sourceTree = "<group>"; };
 		103B9FB528748C49004A91A5 /* CustomTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		103B9FB728748C96004A91A5 /* AllTransactions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTransactions.swift; sourceTree = "<group>"; };
 		106531482815AC03009FD888 /* Transection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transection.swift; sourceTree = "<group>"; };
@@ -129,6 +132,7 @@
 		10C5B3CB27D209AF00B60A4A /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		10C5B3CD27D3C30600B60A4A /* CustomTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFields.swift; sourceTree = "<group>"; };
 		10C5B3D327D520E400B60A4A /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		10CD18852AE52B010080C2E6 /* DataLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoading.swift; sourceTree = "<group>"; };
 		10E3D8DE28BB8B28007DEA6A /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		10EEDF8327CD05AD00BC03D3 /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10EEDF8627CD05AD00BC03D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 			children = (
 				103B9FB728748C96004A91A5 /* AllTransactions.swift */,
 				1008990A27D8C2E600A94B4F /* HeaderVC.swift */,
+				10CD18852AE52B010080C2E6 /* DataLoading.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -191,6 +196,14 @@
 				102CDF38293A87E40054B973 /* InfiniteScrollingDrawer.swift */,
 			);
 			path = CustomerPageController;
+			sourceTree = "<group>";
+		};
+		1033FC132B8148650039C246 /* SwiftUI CharView */ = {
+			isa = PBXGroup;
+			children = (
+				1033FC142B81487B0039C246 /* CharView.swift */,
+			);
+			path = "SwiftUI CharView";
 			sourceTree = "<group>";
 		};
 		103B9FB428748C49004A91A5 /* Custom TableView */ = {
@@ -366,6 +379,7 @@
 		10EEDF9D27CD099E00BC03D3 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				1033FC132B8148650039C246 /* SwiftUI CharView */,
 				102CDF31293A87C20054B973 /* CustomerPageController */,
 				1065E9EE28A6953C00EA17E9 /* AlertView */,
 				103B9FB428748C49004A91A5 /* Custom TableView */,
@@ -505,6 +519,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				102CDF3B293A87E40054B973 /* DrawerProtocol.swift in Sources */,
+				1033FC152B81487B0039C246 /* CharView.swift in Sources */,
 				10C5B3BE27CE39C600B60A4A /* CustomLabel.swift in Sources */,
 				10EEDF8B27CD05AD00BC03D3 /* HomeVC.swift in Sources */,
 				102CDF39293A87E40054B973 /* InfiniteDrawer.swift in Sources */,
@@ -532,6 +547,7 @@
 				10FE42EF2882A61100D7C372 /* HTTPMethod.swift in Sources */,
 				102CDF3C293A87E40054B973 /* InfiniteScrollingDrawer.swift in Sources */,
 				102CDF3A293A87E40054B973 /* DotDrawer.swift in Sources */,
+				10CD18862AE52B010080C2E6 /* DataLoading.swift in Sources */,
 				10EEDF8727CD05AD00BC03D3 /* AppDelegate.swift in Sources */,
 				103B9FB828748C96004A91A5 /* AllTransactions.swift in Sources */,
 				10C5B3A727CDF13100B60A4A /* Constants.swift in Sources */,
@@ -710,6 +726,7 @@
 				INFOPLIST_FILE = "Expense Tracker/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Expense Tracker";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "$(PRODUCT_NAME) uses Face ID to secure your account.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -743,6 +760,7 @@
 				INFOPLIST_FILE = "Expense Tracker/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Expense Tracker";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "$(PRODUCT_NAME) uses Face ID to secure your account.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
