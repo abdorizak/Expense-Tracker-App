@@ -7,6 +7,7 @@
 // UI DESING
 
 import UIKit
+import LocalAuthentication
 
 // MARK: - Sections
 private struct Sections {
@@ -17,16 +18,18 @@ private struct SettingOpetions {
     let icon: UIImage?
     let title: String
     let handler: () -> Void?
-
+    
 }
 
-class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ProfileVC: DataLoadingVC, UITableViewDelegate, UITableViewDataSource {
+    
+    private let faceIdSwitch = UISwitch()
     
     enum logoutOptions: CaseIterable {
         case logout
         case cancel
     }
-
+    
     private var models: [Sections] = []
     
     // MARK: - TableView
@@ -101,10 +104,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         ]))
         
         models.append(Sections(options: [
-            SettingOpetions(icon: Images.enableAuth, title: "Enable Auth", handler: {
-            // TODO:
-            
-            })
+            SettingOpetions(icon: Images.enableAuth, title: "Enable Auth", handler: { })
         ]))
         
         models.append(Sections(options: [
@@ -131,11 +131,11 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func didTapLogout(action: UIAlertAction) {
-        showLoadingview()
+        showLoadingView()
         guard let actionTitle = action.title else { return }
         if actionTitle == "logout" {
             let ac =  UIAlertController(title: "Sing Out", message: "Are you sure?", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in self.dismissLoding()}))
+            ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in self.dismissLoadingView()}))
             ac.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { [unowned self] _ in
                 let logout = AuthManager.shared.SingOut()
                 if logout {
@@ -144,7 +144,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         LoginScreen.modalTransitionStyle = .crossDissolve
                         LoginScreen.modalPresentationStyle = .fullScreen
                         self.present(LoginScreen, animated: true)
-                        self.dismissLoding()
+                        self.dismissLoadingView()
                     }
                 }
             }))
@@ -153,7 +153,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let ac =  UIAlertController(title: nil, message: "Are you sure?", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "ok", style: .cancel, handler: nil))
             present(ac, animated: true, completion: nil)
-            self.dismissLoding()
+            self.dismissLoadingView()
         }
     }
     
@@ -174,6 +174,16 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         content.imageProperties.tintColor = .systemBlue
         cell.contentConfiguration = content
         cell.selectionStyle = .none
+        
+        // Assign a new UISwitch to the cell's accessoryView only for the "Enable Auth" option
+        if model.title == "Enable Auth" {
+            // Create a new UISwitch for the Face ID cell
+            let faceIdSwitch = UISwitch()
+            faceIdSwitch.isOn = UserDefaults.standard.bool(forKey: "isFaceIDEnabled")
+            faceIdSwitch.addTarget(self, action: #selector(faceIdSwitchChanged(_:)), for: .valueChanged)
+            cell.accessoryView = faceIdSwitch
+        }
+        
         return cell
     }
     
@@ -182,6 +192,54 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let model = models[indexPath.section].options[indexPath.row]
         model.handler()
     }
+    
+    // This method toggles Face ID authentication and is called when the UISwitch is toggled
+    @objc func faceIdSwitchChanged(_ sender: UISwitch) {
+        if sender.isOn {
+            // When turning on, authenticate with Face ID
+            authenticateWithFaceID(sender: sender)
+            debugPrint("Making On")
+        } else {
+            // When turning off, directly update UserDefaults and do not authenticate
+            UserDefaults.standard.set(false, forKey: "isFaceIDEnabled")
+            debugPrint("Truning off")
+        }
+    }
 
+    
+    func authenticateWithFaceID(sender: UISwitch) {
+        let context = LAContext()
+        var error: NSError?
+        
+        // Ensure Face ID is available before proceeding
+        guard context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
+            // Directly reflect the OFF state in UserDefaults and update the switch UI
+            DispatchQueue.main.async {
+                sender.setOn(false, animated: true)
+                UserDefaults.standard.set(false, forKey: "isFaceIDEnabled")
+                debugPrint("Making One")
+                // Optionally, handle the error and inform the user
+            }
+            return
+        }
+        
+        // Authenticate using Face ID
+        context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Enable Face ID") { success, evaluateError in
+            DispatchQueue.main.async {
+                if success {
+                    // Authentication was successful, reflect this in UserDefaults
+                    UserDefaults.standard.set(true, forKey: "isFaceIDEnabled")
+                    debugPrint("Enabled")
+                } else {
+                    // Authentication failed, revert the UISwitch state and update UserDefaults
+                    sender.setOn(false, animated: true)
+                    UserDefaults.standard.set(false, forKey: "isFaceIDEnabled")
+                    debugPrint("Disbaled")
+                    // Optionally, handle the error and inform the user
+                }
+            }
+        }
+    }
+    
 }
 
