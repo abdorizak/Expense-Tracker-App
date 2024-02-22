@@ -12,6 +12,9 @@ final class NetworkManager {
     private let cache           = NSCache<NSString, UIImage>()
     private let decoder         = JSONDecoder()
     private let userID          = UserDefaults.standard.string(forKey: "user_id")
+    var isURL_broken: Bool {
+        return true
+    }
     
     // init
     private init() {
